@@ -38,6 +38,7 @@ namespace Proyecto_TP_Integrador
 
                 cn.Open();
                 //Hola mundo
+                //Chau mundo
                 cmd.Connection = cn;
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr != null && dr.Read())
