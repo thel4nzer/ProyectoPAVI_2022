@@ -553,7 +553,7 @@ namespace Proyecto_TP_Integrador
 
 
 
-                TransaccionHelper.getBDHelper().EjecutarSQLConTransaccion(consulta);
+                BDHelper.getBDHelper().EjecutarSQLConTransaccion(consulta);
 
             }
             catch (Exception)
@@ -611,20 +611,20 @@ namespace Proyecto_TP_Integrador
         private void InsertarFactura(Factura fac)
         {
             
-            //try
-            //{
+            try
+            {
                 SqlCommand cmd = new SqlCommand();
                 string consulta = "INSERT INTO facturas (IdCliente, IdMedioPago, Fecha, IdSucursal, EstadoBorrado) " +
                                     "VALUES(" + @fac.idDeCliente +  ",'" + fac.idDeMedioPago + "','" + fac.fechaPago.ToString("yyyy/MM/dd") + "'," + fac.idDeSucursal + ", 1)";
 
                
 
-                TransaccionHelper.getBDHelper().EjecutarSQLConTransaccion(consulta);
-            //}
-            //catch (Exception)
-            //{
-            //    throw;
-            //}
+                BDHelper.getBDHelper().EjecutarSQLConTransaccion(consulta);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
             
         }
 

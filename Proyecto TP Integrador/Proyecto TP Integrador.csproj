@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDHelper.cs" />
     <Compile Include="Formularios\Cobros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,7 +85,6 @@
     <Compile Include="Entidades\Plato.cs" />
     <Compile Include="Entidades\Puesto.cs" />
     <Compile Include="Entidades\Sucursal.cs" />
-    <Compile Include="Entidades\TransaccionHelper.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Formularios\LoginForm.cs">
       <SubType>Form</SubType>
@@ -129,46 +129,46 @@
     <Compile Include="Formularios\RegistroEmpleados.Designer.cs">
       <DependentUpon>RegistroEmpleados.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReporteClientes.cs">
+    <Compile Include="Report\ReporteClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReporteClientes.Designer.cs">
+    <Compile Include="Report\ReporteClientes.Designer.cs">
       <DependentUpon>ReporteClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReporteEmpleados.cs">
+    <Compile Include="Report\ReporteEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReporteEmpleados.Designer.cs">
+    <Compile Include="Report\ReporteEmpleados.Designer.cs">
       <DependentUpon>ReporteEmpleados.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReporteEstadisticaEmpleados.cs">
+    <Compile Include="Report\ReporteEstadisticaEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReporteEstadisticaEmpleados.Designer.cs">
+    <Compile Include="Report\ReporteEstadisticaEmpleados.Designer.cs">
       <DependentUpon>ReporteEstadisticaEmpleados.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReporteEstadisticaFacturas.cs">
+    <Compile Include="Report\ReporteEstadisticaFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReporteEstadisticaFacturas.Designer.cs">
+    <Compile Include="Report\ReporteEstadisticaFacturas.Designer.cs">
       <DependentUpon>ReporteEstadisticaFacturas.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReporteFacturas.cs">
+    <Compile Include="Report\ReporteFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReporteFacturas.Designer.cs">
+    <Compile Include="Report\ReporteFacturas.Designer.cs">
       <DependentUpon>ReporteFacturas.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportePedidos.cs">
+    <Compile Include="Report\ReportePedidos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReportePedidos.Designer.cs">
+    <Compile Include="Report\ReportePedidos.Designer.cs">
       <DependentUpon>ReportePedidos.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportePlatos.cs">
+    <Compile Include="Report\ReportePlatos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReportePlatos.Designer.cs">
+    <Compile Include="Report\ReportePlatos.Designer.cs">
       <DependentUpon>ReportePlatos.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Reportes.cs">
@@ -222,25 +222,25 @@
     <EmbeddedResource Include="Formularios\RegistroEmpleados.resx">
       <DependentUpon>RegistroEmpleados.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReporteClientes.resx">
+    <EmbeddedResource Include="Report\ReporteClientes.resx">
       <DependentUpon>ReporteClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReporteEmpleados.resx">
+    <EmbeddedResource Include="Report\ReporteEmpleados.resx">
       <DependentUpon>ReporteEmpleados.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReporteEstadisticaEmpleados.resx">
+    <EmbeddedResource Include="Report\ReporteEstadisticaEmpleados.resx">
       <DependentUpon>ReporteEstadisticaEmpleados.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReporteEstadisticaFacturas.resx">
+    <EmbeddedResource Include="Report\ReporteEstadisticaFacturas.resx">
       <DependentUpon>ReporteEstadisticaFacturas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReporteFacturas.resx">
+    <EmbeddedResource Include="Report\ReporteFacturas.resx">
       <DependentUpon>ReporteFacturas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportePedidos.resx">
+    <EmbeddedResource Include="Report\ReportePedidos.resx">
       <DependentUpon>ReportePedidos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportePlatos.resx">
+    <EmbeddedResource Include="Report\ReportePlatos.resx">
       <DependentUpon>ReportePlatos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Reportes.resx">
@@ -305,7 +305,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Estadísticas\" />
-    <Folder Include="Reporte\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
