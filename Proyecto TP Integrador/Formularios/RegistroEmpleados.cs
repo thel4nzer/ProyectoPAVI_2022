@@ -67,7 +67,7 @@ namespace Proyecto_TP_Integrador
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = consulta;
-
+                //HOLA CHICOS
                 cn.Open();
                 cmd.Connection = cn;
                 SqlDataReader dr = cmd.ExecuteReader();
