@@ -290,3 +290,88 @@ C:\Users\Galiano\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug
 C:\Users\Galiano\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto TP Integrador.csproj.CopyComplete
 C:\Users\Galiano\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto TP Integrador.exe
 C:\Users\Galiano\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto TP Integrador.pdb
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\SqlServerTypes\x64\msvcr120.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\SqlServerTypes\x86\msvcr120.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Proyecto TP Integrador.exe.config
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Proyecto TP Integrador.exe
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Proyecto TP Integrador.pdb
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Microsoft.ReportViewer.Common.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Microsoft.ReportViewer.Design.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Microsoft.SqlServer.Types.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\EnvDTE.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\stdole.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\Microsoft.MSXML.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\de\Microsoft.ReportViewer.Common.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\es\Microsoft.ReportViewer.Common.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\fr\Microsoft.ReportViewer.Common.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\it\Microsoft.ReportViewer.Common.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\ja\Microsoft.ReportViewer.Common.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\ko\Microsoft.ReportViewer.Common.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\pt\Microsoft.ReportViewer.Common.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\ru\Microsoft.ReportViewer.Common.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\de\Microsoft.ReportViewer.DataVisualization.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\es\Microsoft.ReportViewer.DataVisualization.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\it\Microsoft.ReportViewer.DataVisualization.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\ja\Microsoft.ReportViewer.DataVisualization.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\de\Microsoft.ReportViewer.Design.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\es\Microsoft.ReportViewer.Design.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\fr\Microsoft.ReportViewer.Design.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\it\Microsoft.ReportViewer.Design.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\ja\Microsoft.ReportViewer.Design.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\ko\Microsoft.ReportViewer.Design.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\pt\Microsoft.ReportViewer.Design.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\ru\Microsoft.ReportViewer.Design.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\de\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\fr\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\it\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\ja\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\ko\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\pt\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto TP Integrador.csproj.AssemblyReference.cache
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto TP Integrador.csproj.SuggestedBindingRedirects.cache
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.Cobros.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.LoginForm.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.Pedidos.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.Platos.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.PrincipalForm.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.Properties.Resources.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.Puestos.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.RegistroEmpleados.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReporteClientes.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReporteEmpleados.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReporteEstadisticaEmpleados.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReporteEstadisticaFacturas.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReporteFacturas.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReportePedidos.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReportePlatos.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.Reportes.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.Sucursales.resources
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto TP Integrador.csproj.GenerateResource.cache
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto TP Integrador.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto TP Integrador.csproj.CopyComplete
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto TP Integrador.exe
+C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto TP Integrador.pdb

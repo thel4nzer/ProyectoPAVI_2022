@@ -15,13 +15,13 @@ namespace Proyecto_TP_Integrador
 {
     public partial class RegistroEmpleados : Form
     {
+        List<Localidad> lstLocalidades;
+        List<Provincia> lstProvincias;
         public RegistroEmpleados()
         {
             InitializeComponent();
             CargarComboBoxPuestos();
             CargarComboBoxSucursales();
-            CargarComboBoxLocalidades();
-            CargarComboBoxProvincias();
         }
 
         private void CargarComboBoxPuestos()
@@ -37,7 +37,7 @@ namespace Proyecto_TP_Integrador
                 cmd.CommandText = consulta;
 
                 cn.Open();
-               
+
                 cmd.Connection = cn;
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr != null && dr.Read())
@@ -58,60 +58,19 @@ namespace Proyecto_TP_Integrador
 
         private void CargarComboBoxLocalidades()
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NomLocalidad FROM localidades";
-                cmd.Parameters.Clear();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-                cn.Open();
-                cmd.Connection = cn;
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr != null && dr.Read())
-                {
-                   cmbLocalidad.Items.Add(dr["NomLocalidad"].ToString());
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
+            lstLocalidades = Servicios.ServiciosEmpleado.GetLocalidades(lstProvincias[cmbProvincias.SelectedIndex].IdProvincia);
+            cmbLocalidad.DataSource = lstLocalidades;
+            cmbLocalidad.DisplayMember = "Nombre";
+            cmbLocalidad.ValueMember = "IdLocalidad";
         }
         private void CargarComboBoxProvincias()
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NomProvincia FROM provincias";
-                cmd.Parameters.Clear();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr != null && dr.Read())
-                {
-                    cmbProvincias.Items.Add(dr["NomProvincia"].ToString());
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
+            lstProvincias = Servicios.ServiciosEmpleado.GetProvincias();
+            cmbProvincias.DataSource = lstProvincias;
+            cmbProvincias.DisplayMember = "Nombre";
+            cmbProvincias.ValueMember = "IdProvincia";
+            cmbProvincias.SelectedIndex = 0;
+            CargarComboBoxLocalidades();
         }
 
         private void CargarComboBoxSucursales()
@@ -148,8 +107,9 @@ namespace Proyecto_TP_Integrador
         {
             CargarGrilla();
             btnActualizarEmpleado.Enabled = false;
-            grillaEmpleados.Visible= false;
-            
+            grillaEmpleados.Visible = false;
+            CargarComboBoxProvincias();
+
         }
 
         private void CargarGrilla()
@@ -197,7 +157,7 @@ namespace Proyecto_TP_Integrador
             txtUsuario.Text = "";
             txtContrasena.Text = "";
             txtRepetirContrasena.Text = "";
-            cmbPuestoEmpleado.Text="";
+            cmbPuestoEmpleado.Text = "";
             cmbSucursalEmpleado.Text = "";
             txtIdUsuario.Text = "";
         }
@@ -264,8 +224,8 @@ namespace Proyecto_TP_Integrador
                             usu.NombreDeUsuario = txtNombreEmpleado.Text.Trim();
                             usu.ApellidoDeEmpleado = txtApellidoEmpleado.Text.Trim();
                             usu.TelEmpleado = txtTelefonoEmpleado.Text.Trim();
-                            usu.ProvinciaEmpleado = cmbProvincias.SelectedIndex + 1;
-                            usu.LocalidadEmpleado = cmbLocalidad.SelectedIndex + 1;
+                            usu.ProvinciaEmpleado = lstProvincias[cmbProvincias.SelectedIndex].IdProvincia;
+                            usu.LocalidadEmpleado = lstLocalidades[cmbLocalidad.SelectedIndex].IdLocalidad;
                             usu.PaisEmpleado = txtPaisEmpleado.Text.Trim();
                             usu.CalleEmpleado = txtCalleEmpleado.Text.Trim();
                             usu.NumCalle = txtAlturaEmpleado.Text.Trim();
@@ -298,7 +258,7 @@ namespace Proyecto_TP_Integrador
                 {
                     MessageBox.Show("El nombre de usuario ya esta en uso");
                 }
-                
+
             }
         }
         private bool InsertarUsuario(Usuario usu)
@@ -357,7 +317,7 @@ namespace Proyecto_TP_Integrador
                 Usuario usu = ObtenerUsuario(nomusu);
                 CargarCampos(usu);
             }
-            
+
         }
 
         private string ValidarPuesto(Usuario ped)
@@ -435,7 +395,7 @@ namespace Proyecto_TP_Integrador
             txtPaisEmpleado.Text = usu.PaisEmpleado;
             string puesto = ValidarPuesto(usu);
             cmbPuestoEmpleado.Text = puesto;
-            string sucursal =  ValidarSucursal(usu);
+            string sucursal = ValidarSucursal(usu);
             cmbSucursalEmpleado.Text = sucursal;
         }
 
@@ -499,14 +459,11 @@ namespace Proyecto_TP_Integrador
 
 
 
-
-
-
         private Usuario ObtenerUsuario(string nomusu)
         {
             string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
             SqlConnection cn = new SqlConnection(cadenaConexion);
-            Usuario usu = new Usuario();  
+            Usuario usu = new Usuario();
             try
             {
                 SqlCommand cmd = new SqlCommand();
@@ -532,8 +489,8 @@ namespace Proyecto_TP_Integrador
                     usu.CalleEmpleado = dr["Calle"].ToString();
                     usu.NumCalle = dr["Numero"].ToString();
                     usu.PaisEmpleado = dr["Pais"].ToString();
-                    usu.LocalidadEmpleado =int.Parse(dr["Localidad"].ToString());
-                    usu.ProvinciaEmpleado= int.Parse(dr["Provincia"].ToString());
+                    usu.LocalidadEmpleado = int.Parse(dr["Localidad"].ToString());
+                    usu.ProvinciaEmpleado = int.Parse(dr["Provincia"].ToString());
 
                 }
             }
@@ -545,45 +502,45 @@ namespace Proyecto_TP_Integrador
             {
                 cn.Close();
             }
-            return usu ;
+            return usu;
         }
 
         private void btnActualizarEmpleado_Click(object sender, EventArgs e)
         {
-                if (txtContrasena.Text == txtRepetirContrasena.Text)
+            if (txtContrasena.Text == txtRepetirContrasena.Text)
+            {
+                Usuario usu = new Usuario();
+                string id = txtIdUsuario.Text;
+                usu.PuestoEmpleado = cmbPuestoEmpleado.SelectedIndex + 1;
+                usu.SucursalEmpleado = cmbSucursalEmpleado.SelectedIndex + 1;
+                usu.NombreDeUsuario = txtNombreEmpleado.Text.Trim();
+                usu.ApellidoDeEmpleado = txtApellidoEmpleado.Text.Trim();
+                usu.TelEmpleado = txtTelefonoEmpleado.Text.Trim();
+                usu.ProvinciaEmpleado = lstProvincias[cmbProvincias.SelectedIndex].IdProvincia;
+                usu.LocalidadEmpleado = lstLocalidades[cmbLocalidad.SelectedIndex].IdLocalidad;
+                usu.PaisEmpleado = txtPaisEmpleado.Text.Trim();
+                usu.CalleEmpleado = txtCalleEmpleado.Text.Trim();
+                usu.NumCalle = txtAlturaEmpleado.Text.Trim();
+                usu.NombreDeEmpleado = txtNombreEmpleado.Text.Trim();
+                usu.Password = txtContrasena.Text.Trim();
+                bool resultado = ActualizarEmpleado(usu, id);
+                if (resultado)
                 {
-                    Usuario usu = new Usuario();
-                    string id = txtIdUsuario.Text;
-                    usu.PuestoEmpleado = cmbPuestoEmpleado.SelectedIndex + 1 ;
-                    usu.SucursalEmpleado = cmbSucursalEmpleado.SelectedIndex + 1;
-                    usu.NombreDeUsuario = txtNombreEmpleado.Text.Trim();
-                    usu.ApellidoDeEmpleado = txtApellidoEmpleado.Text.Trim();
-                    usu.TelEmpleado = txtTelefonoEmpleado.Text.Trim();
-                    usu.LocalidadEmpleado = cmbLocalidad.SelectedIndex + 1 ;
-                    usu.ProvinciaEmpleado = cmbProvincias.SelectedIndex + 1 ;
-                    usu.PaisEmpleado = txtPaisEmpleado.Text.Trim();
-                    usu.CalleEmpleado = txtCalleEmpleado.Text.Trim();
-                    usu.NumCalle = txtAlturaEmpleado.Text.Trim();
-                    usu.NombreDeEmpleado = txtNombreEmpleado.Text.Trim();
-                    usu.Password = txtContrasena.Text.Trim();
-                    bool resultado = ActualizarEmpleado(usu, id);
-                    if (resultado)
-                    {
-                        MessageBox.Show("Empleado modificado correctamente");
-                        CargarGrilla();
-                        LimpiarCampos();
-                        btnActualizarEmpleado.Enabled = false;
+                    MessageBox.Show("Empleado modificado correctamente");
+                    CargarGrilla();
+                    LimpiarCampos();
+                    btnActualizarEmpleado.Enabled = false;
 
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al modificiar el empleado");
-                    }
                 }
                 else
-                    {
-                        MessageBox.Show("Las contraseñas no coinciden");
-                    }
+                {
+                    MessageBox.Show("Error al modificiar el empleado");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Las contraseñas no coinciden");
+            }
         }
 
         private bool ActualizarEmpleado(Usuario usu, string id)
@@ -695,6 +652,11 @@ namespace Proyecto_TP_Integrador
             eliminarEmpleado(grillaEmpleados.Rows[e.Row.Index].Cells["Id"].Value.ToString());
             MessageBox.Show("Registro eliminado con éxito...");
             grillaEmpleados.Refresh();
+        }
+
+        private void cmbProvincias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarComboBoxLocalidades();
         }
     }
 }

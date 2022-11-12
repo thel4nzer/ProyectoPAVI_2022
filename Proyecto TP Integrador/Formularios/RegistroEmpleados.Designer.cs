@@ -177,6 +177,7 @@
             this.cmbProvincias.Name = "cmbProvincias";
             this.cmbProvincias.Size = new System.Drawing.Size(248, 37);
             this.cmbProvincias.TabIndex = 41;
+            this.cmbProvincias.SelectedIndexChanged += new System.EventHandler(this.cmbProvincias_SelectedIndexChanged);
             // 
             // label13
             // 

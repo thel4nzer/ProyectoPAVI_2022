@@ -66,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BDHelper.cs" />
+    <Compile Include="Entidades\Estado.cs" />
+    <Compile Include="Entidades\Localidad.cs" />
+    <Compile Include="Entidades\Provincia.cs" />
     <Compile Include="Formularios\Cobros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +180,8 @@
     <Compile Include="Formularios\Reportes.Designer.cs">
       <DependentUpon>Reportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Servicios\ServiciosEmpleado.cs" />
+    <Compile Include="Servicios\ServiciosPedido.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Formularios\Sucursales.cs">
       <SubType>Form</SubType>

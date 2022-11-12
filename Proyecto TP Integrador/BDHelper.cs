@@ -26,9 +26,9 @@ namespace Proyecto_TP_Integrador.Entidades
         private ResultadoTransaccion miEstado = ResultadoTransaccion.exito;
         private tipoConexion miTipo = tipoConexion.simple;
 
-        private string string_conexion = @"Data Source=BETA\SQLEXPRESS;Initial Catalog=Almacen;Integrated Security=True";
+        private string string_conexion = @"Data Source=DESKTOP-K7FE51D\SQLEXPRESS;Initial Catalog=ProyectoPAVI;Integrated Security=True";
 
-        private static BDHelper instance; 
+        private static BDHelper instance;
         public static BDHelper getBDHelper()
         {
             if (instance == null)
@@ -38,7 +38,7 @@ namespace Proyecto_TP_Integrador.Entidades
 
         public DataTable ConsultaSQL(string strSql)
         {
-            
+
             SqlConnection conexion = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
             DataTable tabla = new DataTable();
@@ -49,10 +49,10 @@ namespace Proyecto_TP_Integrador.Entidades
                 cmd.Connection = conexion;
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = strSql;
-                
+
 
                 tabla.Load(cmd.ExecuteReader());
-                
+
                 return tabla;
             }
             catch (Exception ex)
@@ -66,15 +66,76 @@ namespace Proyecto_TP_Integrador.Entidades
                     conexion.Close();
                 }
 
-                
+
                 conexion.Dispose();
             }
 
         }
 
+        public bool ConsultaParam(string strSql)
+        {
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            bool resultado = false;
+            try
+            {
+                conexion.ConnectionString = string_conexion;
+                conexion.Open();
+                cmd.Connection = conexion;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = strSql;
+                cmd.ExecuteNonQuery();
+                resultado = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if ((conexion.State == ConnectionState.Open))
+                {
+                    conexion.Close();
+                }
+
+
+                conexion.Dispose();
+            }
+            return resultado;
+        }
+
+        public string ConsultaValor(string consult)
+        {
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conexion.ConnectionString = string_conexion;
+                conexion.Open();
+                cmd.Connection = conexion;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consult;
+                string valor = Convert.ToString(cmd.ExecuteScalar());
+                return valor;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if ((conexion.State == ConnectionState.Open))
+                {
+                    conexion.Close();
+                }
+                conexion.Dispose();
+
+            }
+        }
+
         public DataTable ConsultaSqlConParametros(string strSql, List<string> sqlParam)
         {
-            
+
             SqlConnection conexion = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
             DataTable tabla = new DataTable();
@@ -85,7 +146,7 @@ namespace Proyecto_TP_Integrador.Entidades
                 cmd.Connection = conexion;
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = strSql;
-                
+
 
                 var indice = 0;
                 foreach (var param in sqlParam)
@@ -99,7 +160,7 @@ namespace Proyecto_TP_Integrador.Entidades
                 }
 
                 tabla.Load(cmd.ExecuteReader());
-                
+
                 return tabla;
             }
             catch (Exception ex)
@@ -113,14 +174,14 @@ namespace Proyecto_TP_Integrador.Entidades
                     conexion.Close();
                 }
 
-                
+
                 conexion.Dispose();
             }
 
         }
         public void EjecutarSQL(string strSql)
         {
-            
+
             SqlConnection conexion = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
             try
@@ -143,14 +204,14 @@ namespace Proyecto_TP_Integrador.Entidades
                     conexion.Close();
                 }
 
-                
+
                 conexion.Dispose();
             }
 
         }
         public void EjecutarSQLConTransaccion(string strSql)
         {
-           
+
             try
             {
                 miCmd.CommandType = CommandType.Text;
@@ -182,12 +243,12 @@ namespace Proyecto_TP_Integrador.Entidades
                 if (miEstado == ResultadoTransaccion.exito)
                 {
                     miTransaccion.Commit();
-                    
+
                 }
                 else
                 {
                     miTransaccion.Rollback();
-                    
+
                 }
                 miTipo = tipoConexion.simple;
             }
@@ -197,7 +258,7 @@ namespace Proyecto_TP_Integrador.Entidades
                 miConexion.Close();
             }
 
-            
+
             miConexion.Dispose();
             if (miEstado.Equals(ResultadoTransaccion.exito))
                 return true;

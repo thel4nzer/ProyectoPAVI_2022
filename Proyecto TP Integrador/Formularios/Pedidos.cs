@@ -18,12 +18,12 @@ namespace Proyecto_TP_Integrador
 {
     public partial class Pedidos : Form
     {
+        List<Plato> lstPlatos;
+        List<Bebida> lstBebidas;
+        List<Estado> lstEstados;
         public Pedidos(Usuario usu)
         {
             InitializeComponent();
-            CargarGrillaPedidos();
-            CargarComboBoxPlato();
-            CargarComboBoxBebida();
             if (usu.PuestoEmpleado == 4)
             {
                 btnAgregarPedido.Enabled = false;
@@ -36,91 +36,26 @@ namespace Proyecto_TP_Integrador
                 btnAgregarPedido.Enabled = true;
             }
         }
-        private void CargarComboBoxBebida()
-        {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NombreBebida FROM bebidas";
-                cmd.Parameters.Clear();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
 
-                cn.Open();
-                cmd.Connection = cn;
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr != null && dr.Read())
-                {
-                    cmbBebida.Items.Add(dr["NombreBebida"].ToString());
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
-        }
 
-        private void CargarComboBoxPlato()
-        {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NombrePLato FROM platos";
-                cmd.Parameters.Clear();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr != null && dr.Read())
-                {
-                        cmbPlato.Items.Add(dr["NombrePlato"].ToString());
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
-        }
 
         private void btnAgregarPedido_Click(object sender, EventArgs e)
         {
-            Pedido p = new Pedido();
-            p.IdPlatoPedido = cmbPlato.SelectedIndex + 1;
-            p.IdBebidaPedido = cmbBebida.SelectedIndex + 1;
-            p.IdMesaPedido = cmbMesa.SelectedIndex + 1;
-            p.IdEstadoPedido = cmbEstado.SelectedIndex + 1;
-            if(p.IdMesaPedido == 0)
+            if (cmbPlato.SelectedIndex != -1 && cmbBebida.SelectedIndex != -1)
             {
-                MessageBox.Show("Debe seleccionar una mesa");
-            }
-            else
-            {
-                if ((p.IdPlatoPedido == 0 & p.IdBebidaPedido == 0))
+                if (cmbEstado.SelectedIndex + 1 == 4)
                 {
-                    MessageBox.Show("No puede crear un pedido sin ningun item. Debe seleccionar al menos una bebida o un plato");
+                    MessageBox.Show("No puede crear un pedido con el primer estado como ENTREGADO");
                 }
                 else
                 {
-                    if (p.IdEstadoPedido == 4)
+                    if (cmbMesa.SelectedIndex != -1)
                     {
-                        MessageBox.Show("No puede crear un pedido con el primer estado como ENTREGADO");
-                    }
-                    else
-                    {
+                        Pedido p = new Pedido();
+                        p.IdPlatoPedido = lstPlatos[cmbPlato.SelectedIndex].idDelPlato; //dp.Articulo = lstArticulos[cboArticulo.SelectedIndex]
+                        p.IdBebidaPedido = lstBebidas[cmbBebida.SelectedIndex].idDeBebida;  //cmbBebida.SelectedIndex + 1;
+                        p.IdMesaPedido = cmbMesa.SelectedIndex + 1;
+                        p.IdEstadoPedido = lstEstados[cmbEstado.SelectedIndex].IdEstado;
                         bool resultado = InsertarPedidoBD(p);
                         if (resultado)
                         {
@@ -133,144 +68,44 @@ namespace Proyecto_TP_Integrador
                             MessageBox.Show("Error al agregar el pedido");
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("No puede crear un pedido sin seleccionar una mesa");
+                    }
                 }
             }
-            
+            else
+            {
+                MessageBox.Show("Debe seleccionar un plato o una bebida como minimo");
+            }
         }
 
         private bool InsertarDetallePlato(DetalleFactura pla)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            bool resultado = false;
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
+            string consulta = "INSERT INTO detalleFactura (Precio, Descripcion, EstadoBorrado, Mesa) VALUES(" + pla.precio + ",'" + pla.descripcion + "'," + "1" + "," + pla.mesa + ")";
+            bool result = Servicios.ServiciosPedido.AMBPedido(consulta);
+            return result;
 
-                string consulta = "INSERT INTO detalleFactura (Precio, Descripcion, EstadoBorrado, Mesa) VALUES(@prec, @desc, 1, @mesita)";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@prec", pla.precio);
-                cmd.Parameters.AddWithValue("@desc", pla.descripcion);
-                cmd.Parameters.AddWithValue("@mesita", pla.mesa);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                cmd.ExecuteNonQuery();
-                resultado = true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
-
-            return resultado;
         }
 
         private bool InsertarDetalleBebida(DetalleFactura beb)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            bool resultado = false;
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-
-                string consulta = "INSERT INTO detalleFactura (Precio, Descripcion, EstadoBorrado, Mesa) VALUES(@prec, @desc, 1, @mesita)";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@prec", beb.precio);
-                cmd.Parameters.AddWithValue("@desc", beb.descripcion);
-                cmd.Parameters.AddWithValue("@mesita", beb.mesa);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                cmd.ExecuteNonQuery();
-                resultado = true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
-
-            return resultado;
+            string consulta = "INSERT INTO detalleFactura (Precio, Descripcion, EstadoBorrado, Mesa) VALUES(" + beb.precio + ",'" + beb.descripcion + "'," + "1" + "," + beb.mesa + ")";
+            bool result = Servicios.ServiciosPedido.AMBPedido(consulta);
+            return result;
         }
 
         private bool InsertarPedidoBD(Pedido p)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            bool resultado = false;
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-
-                string consulta = "INSERT INTO pedidos (IdMesa, IdPlato, IdBebida, IdEstado, EstadoBorrado) VALUES(@idMesita, @idPlatito, @idBebi, @idEstadito, 1)";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@idMesita", p.IdMesaPedido);
-                cmd.Parameters.AddWithValue("@idPlatito", p.IdPlatoPedido);
-                cmd.Parameters.AddWithValue("@idBebi", p.IdBebidaPedido);
-                cmd.Parameters.AddWithValue("@idEstadito", p.IdEstadoPedido);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                cmd.ExecuteNonQuery();
-                resultado = true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
-
-            return resultado;
+            string consulta = "INSERT INTO pedidos (IdMesa, IdPlato, IdBebida, IdEstado, EstadoBorrado) VALUES(" + p.IdMesaPedido + "," + p.IdPlatoPedido + "," + p.IdBebidaPedido + "," + p.IdEstadoPedido + "," + "1" + ")";
+            bool result = Servicios.ServiciosPedido.AMBPedido(consulta);
+            return result;
         }
         private void CargarGrillaPedidos()
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-
-                SqlCommand cmd = new SqlCommand();
-
-                string consulta = "SELECT IdPedido, NombrePlato, NombreBebida, IdMesa, NomEstado FROM pedidos, platos, bebidas, estados WHERE pedidos.IdBebida=bebidas.IdBebida AND pedidos.IdPlato=platos.IdPlato AND pedidos.IdEstado=estados.IdEstado AND pedidos.EstadoBorrado=1";
-                cmd.Parameters.Clear();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                DataTable tabla = new DataTable();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(tabla);
-
-                grillaPedidos.DataSource = tabla;
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
+            string cns = "SELECT IdPedido, NombrePlato, NombreBebida, IdMesa, NomEstado FROM pedidos, platos, bebidas, estados WHERE pedidos.IdBebida=bebidas.IdBebida AND pedidos.IdPlato=platos.IdPlato AND pedidos.IdEstado=estados.IdEstado AND pedidos.EstadoBorrado=1";
+            DataTable tabla = Servicios.ServiciosPedido.CargarGrilla(cns);
+            grillaPedidos.DataSource = tabla;
         }
         private Pedido ObtenerPedido(string id)
         {
@@ -333,8 +168,8 @@ namespace Proyecto_TP_Integrador
             }
             finally
             {
-                cn.Close(); 
-                
+                cn.Close();
+
             }
         }
 
@@ -402,12 +237,15 @@ namespace Proyecto_TP_Integrador
             LimpiarCampos();
             txtId.Text = Convert.ToString(ped.IdDelPedido);
             cmbMesa.Text = Convert.ToString(ped.IdMesaPedido);
+            //cmbBebida.Text = Convert.ToString(ped.IdBebidaPedido);
             string plato = ValidarPlato(ped);
             cmbPlato.Text = plato;
             string bebida = ValidarBebida(ped);
             cmbBebida.Text = bebida;
             string estado = ValidarEstado(ped);
             cmbEstado.Text = estado;
+            txtPrecioBebida.Text = CargarPrecioBebida(ped.IdBebidaPedido);
+            txtPrecioPlato.Text = CargarPrecioPlato(ped.IdPlatoPedido);
         }
 
         private void grillaPedidos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -450,41 +288,32 @@ namespace Proyecto_TP_Integrador
         {
             if (cmbEstado.SelectedIndex + 1 == 4)
             {
-                DialogResult dialogResult = MessageBox.Show("Atencion, el estado ENTREGADO permitira facturar el pedido. Esta seguro que quiere actualizarlo?", "ATENCION!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Atencion, el estado ENTREGADO permitira facturar el pedido. Esta seguro que quiere actualizarlo???", "ATENCION!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Pedido p = new Pedido();
-                    string id = txtId.Text;
-                    p.IdPlatoPedido = cmbPlato.SelectedIndex + 1;
-                    p.IdBebidaPedido = cmbBebida.SelectedIndex + 1;
-                    p.IdEstadoPedido = cmbEstado.SelectedIndex + 1;
+                    p.IdDelPedido = Convert.ToInt32(txtId.Text);
+                    p.IdPlatoPedido = lstPlatos[cmbPlato.SelectedIndex].idDelPlato; //dp.Articulo = lstArticulos[cboArticulo.SelectedIndex]
+                    p.IdBebidaPedido = lstBebidas[cmbBebida.SelectedIndex].idDeBebida;  //cmbBebida.SelectedIndex + 1;
+                    p.IdEstadoPedido = lstEstados[cmbEstado.SelectedIndex].IdEstado;
                     p.IdMesaPedido = Convert.ToInt32(cmbMesa.Text);
-                    bool resultado = ActualizarPedido(id, p);
+                    bool resultado = ActualizarPedido(p);
                     if (resultado)
                     {
                         MessageBox.Show("Pedido actualizado correctamente");
-                        if (p.IdEstadoPedido == 4)
-                        {
-                            DetalleFactura pla = new DetalleFactura();
-                            pla.descripcion = cmbPlato.SelectedItem.ToString();
-                            pla.precio = CargarPrecioPlato(cmbPlato.SelectedItem.ToString());
-                            pla.mesa = cmbMesa.SelectedIndex + 1;
-                            InsertarDetallePlato(pla);
-                            DetalleFactura beb = new DetalleFactura();
-                            beb.descripcion = cmbBebida.SelectedItem.ToString();
-                            beb.precio = CargarPrecioBebida(cmbBebida.SelectedItem.ToString());
-                            beb.mesa = cmbMesa.SelectedIndex + 1;
-                            InsertarDetalleBebida(beb);
-                            CargarGrillaPedidos();
-                            LimpiarCampos();
-                            btnActualizarPedido.Enabled = false;
-                        }
-                        else
-                        {
-                            CargarGrillaPedidos();
-                            LimpiarCampos();
-                            btnActualizarPedido.Enabled = false;
-                        }
+                        DetalleFactura pla = new DetalleFactura();
+                        pla.descripcion = cmbPlato.SelectedItem.ToString();
+                        pla.precio = CargarPrecioPlato(lstPlatos[cmbPlato.SelectedIndex].idDelPlato);
+                        pla.mesa = cmbMesa.SelectedIndex + 1;
+                        InsertarDetallePlato(pla);
+                        DetalleFactura beb = new DetalleFactura();
+                        beb.descripcion = cmbBebida.SelectedItem.ToString();
+                        beb.precio = CargarPrecioBebida(lstBebidas[cmbBebida.SelectedIndex].idDeBebida);
+                        beb.mesa = cmbMesa.SelectedIndex + 1;
+                        InsertarDetalleBebida(beb);
+                        CargarGrillaPedidos();
+                        LimpiarCampos();
+                        btnActualizarPedido.Enabled = false;
                     }
                     else
                     {
@@ -499,86 +328,69 @@ namespace Proyecto_TP_Integrador
             else
             {
                 Pedido p = new Pedido();
-                string id = txtId.Text;
-                p.IdPlatoPedido = cmbPlato.SelectedIndex + 1;
-                p.IdBebidaPedido = cmbBebida.SelectedIndex + 1;
-                p.IdEstadoPedido = cmbEstado.SelectedIndex + 1;
+                p.IdDelPedido = Convert.ToInt32(txtId.Text);
+                p.IdPlatoPedido = lstPlatos[cmbPlato.SelectedIndex].idDelPlato; //dp.Articulo = lstArticulos[cboArticulo.SelectedIndex]
+                p.IdBebidaPedido = lstBebidas[cmbBebida.SelectedIndex].idDeBebida;  //cmbBebida.SelectedIndex + 1;
+                p.IdEstadoPedido = lstEstados[cmbEstado.SelectedIndex].IdEstado;
                 p.IdMesaPedido = Convert.ToInt32(cmbMesa.Text);
-                bool resultado = ActualizarPedido(id, p);
+                bool resultado = ActualizarPedido(p);
                 if (resultado)
                 {
                     MessageBox.Show("Pedido actualizado correctamente");
-                    if (p.IdEstadoPedido == 4)
-                    {
-                        DetalleFactura pla = new DetalleFactura();
-                        pla.descripcion = cmbPlato.SelectedItem.ToString();
-                        pla.precio = CargarPrecioPlato(cmbPlato.SelectedItem.ToString());
-                        pla.mesa = cmbMesa.SelectedIndex + 1;
-                        InsertarDetallePlato(pla);
-                        DetalleFactura beb = new DetalleFactura();
-                        beb.descripcion = cmbBebida.SelectedItem.ToString();
-                        beb.precio = CargarPrecioBebida(cmbBebida.SelectedItem.ToString());
-                        beb.mesa = cmbMesa.SelectedIndex + 1;
-                        InsertarDetalleBebida(beb);
-                        CargarGrillaPedidos();
-                        LimpiarCampos();
-                        btnActualizarPedido.Enabled = false;
-                    }
-                    else
-                    {
-                        CargarGrillaPedidos();
-                        LimpiarCampos();
-                        btnActualizarPedido.Enabled = false;
-                    }
+                    CargarGrillaPedidos();
+                    LimpiarCampos();
+                    btnActualizarPedido.Enabled = false;
                 }
                 else
                 {
                     MessageBox.Show("No se pudo actualizar el pedido");
                 }
             }
-            
+
         }
 
-        private bool ActualizarPedido(string id, Pedido p)
+        private bool ActualizarPedido(Pedido p)
         {
-            {
-                string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-                SqlConnection cn = new SqlConnection(cadenaConexion);
-                bool resultado = false;
-                try
-                {
-                    SqlCommand cmd = new SqlCommand();
-                    string consulta = "UPDATE pedidos SET IdPlato=@platito, IdBebida=@bebi, IdMesa=@mesita, IdEstado=@estadito WHERE IdPedido like @id";
-                    cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@bebi", p.IdBebidaPedido);
-                    cmd.Parameters.AddWithValue("@platito", p.IdPlatoPedido );
-                    cmd.Parameters.AddWithValue("@mesita", p.IdMesaPedido);
-                    cmd.Parameters.AddWithValue("@estadito", p.IdEstadoPedido);
-                    cmd.Parameters.AddWithValue("@id", id);
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = consulta;
-
-                    cn.Open();
-                    cmd.Connection = cn;
-                    cmd.ExecuteNonQuery();
-                    resultado = true;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    cn.Close();
-                }
-
-                return resultado;
-            }
+            string consulta = "UPDATE pedidos SET IdPlato= " + p.IdPlatoPedido + ", IdBebida=" + p.IdBebidaPedido + ", IdMesa=" + p.IdMesaPedido + ", IdEstado=" + p.IdEstadoPedido + " WHERE IdPedido=" + p.IdDelPedido;
+            bool result = Servicios.ServiciosPedido.AMBPedido(consulta);
+            return result;
         }
 
         private void Pedidos_Load(object sender, EventArgs e)
         {
+            CargarPlatos();
+            CargarBebidas();
+            CargarEstados();
+            CargarGrillaPedidos();
+            txtId.Text = Convert.ToString(Servicios.ServiciosPedido.Next());
+            cmbMesa.SelectedIndex = 0;
+        }
 
+        private void CargarPlatos()
+        {
+            lstPlatos = Servicios.ServiciosPedido.GetPlatos();
+            cmbPlato.DataSource = lstPlatos;
+            cmbPlato.DisplayMember = "nombreDelPlato";
+            cmbPlato.ValueMember = "idDelPlato";
+            cmbPlato.SelectedIndex = 0;
+        }
+
+        private void CargarBebidas()
+        {
+            lstBebidas = Servicios.ServiciosPedido.GetBebidas();
+            cmbBebida.DataSource = lstBebidas;
+            cmbBebida.DisplayMember = "nombreDeBebida";
+            cmbBebida.ValueMember = "idDeBebida";
+            cmbBebida.SelectedIndex = 0;
+        }
+
+        private void CargarEstados()
+        {
+            lstEstados = Servicios.ServiciosPedido.GetEstados();
+            cmbEstado.DataSource = lstEstados;
+            cmbEstado.DisplayMember = "Nombre";
+            cmbEstado.ValueMember = "IdEstado";
+            cmbEstado.SelectedIndex = 0;
         }
 
         private void btnBorrarPedido_Click(object sender, EventArgs e)
@@ -599,7 +411,6 @@ namespace Proyecto_TP_Integrador
         {
             string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
             SqlConnection cn = new SqlConnection(cadenaConexion);
-
             try
             {
                 SqlCommand cmd = new SqlCommand();
@@ -612,7 +423,6 @@ namespace Proyecto_TP_Integrador
                 cn.Open();
                 cmd.Connection = cn;
                 cmd.ExecuteNonQuery();
-
             }
             catch (Exception)
             {
@@ -622,8 +432,6 @@ namespace Proyecto_TP_Integrador
             {
                 cn.Close();
             }
-
-
         }
 
         private void grillaPedidos_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -637,75 +445,30 @@ namespace Proyecto_TP_Integrador
 
         private void cmbPlato_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string plato = cmbPlato.SelectedItem.ToString();
+            int plato = lstPlatos[cmbPlato.SelectedIndex].idDelPlato;
             string precio = CargarPrecioPlato(plato);
             txtPrecioPlato.Text = precio;
         }
 
-        private string CargarPrecioPlato(string plato)
+        private string CargarPrecioPlato(int plato)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT PrecioPlato FROM platos WHERE NombrePlato like @platito";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@platito", plato);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                string nombre = Convert.ToString(cmd.ExecuteScalar());
-                return nombre;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-
-            }
+            string consulta = "SELECT PrecioPlato FROM platos WHERE IdPlato like " + plato;
+            string precio = Servicios.ServiciosPedido.CargarPrecio(consulta);
+            return precio;
         }
 
         private void cmbBebida_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string bebida = cmbBebida.SelectedItem.ToString();
+            int bebida = lstBebidas[cmbBebida.SelectedIndex].idDeBebida;
             string precio = CargarPrecioBebida(bebida);
             txtPrecioBebida.Text = precio;
         }
 
-        private string CargarPrecioBebida(string bebi)
+        private string CargarPrecioBebida(int bebi)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT PrecioBebida FROM bebidas WHERE NombreBebida like @bebida";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@bebida", bebi);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                string nombre = Convert.ToString(cmd.ExecuteScalar());
-                return nombre;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-
-            }
+            string consulta = "SELECT PrecioBebida FROM bebidas WHERE IdBebida like " + bebi;
+            string precio = Servicios.ServiciosPedido.CargarPrecio(consulta);
+            return precio;
         }
-
     }
 }
