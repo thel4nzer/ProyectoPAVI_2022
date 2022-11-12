@@ -17,42 +17,27 @@ namespace Proyecto_TP_Integrador
     {
         List<Localidad> lstLocalidades;
         List<Provincia> lstProvincias;
+        List<Puesto> lstPuestos;
+        List<Sucursal> lstSucursales;
         public RegistroEmpleados()
         {
             InitializeComponent();
-            CargarComboBoxPuestos();
-            CargarComboBoxSucursales();
+        }
+
+        private void CargarComboBoxSucursales()
+        {
+            lstSucursales = Servicios.ServiciosEmpleado.GetSucursales();
+            cmbSucursalEmpleado.DataSource = lstSucursales;
+            cmbSucursalEmpleado.DisplayMember = "nombreDeSucursal";
+            cmbSucursalEmpleado.ValueMember = "idDeSucursal";
         }
 
         private void CargarComboBoxPuestos()
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NomPuesto FROM puestos";
-                cmd.Parameters.Clear();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-
-                cmd.Connection = cn;
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr != null && dr.Read())
-                {
-                    cmbPuestoEmpleado.Items.Add(dr["NomPuesto"].ToString());
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
+            lstPuestos = Servicios.ServiciosEmpleado.GetPuestos();
+            cmbPuestoEmpleado.DataSource = lstPuestos;
+            cmbPuestoEmpleado.DisplayMember = "nombreDePuesto";
+            cmbPuestoEmpleado.ValueMember = "idDePuesto";
         }
 
 
@@ -73,35 +58,6 @@ namespace Proyecto_TP_Integrador
             CargarComboBoxLocalidades();
         }
 
-        private void CargarComboBoxSucursales()
-        {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NomSucursal FROM sucursales";
-                cmd.Parameters.Clear();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr != null && dr.Read())
-                {
-                    cmbSucursalEmpleado.Items.Add(dr["NomSucursal"].ToString());
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
-        }
 
         private void RegistroEmpleados_Load(object sender, EventArgs e)
         {
@@ -109,7 +65,8 @@ namespace Proyecto_TP_Integrador
             btnActualizarEmpleado.Enabled = false;
             grillaEmpleados.Visible = false;
             CargarComboBoxProvincias();
-
+            CargarComboBoxPuestos();
+            CargarComboBoxSucursales();
         }
 
         private void CargarGrilla()
@@ -219,8 +176,8 @@ namespace Proyecto_TP_Integrador
                         try
                         {
                             Usuario usu = new Usuario();
-                            usu.PuestoEmpleado = cmbPuestoEmpleado.SelectedIndex + 1;
-                            usu.SucursalEmpleado = cmbSucursalEmpleado.SelectedIndex + 1;
+                            usu.PuestoEmpleado = lstPuestos[cmbPuestoEmpleado.SelectedIndex].idDePuesto;
+                            usu.SucursalEmpleado = lstSucursales[cmbSucursalEmpleado.SelectedIndex].idDeSucursal;
                             usu.NombreDeUsuario = txtNombreEmpleado.Text.Trim();
                             usu.ApellidoDeEmpleado = txtApellidoEmpleado.Text.Trim();
                             usu.TelEmpleado = txtTelefonoEmpleado.Text.Trim();
@@ -511,8 +468,8 @@ namespace Proyecto_TP_Integrador
             {
                 Usuario usu = new Usuario();
                 string id = txtIdUsuario.Text;
-                usu.PuestoEmpleado = cmbPuestoEmpleado.SelectedIndex + 1;
-                usu.SucursalEmpleado = cmbSucursalEmpleado.SelectedIndex + 1;
+                usu.PuestoEmpleado = lstPuestos[cmbPuestoEmpleado.SelectedIndex].idDePuesto;
+                usu.SucursalEmpleado = lstSucursales[cmbSucursalEmpleado.SelectedIndex].idDeSucursal;
                 usu.NombreDeUsuario = txtNombreEmpleado.Text.Trim();
                 usu.ApellidoDeEmpleado = txtApellidoEmpleado.Text.Trim();
                 usu.TelEmpleado = txtTelefonoEmpleado.Text.Trim();

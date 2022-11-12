@@ -40,5 +40,36 @@ namespace Proyecto_TP_Integrador.Servicios
             }
             return lst;
         }
+
+        public static List<Puesto> GetPuestos()
+        {
+            List<Puesto> lst = new List<Puesto>();
+            string consultaSQL = "SELECT * FROM puestos";
+            DataTable tabla = BDHelper.getBDHelper().ConsultaSQL(consultaSQL);
+            foreach (DataRow fila in tabla.Rows)
+            {
+                Puesto a = new Puesto();
+                a.idDePuesto = Convert.ToInt16(fila[0]);    //fila["Id_Plato"]
+                a.nombreDePuesto = fila[1].ToString();
+                a.descripPuesto = fila[2].ToString(); //fila["NombrePlato"]          //fila[DescripcionPlato]
+                lst.Add(a);
+            }
+            return lst;
+        }
+
+        public static List<Sucursal> GetSucursales()
+        {
+            List<Sucursal> lst = new List<Sucursal>();
+            string consultaSQL = "SELECT * FROM sucursales";
+            DataTable tabla = BDHelper.getBDHelper().ConsultaSQL(consultaSQL);
+            foreach (DataRow fila in tabla.Rows)
+            {
+                Sucursal a = new Sucursal();
+                a.idDeSucursal = Convert.ToInt16(fila[0]);    //fila["Id_Plato"]
+                a.nombreDeSucursal = fila[1].ToString(); //fila["NombrePlato"]          //fila[DescripcionPlato]
+                lst.Add(a);
+            }
+            return lst;
+        }
     }
 }
