@@ -58,12 +58,12 @@ namespace Proyecto_TP_Integrador
 
         private void CargarGrilla(int mesa)
         {
-            string cns = "SELECT IdPedido, NombrePlato, PrecioPlato, NombreBebida, PrecioBebida, IdMesa, NomEstado FROM pedidos, platos, bebidas, estados WHERE pedidos.IdBebida=bebidas.IdBebida AND pedidos.IdPlato=platos.IdPlato AND estados.IdEstado=4 AND pedidos.IdMesa=" + mesa + " AND pedidos.EstadoBorrado=1";
+            string cns = "SELECT IdPedido, NombrePlato, PrecioPlato, NombreBebida, PrecioBebida, IdMesa, NomEstado FROM pedidos, platos, bebidas, estados WHERE pedidos.IdBebida=bebidas.IdBebida AND pedidos.IdPlato=platos.IdPlato AND pedidos.IdEstado=4 AND pedidos.IdEstado=estados.IdEstado AND pedidos.IdMesa=" + mesa + " AND pedidos.EstadoBorrado=1";
             DataTable tabla = Servicios.ServiciosEmpleado.CargarGrilla(cns);
             grillaPedidos.DataSource = tabla;
         }
 
-        private void CargarGrillaFacturas(string dni)
+        private void CargarGrillaFacturas(int dni)
         {
             string consulta = "SELECT IdFactura, facturas.IdCliente, Fecha FROM facturas, clientes WHERE facturas.IdCliente = clientes.IdCliente AND clientes.NumeroDoc=" + dni;
             DataTable tabla = Servicios.ServiciosEmpleado.CargarGrilla(consulta);
@@ -121,50 +121,59 @@ namespace Proyecto_TP_Integrador
             }
             else
             {
-                Cliente cli = new Cliente();
-                cli.nomDeCliente = txtNombre.Text;
-                cli.apeDeCliente = txtApellido.Text;
-                cli.calleDeCliente = txtCalle.Text;
-                cli.alturaCalle = txtAltura.Text;
-                cli.paisClient = txtPais.Text;
-                cli.localidadClient = cmbLocalidad.SelectedIndex + 1;
-                cli.provClient = cmbProvincias.SelectedIndex + 1;
-                cli.tipoDocumento = cmbTipoDoc.Text;
-                cli.numeroDoc = txtNumeroDoc.Text;
-                bool exist = ClienteExiste(cmbTipoDoc.Text, txtNumeroDoc.Text);
-                if (exist)
+                DateTime fecha;
+                if (DateTime.TryParse(txtFecha.Text, out fecha))
                 {
-                    InsertarCliente(cli);
+                    Cliente cli = new Cliente();
+                    cli.nomDeCliente = txtNombre.Text.Trim();
+                    cli.apeDeCliente = txtApellido.Text.Trim();
+                    cli.calleDeCliente = txtCalle.Text.Trim();
+                    cli.alturaCalle = txtAltura.Text.Trim();
+                    cli.paisClient = txtPais.Text.Trim();
+                    cli.localidadClient = lstLocalidades[cmbLocalidad.SelectedIndex].IdLocalidad;
+                    cli.provClient = lstProvincias[cmbProvincias.SelectedIndex].IdProvincia;
+                    cli.tipoDocumento = cmbTipoDoc.Text.Trim();
+                    cli.numeroDoc = txtNumeroDoc.Text.Trim();
+                    bool exist = ClienteExiste(cmbTipoDoc.Text, txtNumeroDoc.Text);
+                    if (exist)
+                    {
+                        InsertarCliente(cli);
+                    }
+                    else
+                    {
+                        Cliente client = ObtenerCliente(cli.tipoDocumento, cli.numeroDoc);
+                        Factura fac = new Factura();
+                        fac.idDeCliente = client.idDeCliente;
+                        fac.idDeMedioPago = cmbMedioPago.Text;
+                        fac.idDeSucursal = lstSucursales[cmbSucursalEmpleado.SelectedIndex].idDeSucursal;
+                        fac.fechaPago = DateTime.Parse(txtFecha.Text);
+                        fac.idDeFactura = Convert.ToInt32(txtIdFactura.Text);
+
+
+
+                        //TransaccionHelper.getBDHelper().conectarConTransaccion();
+
+                        InsertarFactura(fac);
+                        int mesita = cmbMesa.SelectedIndex + 1;
+                        bool resul = InsertarIdFactura(fac, mesita);
+
+                        //TransaccionHelper.getBDHelper().desconectar();
+                        ActualizarEstadoBorrado(mesita);
+                        printDocument1 = new PrintDocument();
+                        PrinterSettings ps = new PrinterSettings();
+                        printDocument1.PrinterSettings = ps;
+                        printDocument1.PrintPage += imprimir;
+                        printDocument1.Print();
+                        CargarGrilla(mesita);
+                        LimpiarCampos();
+                        txtIdFactura.Text = Servicios.ServicioCobro.Next().ToString();
+                    }
                 }
                 else
                 {
-                    Cliente client = ObtenerCliente(cli.tipoDocumento, cli.numeroDoc);
-                    Factura fac = new Factura();
-                    fac.idDeCliente = client.idDeCliente;
-                    fac.idDeMedioPago = cmbMedioPago.Text;
-                    fac.idDeSucursal = cmbSucursalEmpleado.SelectedIndex + 1;
-                    fac.fechaPago = DateTime.Parse(txtFecha.Text);
-                    fac.idDeFactura = Convert.ToInt32(txtIdFactura.Text);
-
-
-
-                    //TransaccionHelper.getBDHelper().conectarConTransaccion();
-
-                    InsertarFactura(fac);
-                    int mesita = cmbMesa.SelectedIndex + 1;
-                    bool resul = InsertarIdFactura(fac, mesita);
-
-                    //TransaccionHelper.getBDHelper().desconectar();
-                    ActualizarEstadoBorrado(mesita);
-                    printDocument1 = new PrintDocument();
-                    PrinterSettings ps = new PrinterSettings();
-                    printDocument1.PrinterSettings = ps;
-                    printDocument1.PrintPage += imprimir;
-                    printDocument1.Print();
-                    CargarGrilla(mesita);
-                    LimpiarCampos();
-                    //txtIdfactura.Text = Servicios.ServicioCobro.Next().ToString();
+                    MessageBox.Show("El formato de la fecha no es correcto");
                 }
+
 
             }
 
@@ -455,8 +464,11 @@ namespace Proyecto_TP_Integrador
 
         private void btnBuscarFactura_Click(object sender, EventArgs e)
         {
-            string dni = txtBusquedaDni.Text;
-            CargarGrillaFacturas(dni);
+            int dni;
+            if (txtBusquedaDni.Text != "" && Int32.TryParse(txtBusquedaDni.Text, out dni))
+            {
+                CargarGrillaFacturas(dni);
+            }
         }
 
         private void imprimir(object sender, PrintPageEventArgs e)
@@ -491,7 +503,16 @@ namespace Proyecto_TP_Integrador
                 Factura fac = ObtenerFactura(id);
                 Cliente cliente = ObtenerCliente(fac);
                 CargarCamposCliente(cliente, fac);
+                btnCobrar.Enabled = false;
+                txtTotal.Text = CargarTotalFactura(fac.idDeFactura).ToString();
             }
+        }
+
+        private int CargarTotalFactura(int id)
+        {
+            string consulta = "SELECT SUM(Precio) FROM detallefactura WHERE detallefactura.IdFactura=" + id;
+            int TotalPlatos = Convert.ToInt32(Servicios.ServicioCobro.CargarTotal(consulta));
+            return TotalPlatos;
         }
 
         private void CargarCamposCliente(Cliente ped, Factura fac)
@@ -511,6 +532,7 @@ namespace Proyecto_TP_Integrador
             txtFecha.Text = Convert.ToString(fac.fechaPago);
             string sucursal = ValidarSucursal(fac);
             cmbSucursalEmpleado.Text = sucursal;
+            txtIdFactura.Text = Convert.ToString(fac.idDeFactura);
 
         }
 
@@ -621,6 +643,7 @@ namespace Proyecto_TP_Integrador
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr != null && dr.Read())
                 {
+                    fac.idDeFactura = int.Parse(dr["IdFactura"].ToString());
                     fac.idDeMedioPago = dr["IdMedioPago"].ToString();
                     fac.idDeCliente = int.Parse(dr["IdCliente"].ToString());
                     fac.idDeSucursal = int.Parse(dr["IdSucursal"].ToString());
@@ -717,6 +740,8 @@ namespace Proyecto_TP_Integrador
         private void btnLimpiarCampos_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+            btnCobrar.Enabled = true;
+            txtIdFactura.Text = Servicios.ServicioCobro.Next().ToString();
         }
 
         private void cmbProvincias_SelectedIndexChanged(object sender, EventArgs e)

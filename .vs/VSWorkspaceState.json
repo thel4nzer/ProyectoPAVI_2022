@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Proyecto TP Integrador"
+    "\\Proyecto TP Integrador",
+    "\\Proyecto TP Integrador\\Formularios",
+    "\\Proyecto TP Integrador\\Servicios"
   ],
-  "SelectedNode": "\\Proyecto TP Integrador\\BDHelper.cs",
+  "SelectedNode": "\\Proyecto TP Integrador\\Formularios\\RegistroEmpleados.cs",
   "PreviewInSolutionExplorer": false
 }
