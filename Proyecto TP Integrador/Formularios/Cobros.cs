@@ -148,6 +148,7 @@ namespace Proyecto_TP_Integrador
                         fac.idDeSucursal = lstSucursales[cmbSucursalEmpleado.SelectedIndex].idDeSucursal;
                         fac.fechaPago = DateTime.Parse(txtFecha.Text);
                         fac.idDeFactura = Convert.ToInt32(txtIdFactura.Text);
+                        fac.total = Convert.ToInt32(txtTotal.Text);
 
 
 
@@ -448,8 +449,8 @@ namespace Proyecto_TP_Integrador
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                string consulta = "INSERT INTO facturas (IdCliente, IdMedioPago, Fecha, IdSucursal, EstadoBorrado) " +
-                                    "VALUES(" + fac.idDeCliente + ",'" + fac.idDeMedioPago + "','" + fac.fechaPago.ToString("yyyy/MM/dd") + "'," + fac.idDeSucursal + ", 1)";
+                string consulta = "INSERT INTO facturas (IdCliente, IdMedioPago, Fecha, IdSucursal, EstadoBorrado, Total) " +
+                                    "VALUES(" + fac.idDeCliente + ",'" + fac.idDeMedioPago + "','" + fac.fechaPago.ToString("yyyy/MM/dd") + "'," + fac.idDeSucursal + ", 1," + fac.total +")";
 
 
                 BDHelper.getBDHelper().conectarConTransaccion();

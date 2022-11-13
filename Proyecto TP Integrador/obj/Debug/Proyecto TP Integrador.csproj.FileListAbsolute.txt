@@ -367,7 +367,6 @@ C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug
 C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReporteEstadisticaFacturas.resources
 C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReporteFacturas.resources
 C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReportePedidos.resources
-C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReportePlatos.resources
 C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.Reportes.resources
 C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.Sucursales.resources
 C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto TP Integrador.csproj.GenerateResource.cache
