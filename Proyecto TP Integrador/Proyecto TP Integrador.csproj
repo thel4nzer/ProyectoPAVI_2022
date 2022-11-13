@@ -183,6 +183,7 @@
     <Compile Include="Servicios\ServiciosCobro.cs" />
     <Compile Include="Servicios\ServiciosEmpleado.cs" />
     <Compile Include="Servicios\ServiciosPedido.cs" />
+    <Compile Include="Servicios\ServiciosSucursal.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Formularios\Sucursales.cs">
       <SubType>Form</SubType>
