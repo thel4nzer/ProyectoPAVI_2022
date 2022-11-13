@@ -188,8 +188,10 @@
     <EmbeddedResource Include="Formularios\Cobros.resx">
       <DependentUpon>Cobros.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Listados\EstadisticaClientes.rdlc" />
     <EmbeddedResource Include="Listados\EstadisticaEmpleados.rdlc" />
     <EmbeddedResource Include="Listados\EstadisticaFacturas.rdlc" />
+    <EmbeddedResource Include="Listados\EstadisticaPedidos.rdlc" />
     <EmbeddedResource Include="Listados\ListadoDeClientes.rdlc" />
     <EmbeddedResource Include="Listados\ListadoDeEmpleados.rdlc" />
     <EmbeddedResource Include="Listados\ListadoDePedidos.rdlc" />
