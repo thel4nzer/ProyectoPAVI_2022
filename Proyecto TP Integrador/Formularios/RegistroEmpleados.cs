@@ -163,6 +163,7 @@ namespace Proyecto_TP_Integrador
                             usu.NumCalle = txtAlturaEmpleado.Text.Trim();
                             usu.NombreDeEmpleado = txtNombreEmpleado.Text.Trim();
                             usu.Password = txtContrasena.Text.Trim();
+                            usu.FechaDeIngreso = DateTime.Now;
                             bool resultado = InsertarUsuario(usu);
                             if (resultado == true)
                             {
@@ -195,7 +196,7 @@ namespace Proyecto_TP_Integrador
         }
         private bool InsertarUsuario(Usuario usu)
         {
-            string consulta = "INSERT INTO usuarios (NombreDeUsuario, Password, NomEmpleado, ApeEmpleado, Telefono, Calle, Numero, Pais, Provincia, Localidad, IdPuesto, IdSucursal, EstadoBorrado) VALUES('" + usu.NombreDeUsuario + "','" + usu.Password + "','" + usu.NombreDeEmpleado + "','" + usu.ApellidoDeEmpleado + "','" + usu.TelEmpleado + "','" + usu.CalleEmpleado + "','" + usu.NumCalle + "','" + usu.PaisEmpleado + "'," + usu.ProvinciaEmpleado + "," + usu.LocalidadEmpleado + "," + usu.PuestoEmpleado + "," + usu.SucursalEmpleado + "," + "1" + ")";
+            string consulta = "INSERT INTO usuarios (NombreDeUsuario, Password, NomEmpleado, ApeEmpleado, Telefono, Calle, Numero, Pais, Provincia, Localidad, IdPuesto, IdSucursal, EstadoBorrado, FechaIngreso) VALUES('" + usu.NombreDeUsuario + "','" + usu.Password + "','" + usu.NombreDeEmpleado + "','" + usu.ApellidoDeEmpleado + "','" + usu.TelEmpleado + "','" + usu.CalleEmpleado + "','" + usu.NumCalle + "','" + usu.PaisEmpleado + "'," + usu.ProvinciaEmpleado + "," + usu.LocalidadEmpleado + "," + usu.PuestoEmpleado + "," + usu.SucursalEmpleado + "," + "1,'" + usu.FechaDeIngreso + "')";
             bool result = Servicios.ServiciosEmpleado.AMBEmpleados(consulta);
             return result;
         }

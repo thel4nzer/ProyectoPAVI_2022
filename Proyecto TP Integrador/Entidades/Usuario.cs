@@ -22,6 +22,7 @@ namespace Proyecto_TP_Integrador.Entidades
         private int Localidad;
         private int IdPuesto;
         private int IdSucursal;
+        private DateTime FechaIngreso;
 
         public Usuario()
         {
@@ -98,6 +99,12 @@ namespace Proyecto_TP_Integrador.Entidades
         {
             get => IdSucursal;
             set => IdSucursal = value;
+        }
+
+        public DateTime FechaDeIngreso
+        {
+            get => FechaIngreso;
+            set => FechaIngreso = value;
         }
 
 

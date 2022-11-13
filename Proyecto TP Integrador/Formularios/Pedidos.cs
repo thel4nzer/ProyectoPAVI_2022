@@ -56,6 +56,7 @@ namespace Proyecto_TP_Integrador
                         p.IdBebidaPedido = lstBebidas[cmbBebida.SelectedIndex].idDeBebida;  //cmbBebida.SelectedIndex + 1;
                         p.IdMesaPedido = cmbMesa.SelectedIndex + 1;
                         p.IdEstadoPedido = lstEstados[cmbEstado.SelectedIndex].IdEstado;
+                        p.FechaDelPedido = DateTime.Now;
                         bool resultado = InsertarPedidoBD(p);
                         if (resultado)
                         {
@@ -97,7 +98,7 @@ namespace Proyecto_TP_Integrador
 
         private bool InsertarPedidoBD(Pedido p)
         {
-            string consulta = "INSERT INTO pedidos (IdMesa, IdPlato, IdBebida, IdEstado, EstadoBorrado) VALUES(" + p.IdMesaPedido + "," + p.IdPlatoPedido + "," + p.IdBebidaPedido + "," + p.IdEstadoPedido + "," + "1" + ")";
+            string consulta = "INSERT INTO pedidos (IdMesa, IdPlato, IdBebida, IdEstado, EstadoBorrado, FechaPedido) VALUES(" + p.IdMesaPedido + "," + p.IdPlatoPedido + "," + p.IdBebidaPedido + "," + p.IdEstadoPedido + ", 1,'" + p.FechaDelPedido + "')";
             bool result = Servicios.ServiciosPedido.AMBPedido(consulta);
             return result;
         }
