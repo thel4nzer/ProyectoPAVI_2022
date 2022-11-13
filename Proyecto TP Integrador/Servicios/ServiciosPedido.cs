@@ -61,6 +61,7 @@ namespace Proyecto_TP_Integrador.Servicios
         }
 
 
+
         public static bool AMBPedido(string consulta)
         {
             bool result = BDHelper.getBDHelper().ConsultaParam(consulta);
@@ -90,5 +91,6 @@ namespace Proyecto_TP_Integrador.Servicios
             string precio = BDHelper.getBDHelper().ConsultaValor(consult);
             return precio;
         }
+
     }
 }

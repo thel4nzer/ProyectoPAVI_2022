@@ -279,7 +279,7 @@ namespace Proyecto_TP_Integrador
             cmbBebida.Text = "";
             cmbMesa.Text = "";
             cmbEstado.Text = "";
-            txtId.Text = "";
+            txtId.Text = Servicios.ServiciosPedido.Next().ToString();
             txtPrecioBebida.Text = "";
             txtPrecioPlato.Text = "";
         }

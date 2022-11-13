@@ -71,5 +71,34 @@ namespace Proyecto_TP_Integrador.Servicios
             }
             return lst;
         }
+
+        public static bool AMBEmpleados(string consulta)
+        {
+            bool result = BDHelper.getBDHelper().ConsultaParam(consulta);
+            return result;
+        }
+
+        public static DataTable CargarGrilla(string Consult)
+        {
+            DataTable tabla = BDHelper.getBDHelper().ConsultaSQL(Consult);
+            return tabla;
+        }
+
+        public static string Validar(string consult)
+        {
+            string resultado = BDHelper.getBDHelper().ConsultaValor(consult);
+            return resultado;
+        }
+
+        public static int Next()
+        {
+            string consultaSQL = "SELECT MAX(IdUsuario) FROM usuarios";
+            DataTable tabla = BDHelper.getBDHelper().ConsultaSQL(consultaSQL);
+            if (tabla.Rows[0][0] == DBNull.Value)
+                return 1;
+            else
+                return (int)tabla.Rows[0][0] + 1;
+        }
+
     }
 }

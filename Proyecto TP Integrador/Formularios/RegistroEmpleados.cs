@@ -67,39 +67,14 @@ namespace Proyecto_TP_Integrador
             CargarComboBoxProvincias();
             CargarComboBoxPuestos();
             CargarComboBoxSucursales();
+            txtIdUsuario.Text = Servicios.ServiciosEmpleado.Next().ToString();
         }
 
         private void CargarGrilla()
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-
-                SqlCommand cmd = new SqlCommand();
-
-                string consulta = "SELECT IdUsuario, NombreDeUsuario, Password, NomEmpleado, ApeEmpleado, NomPuesto, NomSucursal FROM usuarios, puestos, sucursales WHERE usuarios.IdPuesto=puestos.IdPuesto AND usuarios.IdSucursal=sucursales.IdSucursal AND usuarios.EstadoBorrado=1 ";
-                cmd.Parameters.Clear();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                DataTable tabla = new DataTable();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(tabla);
-
-                grillaEmpleados.DataSource = tabla;
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
+            string cns = "SELECT IdUsuario, NombreDeUsuario, Password, NomEmpleado, ApeEmpleado, NomPuesto, NomSucursal FROM usuarios, puestos, sucursales WHERE usuarios.IdPuesto=puestos.IdPuesto AND usuarios.IdSucursal=sucursales.IdSucursal AND usuarios.EstadoBorrado=1 ";
+            DataTable tabla = Servicios.ServiciosEmpleado.CargarGrilla(cns);
+            grillaEmpleados.DataSource = tabla;
         }
 
         private void LimpiarCampos()
@@ -116,7 +91,7 @@ namespace Proyecto_TP_Integrador
             txtRepetirContrasena.Text = "";
             cmbPuestoEmpleado.Text = "";
             cmbSucursalEmpleado.Text = "";
-            txtIdUsuario.Text = "";
+            txtIdUsuario.Text = Servicios.ServiciosEmpleado.Next().ToString();
         }
 
         private void btnLimpiarCampos_Click(object sender, EventArgs e)
@@ -220,44 +195,9 @@ namespace Proyecto_TP_Integrador
         }
         private bool InsertarUsuario(Usuario usu)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            bool resultado = false;
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "INSERT INTO usuarios (NombreDeUsuario, Password, NomEmpleado, ApeEmpleado, Telefono, Calle, Numero, Pais, Provincia, Localidad, IdPuesto, IdSucursal, EstadoBorrado) VALUES(@nombreUsu, @pass, @nomEmp, @apeEmp, @telEmp, @calleEmp, @nroEmp, @paisEmp, @provEmp, @locEmp ,@puestoEmp, @sucEmp, 1)";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@nombreUsu", usu.NombreDeUsuario);
-                cmd.Parameters.AddWithValue("@pass", usu.Password);
-                cmd.Parameters.AddWithValue("@nomEmp", usu.NombreDeEmpleado);
-                cmd.Parameters.AddWithValue("@apeEmp", usu.ApellidoDeEmpleado);
-                cmd.Parameters.AddWithValue("@telEmp", usu.TelEmpleado);
-                cmd.Parameters.AddWithValue("@calleEmp", usu.CalleEmpleado);
-                cmd.Parameters.AddWithValue("@nroEmp", usu.NumCalle);
-                cmd.Parameters.AddWithValue("@paisEmp", usu.PaisEmpleado);
-                cmd.Parameters.AddWithValue("@provEmp", usu.ProvinciaEmpleado);
-                cmd.Parameters.AddWithValue("@locEmp", usu.LocalidadEmpleado);
-                cmd.Parameters.AddWithValue("@puestoEmp", usu.PuestoEmpleado);
-                cmd.Parameters.AddWithValue("@sucEmp", usu.SucursalEmpleado);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                cmd.ExecuteNonQuery();
-                resultado = true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
-
-            return resultado;
+            string consulta = "INSERT INTO usuarios (NombreDeUsuario, Password, NomEmpleado, ApeEmpleado, Telefono, Calle, Numero, Pais, Provincia, Localidad, IdPuesto, IdSucursal, EstadoBorrado) VALUES('" + usu.NombreDeUsuario + "','" + usu.Password + "','" + usu.NombreDeEmpleado + "','" + usu.ApellidoDeEmpleado + "','" + usu.TelEmpleado + "','" + usu.CalleEmpleado + "','" + usu.NumCalle + "','" + usu.PaisEmpleado + "'," + usu.ProvinciaEmpleado + "," + usu.LocalidadEmpleado + "," + usu.PuestoEmpleado + "," + usu.SucursalEmpleado + "," + "1" + ")";
+            bool result = Servicios.ServiciosEmpleado.AMBEmpleados(consulta);
+            return result;
         }
 
         private void grillaEmpleados_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -279,60 +219,16 @@ namespace Proyecto_TP_Integrador
 
         private string ValidarPuesto(Usuario ped)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NomPuesto FROM puestos WHERE IdPuesto like @puesto";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@puesto", ped.PuestoEmpleado);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                string nombre = Convert.ToString(cmd.ExecuteScalar());
-                return nombre;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-
-            }
+            string consulta = "SELECT NomPuesto FROM puestos WHERE IdPuesto like " + ped.PuestoEmpleado;
+            string puesto = Servicios.ServiciosEmpleado.Validar(consulta);
+            return puesto;
         }
 
         private string ValidarSucursal(Usuario ped)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NomSucursal FROM sucursales WHERE IdSucursal like @sucu";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@sucu", ped.SucursalEmpleado);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                string nombre = Convert.ToString(cmd.ExecuteScalar());
-                return nombre;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-
-            }
+            string consulta = "SELECT NomSucursal FROM sucursales WHERE IdSucursal like " + ped.SucursalEmpleado;
+            string sucursal = Servicios.ServiciosEmpleado.Validar(consulta);
+            return sucursal;
         }
 
         private void CargarCampos(Usuario usu)
@@ -358,63 +254,18 @@ namespace Proyecto_TP_Integrador
 
         private string ValidarLocalidad(Usuario ped)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NomLocalidad FROM localidades WHERE IdLocalidad like @idEst";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@idEst", ped.LocalidadEmpleado);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                string nombre = Convert.ToString(cmd.ExecuteScalar());
-                return nombre;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-
-            }
+            string consulta = "SELECT NomLocalidad FROM localidades WHERE IdLocalidad like " + ped.LocalidadEmpleado;
+            string localidad = Servicios.ServiciosEmpleado.Validar(consulta);
+            return localidad;
         }
 
         private string ValidarProvincia(Usuario ped)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NomProvincia FROM provincias WHERE IdProvincia like @idEst";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@idEst", ped.ProvinciaEmpleado);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
+            string consulta = "SELECT NomProvincia FROM provincias WHERE IdProvincia like " + ped.ProvinciaEmpleado;
+            string provincia = Servicios.ServiciosEmpleado.Validar(consulta);
+            return provincia;
 
-                cn.Open();
-                cmd.Connection = cn;
-                string nombre = Convert.ToString(cmd.ExecuteScalar());
-                return nombre;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-
-            }
         }
-
-
 
         private Usuario ObtenerUsuario(string nomusu)
         {
@@ -467,7 +318,7 @@ namespace Proyecto_TP_Integrador
             if (txtContrasena.Text == txtRepetirContrasena.Text)
             {
                 Usuario usu = new Usuario();
-                string id = txtIdUsuario.Text;
+                usu.IdDelUsuario = Convert.ToInt32(txtIdUsuario.Text);
                 usu.PuestoEmpleado = lstPuestos[cmbPuestoEmpleado.SelectedIndex].idDePuesto;
                 usu.SucursalEmpleado = lstSucursales[cmbSucursalEmpleado.SelectedIndex].idDeSucursal;
                 usu.NombreDeUsuario = txtNombreEmpleado.Text.Trim();
@@ -480,7 +331,7 @@ namespace Proyecto_TP_Integrador
                 usu.NumCalle = txtAlturaEmpleado.Text.Trim();
                 usu.NombreDeEmpleado = txtNombreEmpleado.Text.Trim();
                 usu.Password = txtContrasena.Text.Trim();
-                bool resultado = ActualizarEmpleado(usu, id);
+                bool resultado = ActualizarEmpleado(usu);
                 if (resultado)
                 {
                     MessageBox.Show("Empleado modificado correctamente");
@@ -500,47 +351,11 @@ namespace Proyecto_TP_Integrador
             }
         }
 
-        private bool ActualizarEmpleado(Usuario usu, string id)
+        private bool ActualizarEmpleado(Usuario usu)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            bool resultado = false;
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "UPDATE usuarios SET NombreDeUsuario=@nombreUsu, Password=@pass, NomEmpleado=@nomEmp, ApeEmpleado=@apeEmp, Telefono=@telEmp, Calle=@calleEmp, Numero=@nroEmp, Pais=@paisEmp, Provincia=@provEmp, Localidad=@locEmp, IdPuesto=@puestoEmp, IdSucursal=@sucEmp  WHERE IdUsuario like @id";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@nombreUsu", usu.NombreDeUsuario);
-                cmd.Parameters.AddWithValue("@pass", usu.Password);
-                cmd.Parameters.AddWithValue("@nomEmp", usu.NombreDeEmpleado);
-                cmd.Parameters.AddWithValue("@apeEmp", usu.ApellidoDeEmpleado);
-                cmd.Parameters.AddWithValue("@telEmp", usu.TelEmpleado);
-                cmd.Parameters.AddWithValue("@calleEmp", usu.CalleEmpleado);
-                cmd.Parameters.AddWithValue("@nroEmp", usu.NumCalle);
-                cmd.Parameters.AddWithValue("@paisEmp", usu.PaisEmpleado);
-                cmd.Parameters.AddWithValue("@provEmp", usu.ProvinciaEmpleado);
-                cmd.Parameters.AddWithValue("@locEmp", usu.LocalidadEmpleado);
-                cmd.Parameters.AddWithValue("@puestoEmp", usu.PuestoEmpleado);
-                cmd.Parameters.AddWithValue("@sucEmp", usu.SucursalEmpleado);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                cmd.ExecuteNonQuery();
-                resultado = true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
-
-            return resultado;
+            string consulta = "UPDATE usuarios SET NombreDeUsuario='" + usu.NombreDeUsuario + "', Password='" + usu.Password + "', NomEmpleado='" + usu.NombreDeEmpleado + "', ApeEmpleado='" + usu.ApellidoDeEmpleado + "', Telefono='" + usu.TelEmpleado + "', Calle='" + usu.CalleEmpleado + "', Numero=" + usu.NumCalle + ", Pais='" + usu.PaisEmpleado + "',  Provincia=" + usu.ProvinciaEmpleado + ", Localidad=" + usu.LocalidadEmpleado + ", IdPuesto=" + usu.PuestoEmpleado + ", IdSucursal=" + usu.SucursalEmpleado + "WHERE IdUsuario like " + usu.IdDelUsuario;
+            bool result = Servicios.ServiciosEmpleado.AMBEmpleados(consulta);
+            return result;
         }
 
         private void grillaEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
