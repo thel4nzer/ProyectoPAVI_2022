@@ -17,45 +17,18 @@ namespace Proyecto_TP_Integrador
         public Sucursales()
         {
             InitializeComponent();
-            CargarGrillaSucursales();
         }
 
         private void Sucursales_Load(object sender, EventArgs e)
         {
-
+            CargarGrillaSucursales();
         }
 
         private void CargarGrillaSucursales()
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-
-                SqlCommand cmd = new SqlCommand();
-
-                string consulta = "SELECT IdSucursal, TelSucursal, NomSucursal, CalleSucursal, NroSucursal, LocSucursal, PaisSucursal FROM sucursales WHERE EstadoBorrado=1";
-                cmd.Parameters.Clear();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                DataTable tabla = new DataTable();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(tabla);
-
-                grillaSucursales.DataSource = tabla;
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
+            string consulta = "SELECT IdSucursal, TelSucursal, NomSucursal, CalleSucursal, NroSucursal, LocSucursal, PaisSucursal FROM sucursales WHERE EstadoBorrado=1";
+            DataTable tabla = Servicios.ServiciosEmpleado.CargarGrilla(consulta);
+            grillaSucursales.DataSource = tabla;
         }
 
         private void btnAgregarSucursal_Click(object sender, EventArgs e)
@@ -134,38 +107,9 @@ namespace Proyecto_TP_Integrador
 
         private bool InsertarSucursalBD(Sucursal p)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            bool resultado = false;
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-
-                string consulta = "INSERT INTO sucursales (NomSucursal, TelSucursal, CalleSucursal, NroSucursal, LocSucursal, PaisSucursal, EstadoBorrado) VALUES(@nomSucu, @telSucu, @calleSucu, @nroSucu, @locSucu, @paisSucu, 1)";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@nomSucu", p.nombreDeSucursal);
-                cmd.Parameters.AddWithValue("@telSucu", p.telSucursal);
-                cmd.Parameters.AddWithValue("@calleSucu", p.calleSucursal);
-                cmd.Parameters.AddWithValue("@nroSucu", p.nroSucursal);
-                cmd.Parameters.AddWithValue("@locSucu", p.locSucursal);
-                cmd.Parameters.AddWithValue("@paisSucu", p.paisSucursal);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                cmd.ExecuteNonQuery();
-                resultado = true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
-            return resultado;
+            string consulta = "INSERT INTO sucursales (NomSucursal, TelSucursal, CalleSucursal, NroSucursal, LocSucursal, PaisSucursal, EstadoBorrado) VALUES('" + p.nombreDeSucursal + "','" + p.telSucursal + "','" + p.calleSucursal + "','" + p.nroSucursal + "','" + p.locSucursal + "','" + p.paisSucursal + "', 1)";
+            bool result = Servicios.ServiciosSucursal.ABMSucursal(consulta);
+            return result;
         }
 
         private void LimpiarCampos()
@@ -178,6 +122,7 @@ namespace Proyecto_TP_Integrador
             txtLocalidad.Text = "";
             txtPais.Text = "";
             btnActualizarSucursales.Enabled = false;
+            btnAgregarSucursal.Enabled = true;
         }
 
         private void btnActualizarSucursales_Click(object sender, EventArgs e)
@@ -213,41 +158,9 @@ namespace Proyecto_TP_Integrador
 
         private bool ActualizarSucursal(string id, Sucursal p)
         {
-            {
-                string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-                SqlConnection cn = new SqlConnection(cadenaConexion);
-                bool resultado = false;
-                try
-                {
-                    SqlCommand cmd = new SqlCommand();
-                    string consulta = "UPDATE sucursales SET NomSucursal=@nomSucu, TelSucursal=@telSucu, CalleSucursal = @calleSucu, NroSucursal = @nroSucu, LocSucursal=@localidad, PaisSucursal=@pais WHERE IdSucursal like @id";
-                    cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@nomSucu", p.nombreDeSucursal);
-                    cmd.Parameters.AddWithValue("@telSucu", p.telSucursal);
-                    cmd.Parameters.AddWithValue("@calleSucu", p.calleSucursal);
-                    cmd.Parameters.AddWithValue("@nroSucu", p.nroSucursal);
-                    cmd.Parameters.AddWithValue("@localidad", p.locSucursal);
-                    cmd.Parameters.AddWithValue("@pais", p.paisSucursal);
-                    cmd.Parameters.AddWithValue("@id", id);
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = consulta;
-
-                    cn.Open();
-                    cmd.Connection = cn;
-                    cmd.ExecuteNonQuery();
-                    resultado = true;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    cn.Close();
-                }
-
-                return resultado;
-            }
+            string consulta = "UPDATE sucursales SET NomSucursal='" + p.nombreDeSucursal + "', TelSucursal='" + p.telSucursal + "', CalleSucursal ='" + p.calleSucursal + "', NroSucursal ='" + p.nroSucursal + "', LocSucursal='" + p.locSucursal + "', PaisSucursal='" + p.paisSucursal + "' WHERE IdSucursal like " + id;
+            bool result = Servicios.ServiciosSucursal.ABMSucursal(consulta);
+            return result;
         }
 
         private void grillaSucursales_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -264,6 +177,7 @@ namespace Proyecto_TP_Integrador
                 Sucursal ped = ObtenerSucursal(id);
                 CargarCamposSucursal(ped);
                 btnActualizarSucursales.Enabled = true;
+                btnAgregarSucursal.Enabled = false;
             }
         }
 
