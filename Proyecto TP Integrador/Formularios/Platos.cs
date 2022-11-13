@@ -97,9 +97,10 @@ namespace Proyecto_TP_Integrador
         private void btnAgregarPlato_Click(object sender, EventArgs e)
         {
             Plato p = new Plato();
-            p.nombreDelPlato=txtNombrePlato.Text;
+            p.nombreDelPlato = txtNombrePlato.Text;
             p.descripPlato = txtDescripcionPlato.Text;
-            if(txtPrecio.Text == "")
+            int precio;
+            if (txtPrecio.Text == "" || !(Int32.TryParse(txtPrecio.Text, out precio)))
             {
                 p.precioDelPlato = 0;
             }
@@ -108,7 +109,7 @@ namespace Proyecto_TP_Integrador
                 p.precioDelPlato = Convert.ToInt32(txtPrecio.Text);
             }
             bool platoExiste = PlatoExistente(txtNombrePlato.Text);
-            if (platoExiste==true)
+            if (platoExiste == true)
             {
                 if (txtNombrePlato.Text != "")
                 {
@@ -164,7 +165,8 @@ namespace Proyecto_TP_Integrador
             Bebida p = new Bebida();
             p.nombreDeBebida = txtNombreBebida.Text;
             p.descripBebida = txtDescripcionBebida.Text;
-            if (txtPrecioBebida.Text == "")
+            int precio;
+            if (txtPrecioBebida.Text == "" || !(Int32.TryParse(txtPrecioBebida.Text, out precio)))
             {
                 p.precioDeBebida = 0;
             }
@@ -181,7 +183,7 @@ namespace Proyecto_TP_Integrador
                     if (resultado)
                     {
                         MessageBox.Show("Bebida agregado correctamente");
-                        CargarGrillaPlatos();
+                        CargarGrillaBebidas();
                         LimpiarCampos();
                     }
                     else
@@ -314,7 +316,7 @@ namespace Proyecto_TP_Integrador
             txtDescripcionPlato.Text = "";
             txtPrecio.Text = "";
             txtIdPlato.Text = "";
-            
+
         }
 
         private void LimpiarCamposBebidas()
@@ -412,7 +414,7 @@ namespace Proyecto_TP_Integrador
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr != null && dr.Read())
                 {
-                    ped.idDelPlato= int.Parse(dr["IdPlato"].ToString());
+                    ped.idDelPlato = int.Parse(dr["IdPlato"].ToString());
                     ped.nombreDelPlato = dr["NombrePlato"].ToString();
                     ped.descripPlato = dr["DescripcionPlato"].ToString();
                     ped.precioDelPlato = int.Parse(dr["PrecioPlato"].ToString());
@@ -444,7 +446,7 @@ namespace Proyecto_TP_Integrador
             LimpiarCampos();
         }
 
-        
+
         private bool ActualizarPlato(string id, Plato p)
         {
             {
@@ -688,6 +690,11 @@ namespace Proyecto_TP_Integrador
             eliminarBebida(grillaBebida.Rows[e.Row.Index].Cells["IdBebida"].Value.ToString());
             MessageBox.Show("Registro eliminado con éxito...");
             grillaBebida.Refresh();
+        }
+
+        private void Platos_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
