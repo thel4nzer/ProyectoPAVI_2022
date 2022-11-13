@@ -317,33 +317,41 @@ namespace Proyecto_TP_Integrador
         {
             if (txtContrasena.Text == txtRepetirContrasena.Text)
             {
-                Usuario usu = new Usuario();
-                usu.IdDelUsuario = Convert.ToInt32(txtIdUsuario.Text);
-                usu.PuestoEmpleado = lstPuestos[cmbPuestoEmpleado.SelectedIndex].idDePuesto;
-                usu.SucursalEmpleado = lstSucursales[cmbSucursalEmpleado.SelectedIndex].idDeSucursal;
-                usu.NombreDeUsuario = txtNombreEmpleado.Text.Trim();
-                usu.ApellidoDeEmpleado = txtApellidoEmpleado.Text.Trim();
-                usu.TelEmpleado = txtTelefonoEmpleado.Text.Trim();
-                usu.ProvinciaEmpleado = lstProvincias[cmbProvincias.SelectedIndex].IdProvincia;
-                usu.LocalidadEmpleado = lstLocalidades[cmbLocalidad.SelectedIndex].IdLocalidad;
-                usu.PaisEmpleado = txtPaisEmpleado.Text.Trim();
-                usu.CalleEmpleado = txtCalleEmpleado.Text.Trim();
-                usu.NumCalle = txtAlturaEmpleado.Text.Trim();
-                usu.NombreDeEmpleado = txtNombreEmpleado.Text.Trim();
-                usu.Password = txtContrasena.Text.Trim();
-                bool resultado = ActualizarEmpleado(usu);
-                if (resultado)
+                if (txtUsuario.Text.Trim() != "" && txtContrasena.Text.Trim() != "" && cmbPuestoEmpleado.SelectedIndex != -1 && cmbSucursalEmpleado.SelectedIndex != -1)
                 {
-                    MessageBox.Show("Empleado modificado correctamente");
-                    CargarGrilla();
-                    LimpiarCampos();
-                    btnActualizarEmpleado.Enabled = false;
+                    Usuario usu = new Usuario();
+                    usu.IdDelUsuario = Convert.ToInt32(txtIdUsuario.Text);
+                    usu.PuestoEmpleado = lstPuestos[cmbPuestoEmpleado.SelectedIndex].idDePuesto;
+                    usu.SucursalEmpleado = lstSucursales[cmbSucursalEmpleado.SelectedIndex].idDeSucursal;
+                    usu.NombreDeUsuario = txtNombreEmpleado.Text.Trim();
+                    usu.ApellidoDeEmpleado = txtApellidoEmpleado.Text.Trim();
+                    usu.TelEmpleado = txtTelefonoEmpleado.Text.Trim();
+                    usu.ProvinciaEmpleado = lstProvincias[cmbProvincias.SelectedIndex].IdProvincia;
+                    usu.LocalidadEmpleado = lstLocalidades[cmbLocalidad.SelectedIndex].IdLocalidad;
+                    usu.PaisEmpleado = txtPaisEmpleado.Text.Trim();
+                    usu.CalleEmpleado = txtCalleEmpleado.Text.Trim();
+                    usu.NumCalle = txtAlturaEmpleado.Text.Trim();
+                    usu.NombreDeEmpleado = txtNombreEmpleado.Text.Trim();
+                    usu.Password = txtContrasena.Text.Trim();
+                    bool resultado = ActualizarEmpleado(usu);
+                    if (resultado)
+                    {
+                        MessageBox.Show("Empleado modificado correctamente");
+                        CargarGrilla();
+                        LimpiarCampos();
+                        btnActualizarEmpleado.Enabled = false;
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al modificiar el empleado");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error al modificiar el empleado");
+                    MessageBox.Show("No puede modificar un campo obligatorio por vacio");
                 }
+
             }
             else
             {
