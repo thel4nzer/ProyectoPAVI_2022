@@ -76,24 +76,24 @@ namespace Proyecto_TP_Integrador
                 bool sucursalExiste = SucuExistente(txtNombreSucursal.Text.Trim());
                 if (sucursalExiste == true)
                 {
-                        bool resultado = InsertarSucursalBD(p);
-                        if (resultado)
-                        {
-                            MessageBox.Show("Sucursal agregada correctamente!!", "Registro exitoso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            CargarGrillaSucursales();
-                            LimpiarCampos();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error al agregar la sucursal");
-                        }
+                    bool resultado = InsertarSucursalBD(p);
+                    if (resultado)
+                    {
+                        MessageBox.Show("Sucursal agregada correctamente!!", "Registro exitoso!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarGrillaSucursales();
+                        LimpiarCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al agregar la sucursal");
+                    }
                 }
                 else
                 {
                     MessageBox.Show("La sucursal que intenta cargar ya existe", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            
+
         }
 
         private bool SucuExistente(string nomSucu)
@@ -176,32 +176,38 @@ namespace Proyecto_TP_Integrador
             txtCalle.Text = "";
             txtNumero.Text = "";
             txtLocalidad.Text = "";
-            txtPais.Text = ""; 
+            txtPais.Text = "";
             btnActualizarSucursales.Enabled = false;
         }
 
         private void btnActualizarSucursales_Click(object sender, EventArgs e)
         {
-            Sucursal p = new Sucursal();
-            string id = txtIdSucusrsal.Text;
-            p.nombreDeSucursal = txtNombreSucursal.Text;
-            p.telSucursal = txtTelefono.Text;
-            p.calleSucursal = txtCalle.Text;
-            p.nroSucursal = txtNumero.Text;
-            p.locSucursal = txtLocalidad.Text;
-            p.paisSucursal = txtPais.Text;
-
-            bool resultado = ActualizarSucursal(id, p);
-            if (resultado)
+            if (txtNombreSucursal.Text.Trim() != "")
             {
-                MessageBox.Show("Sucursal actualizada correctamente");
-                CargarGrillaSucursales();
-                LimpiarCampos();
-                btnActualizarSucursales.Enabled = false;
+                Sucursal p = new Sucursal();
+                string id = txtIdSucusrsal.Text;
+                p.nombreDeSucursal = txtNombreSucursal.Text.Trim();
+                p.telSucursal = txtTelefono.Text.Trim();
+                p.calleSucursal = txtCalle.Text.Trim();
+                p.nroSucursal = txtNumero.Text.Trim();
+                p.locSucursal = txtLocalidad.Text.Trim();
+                p.paisSucursal = txtPais.Text.Trim();
+                bool resultado = ActualizarSucursal(id, p);
+                if (resultado)
+                {
+                    MessageBox.Show("Sucursal actualizada correctamente");
+                    CargarGrillaSucursales();
+                    LimpiarCampos();
+                    btnActualizarSucursales.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar la sucursal");
+                }
             }
             else
             {
-                MessageBox.Show("No se pudo actualizar la sucursal");
+                MessageBox.Show("No se puede actualizar con el nombre VACIO!!");
             }
         }
 
