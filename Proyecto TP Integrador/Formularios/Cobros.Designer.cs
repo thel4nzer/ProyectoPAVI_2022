@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnLimpiarCampos = new System.Windows.Forms.Button();
             this.grillaDetalleFactura = new System.Windows.Forms.DataGridView();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtFactura = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -93,9 +96,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btnLimpiarCampos = new System.Windows.Forms.Button();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtIdFactura = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaDetalleFactura)).BeginInit();
@@ -126,6 +128,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.label24);
+            this.panel2.Controls.Add(this.txtIdFactura);
             this.panel2.Controls.Add(this.btnLimpiarCampos);
             this.panel2.Controls.Add(this.grillaDetalleFactura);
             this.panel2.Controls.Add(this.txtFactura);
@@ -182,6 +186,19 @@
             this.panel2.Size = new System.Drawing.Size(1924, 865);
             this.panel2.TabIndex = 1;
             // 
+            // btnLimpiarCampos
+            // 
+            this.btnLimpiarCampos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnLimpiarCampos.Font = new System.Drawing.Font("Perpetua", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiarCampos.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiarCampos.Location = new System.Drawing.Point(68, 589);
+            this.btnLimpiarCampos.Name = "btnLimpiarCampos";
+            this.btnLimpiarCampos.Size = new System.Drawing.Size(344, 50);
+            this.btnLimpiarCampos.TabIndex = 60;
+            this.btnLimpiarCampos.Text = "LIMPIAR CAMPOS";
+            this.btnLimpiarCampos.UseVisualStyleBackColor = false;
+            this.btnLimpiarCampos.Click += new System.EventHandler(this.btnLimpiarCampos_Click);
+            // 
             // grillaDetalleFactura
             // 
             this.grillaDetalleFactura.AllowUserToAddRows = false;
@@ -196,14 +213,29 @@
             this.grillaDetalleFactura.Location = new System.Drawing.Point(1265, 658);
             this.grillaDetalleFactura.Name = "grillaDetalleFactura";
             this.grillaDetalleFactura.RowHeadersWidth = 51;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Perpetua", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
-            this.grillaDetalleFactura.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Perpetua", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Black;
+            this.grillaDetalleFactura.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.grillaDetalleFactura.RowTemplate.Height = 24;
             this.grillaDetalleFactura.Size = new System.Drawing.Size(622, 134);
             this.grillaDetalleFactura.TabIndex = 59;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.MinimumWidth = 6;
+            this.Descripcion.Name = "Descripcion";
+            // 
+            // Precio
+            // 
+            this.Precio.DataPropertyName = "Precio";
+            this.Precio.FillWeight = 30F;
+            this.Precio.HeaderText = "Precio";
+            this.Precio.MinimumWidth = 6;
+            this.Precio.Name = "Precio";
             // 
             // txtFactura
             // 
@@ -312,11 +344,11 @@
             this.grillaFacturas.Location = new System.Drawing.Point(75, 658);
             this.grillaFacturas.Name = "grillaFacturas";
             this.grillaFacturas.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Perpetua", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Black;
-            this.grillaFacturas.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Perpetua", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black;
+            this.grillaFacturas.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.grillaFacturas.RowTemplate.Height = 24;
             this.grillaFacturas.Size = new System.Drawing.Size(1094, 120);
             this.grillaFacturas.TabIndex = 50;
@@ -402,6 +434,7 @@
             this.cmbProvincias.Name = "cmbProvincias";
             this.cmbProvincias.Size = new System.Drawing.Size(257, 37);
             this.cmbProvincias.TabIndex = 42;
+            this.cmbProvincias.SelectedIndexChanged += new System.EventHandler(this.cmbProvincias_SelectedIndexChanged);
             // 
             // label16
             // 
@@ -687,11 +720,11 @@
             this.grillaPedidos.Location = new System.Drawing.Point(68, 91);
             this.grillaPedidos.Name = "grillaPedidos";
             this.grillaPedidos.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Perpetua", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Black;
-            this.grillaPedidos.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Perpetua", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Black;
+            this.grillaPedidos.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.grillaPedidos.RowTemplate.Height = 24;
             this.grillaPedidos.Size = new System.Drawing.Size(1158, 109);
             this.grillaPedidos.TabIndex = 11;
@@ -791,33 +824,23 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.imprimir);
             // 
-            // btnLimpiarCampos
+            // txtIdFactura
             // 
-            this.btnLimpiarCampos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnLimpiarCampos.Font = new System.Drawing.Font("Perpetua", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiarCampos.ForeColor = System.Drawing.Color.White;
-            this.btnLimpiarCampos.Location = new System.Drawing.Point(68, 589);
-            this.btnLimpiarCampos.Name = "btnLimpiarCampos";
-            this.btnLimpiarCampos.Size = new System.Drawing.Size(344, 50);
-            this.btnLimpiarCampos.TabIndex = 60;
-            this.btnLimpiarCampos.Text = "LIMPIAR CAMPOS";
-            this.btnLimpiarCampos.UseVisualStyleBackColor = false;
-            this.btnLimpiarCampos.Click += new System.EventHandler(this.btnLimpiarCampos_Click);
+            this.txtIdFactura.Location = new System.Drawing.Point(1132, 210);
+            this.txtIdFactura.Name = "txtIdFactura";
+            this.txtIdFactura.Size = new System.Drawing.Size(71, 38);
+            this.txtIdFactura.TabIndex = 61;
             // 
-            // Descripcion
+            // label24
             // 
-            this.Descripcion.DataPropertyName = "Descripcion";
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.MinimumWidth = 6;
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // Precio
-            // 
-            this.Precio.DataPropertyName = "Precio";
-            this.Precio.FillWeight = 30F;
-            this.Precio.HeaderText = "Precio";
-            this.Precio.MinimumWidth = 6;
-            this.Precio.Name = "Precio";
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Perpetua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(1006, 210);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(108, 32);
+            this.label24.TabIndex = 62;
+            this.label24.Text = "Nombre:";
             // 
             // Cobros
             // 
@@ -908,5 +931,7 @@
         private System.Windows.Forms.Button btnLimpiarCampos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtIdFactura;
     }
 }

@@ -180,6 +180,7 @@
     <Compile Include="Formularios\Reportes.Designer.cs">
       <DependentUpon>Reportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Servicios\ServiciosCobro.cs" />
     <Compile Include="Servicios\ServiciosEmpleado.cs" />
     <Compile Include="Servicios\ServiciosPedido.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />

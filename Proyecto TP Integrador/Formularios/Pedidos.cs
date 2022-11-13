@@ -302,12 +302,12 @@ namespace Proyecto_TP_Integrador
                     {
                         MessageBox.Show("Pedido actualizado correctamente");
                         DetalleFactura pla = new DetalleFactura();
-                        pla.descripcion = cmbPlato.SelectedItem.ToString();
+                        pla.descripcion = cmbPlato.Text;
                         pla.precio = CargarPrecioPlato(lstPlatos[cmbPlato.SelectedIndex].idDelPlato);
                         pla.mesa = cmbMesa.SelectedIndex + 1;
                         InsertarDetallePlato(pla);
                         DetalleFactura beb = new DetalleFactura();
-                        beb.descripcion = cmbBebida.SelectedItem.ToString();
+                        beb.descripcion = cmbBebida.Text;
                         beb.precio = CargarPrecioBebida(lstBebidas[cmbBebida.SelectedIndex].idDeBebida);
                         beb.mesa = cmbMesa.SelectedIndex + 1;
                         InsertarDetalleBebida(beb);

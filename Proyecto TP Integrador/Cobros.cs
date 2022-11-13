@@ -15,180 +15,59 @@ namespace Proyecto_TP_Integrador
 {
     public partial class Cobros : Form
     {
+        List<Localidad> lstLocalidades;
+        List<Provincia> lstProvincias;
+        List<Sucursal> lstSucursales;
         public Cobros()
         {
             InitializeComponent();
-            CargarComboBoxLocalidades();
-            CargarComboBoxProvincias();
-            CargarComboBoxSucursales();
         }
 
         private void Cobros_Load(object sender, EventArgs e)
         {
-
-        }
-
-        
-
-        private void CargarComboBoxSucursales()
-        {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NomSucursal FROM sucursales";
-                cmd.Parameters.Clear();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr != null && dr.Read())
-                {
-                    cmbSucursalEmpleado.Items.Add(dr["NomSucursal"].ToString());
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
-        }
-        private void CargarComboBoxProvincias()
-        {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NomProvincia FROM provincias";
-                cmd.Parameters.Clear();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr != null && dr.Read())
-                {
-                    cmbProvincias.Items.Add(dr["NomProvincia"].ToString());
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
+            CargarComboBoxSucursales();
+            CargarComboBoxProvincias();
+            txtIdfactura.Text = Servicios.ServicioCobro.Next().ToString();
         }
 
         private void CargarComboBoxLocalidades()
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NomLocalidad FROM localidades";
-                cmd.Parameters.Clear();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr != null && dr.Read())
-                {
-                    cmbLocalidad.Items.Add(dr["NomLocalidad"].ToString());
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
+            lstLocalidades = Servicios.ServiciosEmpleados.GetLocalidades(lstProvincias[cmbProvincias.SelectedIndex].IdProvincia);
+            cmbLocalidad.DataSource = lstLocalidades;
+            cmbLocalidad.DisplayMember = "Nombre";
+            cmbLocalidad.ValueMember = "IdLocalidad";
+        }
+        private void CargarComboBoxProvincias()
+        {
+            lstProvincias = Servicios.ServiciosEmpleados.GetProvincias();
+            cmbProvincias.DataSource = lstProvincias;
+            cmbProvincias.DisplayMember = "Nombre";
+            cmbProvincias.ValueMember = "IdProvincia";
+            cmbProvincias.SelectedIndex = 0;
+            CargarComboBoxLocalidades();
         }
 
 
-
-        private void CargarGrillaCobros(int mesa)
+        private void CargarComboBoxSucursales()
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
+            lstSucursales = Servicios.ServiciosEmpleados.GetSucursales();
+            cmbSucursalEmpleado.DataSource = lstSucursales;
+            cmbSucursalEmpleado.DisplayMember = "nombreDeSucursal";
+            cmbSucursalEmpleado.ValueMember = "idDeSucursal";
+        }
 
-                SqlCommand cmd = new SqlCommand();
-
-                string consulta = "SELECT IdPedido, NombrePlato, PrecioPlato, NombreBebida, PrecioBebida, IdMesa, NomEstado FROM pedidos, platos, bebidas, estados WHERE pedidos.IdBebida=bebidas.IdBebida AND pedidos.IdPlato=platos.IdPlato AND estados.NomEstado like @entre AND pedidos.IdMesa=@mesita AND pedidos.EstadoBorrado=1";
-                cmd.Parameters.Clear();
-                string entregado = "Entregado";
-                cmd.Parameters.AddWithValue("@mesita", mesa);
-                cmd.Parameters.AddWithValue("@entre", entregado);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                DataTable tabla = new DataTable();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(tabla);
-
-                grillaPedidos.DataSource = tabla;
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
+        private void CargarGrilla(int mesa)
+        {
+            string cns = "SELECT IdPedido, NombrePlato, PrecioPlato, NombreBebida, PrecioBebida, IdMesa, NomEstado FROM pedidos, platos, bebidas, estados WHERE pedidos.IdBebida=bebidas.IdBebida AND pedidos.IdPlato=platos.IdPlato AND estados.IdEstado=4 AND pedidos.IdMesa=" + mesa + " AND pedidos.EstadoBorrado=1";
+            DataTable tabla = Servicios.Implementaciones.CargarGrilla(cns);
+            grillaPedidos.DataSource = tabla;
         }
 
         private void CargarGrillaFacturas(string dni)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-
-                SqlCommand cmd = new SqlCommand();
-
-                string consulta = "SELECT IdFactura, facturas.IdCliente, Fecha FROM facturas, clientes WHERE facturas.IdCliente = clientes.IdCliente AND clientes.NumeroDoc = @dni and facturas.EstadoBorrado=0";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@dni", dni);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                DataTable tabla = new DataTable();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(tabla);
-
-                grillaFacturas.DataSource = tabla;
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
+            string consulta = "SELECT IdFactura, facturas.IdCliente, Fecha FROM facturas, clientes WHERE facturas.IdCliente = clientes.IdCliente AND clientes.NumeroDoc=" + dni;
+            DataTable tabla = Servicios.Implementaciones.CargarGrilla(consulta);
+            grillaFacturas.DataSource = tabla;
         }
 
         private void btnBuscarPedidos_Click(object sender, EventArgs e)
@@ -196,97 +75,44 @@ namespace Proyecto_TP_Integrador
             int mesa = cmbMesa.SelectedIndex + 1;
             if (mesa != 0)
             {
-                CargarGrillaCobros(mesa);
-                int resultadoPlatos = CalcularTotalPlatos(mesa);
-                txtTotalPlatos.Text = Convert.ToString(resultadoPlatos);
-                int resultadoBebidas = CalcularTotalBebidas(mesa);
-                txtTotalBebidas.Text = Convert.ToString(resultadoBebidas);
-                int total = resultadoPlatos + resultadoBebidas;
-                txtTotal.Text = Convert.ToString(total);
+                CargarGrilla(mesa);
+                if (grillaPedidos.Rows.Count > 0)
+                {
+                    int resultadoPlatos = CalcularTotalPlatos(mesa);
+                    txtTotalPlatos.Text = Convert.ToString(resultadoPlatos);
+                    int resultadoBebidas = CalcularTotalBebidas(mesa);
+                    txtTotalBebidas.Text = Convert.ToString(resultadoBebidas);
+                    int total = resultadoPlatos + resultadoBebidas;
+                    txtTotal.Text = Convert.ToString(total);
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron pedidos en esa mesa");
+                }
             }
             else
             {
-
+                MessageBox.Show("Debe ingresar una mesa!!");
             }
         }
 
-        private int CalcularTotalPlatos(int id)
+        private int CalcularTotalPlatos(int mesa)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT SUM(PrecioPlato) FROM pedidos, platos WHERE pedidos.IdMesa = @mesa AND pedidos.IdPlato = platos.IdPlato AND pedidos.IdEstado=4 AND pedidos.EstadoBorrado=1";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@mesa", id);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                int nombre = Convert.ToInt32(cmd.ExecuteScalar());
-                if (nombre != 0 )
-                {
-                    return nombre;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            catch (Exception ex)
-            {
-                
-                MessageBox.Show("No se encontro ningun pedido con esa mesa");
-                return 0;
-            }
-            finally
-            {
-                cn.Close();
-
-            }
+            string consulta = "SELECT SUM(PrecioPlato) FROM pedidos, platos WHERE pedidos.IdMesa=" + mesa + " AND pedidos.IdPlato = platos.IdPlato AND pedidos.IdEstado=4 AND pedidos.EstadoBorrado=1";
+            int TotalPlatos = Convert.ToInt32(Servicios.ServicioCobro.CargarTotal(consulta));
+            return TotalPlatos;
         }
 
-        private int CalcularTotalBebidas(int id)
+        private int CalcularTotalBebidas(int mesa)
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT SUM(PrecioBebida) FROM pedidos, bebidas WHERE pedidos.IdMesa = @mesa AND pedidos.IdBebida = bebidas.IdBebida AND pedidos.IdEstado=4 AND pedidos.EstadoBorrado=1";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@mesa", id);
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                int nombre = Convert.ToInt32(cmd.ExecuteScalar());
-                if (nombre != 0 && nombre != null)
-                {
-                    return nombre;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
-            finally
-            {
-                cn.Close();
-
-            }
+            string consulta = "SELECT SUM(PrecioBebida) FROM pedidos, bebidas WHERE pedidos.IdMesa=" + mesa + " AND pedidos.IdBebida = bebidas.IdBebida AND pedidos.IdEstado = 4 AND pedidos.EstadoBorrado = 1";
+            int TotalBebidas = Convert.ToInt32(Servicios.ServicioCobro.CargarTotal(consulta));
+            return TotalBebidas;
         }
 
         private void btnCobrar_Click_1(object sender, EventArgs e)
         {
-            
+
             if (txtNombre.Text == "" || txtApellido.Text == "" || txtCalle.Text == "" || txtAltura.Text == "" || txtPais.Text == ""
                 || cmbLocalidad.Text == "" || cmbProvincias.Text == "" || cmbTipoDoc.Text == "" || txtNumeroDoc.Text == "" ||
                 cmbSucursalEmpleado.Text == "" || cmbMedioPago.Text == "" || cmbMesa.Text == "")
@@ -318,32 +144,30 @@ namespace Proyecto_TP_Integrador
                     fac.idDeMedioPago = cmbMedioPago.Text;
                     fac.idDeSucursal = cmbSucursalEmpleado.SelectedIndex + 1;
                     fac.fechaPago = DateTime.Parse(txtFecha.Text);
+                    fac.idDeFactura = Convert.ToInt32(txtIdfactura.Text);
 
 
 
                     //TransaccionHelper.getBDHelper().conectarConTransaccion();
 
                     InsertarFactura(fac);
-                    Factura facturita = ObtenerIdFactura(fac.idDeCliente, fac.fechaPago);
-                    txtFactura.Text = Convert.ToString(facturita.idDeFactura);
                     int mesita = cmbMesa.SelectedIndex + 1;
-                    bool resul = InsertarIdFactura(facturita, mesita);
+                    bool resul = InsertarIdFactura(fac, mesita);
 
                     //TransaccionHelper.getBDHelper().desconectar();
                     ActualizarEstadoBorrado(mesita);
-                    ActualizarEstadoBorradoFac(facturita);
                     printDocument1 = new PrintDocument();
                     PrinterSettings ps = new PrinterSettings();
                     printDocument1.PrinterSettings = ps;
                     printDocument1.PrintPage += imprimir;
                     printDocument1.Print();
-                    CargarGrillaCobros(mesita);
+                    CargarGrilla(mesita);
                     LimpiarCampos();
-
+                    //txtIdfactura.Text = Servicios.ServicioCobro.Next().ToString();
                 }
-                
+
             }
-            
+
         }
         private bool ActualizarEstadoBorradoFac(Factura fac)
         {
@@ -425,11 +249,11 @@ namespace Proyecto_TP_Integrador
             txtApellido.Text = "";
             txtNumeroDoc.Text = "";
             txtBusquedaDni.Text = "";
-            cmbLocalidad.Text = "";
+            cmbLocalidad.SelectedIndex = 0;
             cmbMedioPago.Text = "";
-            cmbSucursalEmpleado.Text = "";
+            cmbSucursalEmpleado.SelectedIndex = 0;
             cmbTipoDoc.Text = "";
-            cmbProvincias.Text = "";
+            cmbProvincias.SelectedIndex = 0;
             txtFactura.Text = "";
         }
 
@@ -465,7 +289,7 @@ namespace Proyecto_TP_Integrador
         }
 
 
-        private Factura ObtenerIdFactura(int idCli , DateTime fechaPago)
+        private Factura ObtenerIdFactura(int idCli, DateTime fechaPago)
         {
             string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
             SqlConnection cn = new SqlConnection(cadenaConexion);
@@ -549,11 +373,12 @@ namespace Proyecto_TP_Integrador
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                string consulta = "UPDATE detallefactura SET EstadoBorrado=0, IdFactura=" +fac.idDeFactura+" WHERE Mesa like "+mesita+" AND EstadoBorrado like 1";
+                string consulta = "UPDATE detallefactura SET EstadoBorrado=0, IdFactura=" + fac.idDeFactura + " WHERE Mesa like " + mesita + " AND EstadoBorrado like 1";
 
 
 
-                TransaccionHelper.getBDHelper().EjecutarSQLConTransaccion(consulta);
+                BDHelper.getBDHelper().EjecutarSQLConTransaccion(consulta);
+                BDHelper.getBDHelper().desconectar();
 
             }
             catch (Exception)
@@ -610,22 +435,22 @@ namespace Proyecto_TP_Integrador
 
         private void InsertarFactura(Factura fac)
         {
-            
-            //try
-            //{
+
+            try
+            {
                 SqlCommand cmd = new SqlCommand();
                 string consulta = "INSERT INTO facturas (IdCliente, IdMedioPago, Fecha, IdSucursal, EstadoBorrado) " +
-                                    "VALUES(" + @fac.idDeCliente +  ",'" + fac.idDeMedioPago + "','" + fac.fechaPago.ToString("yyyy/MM/dd") + "'," + fac.idDeSucursal + ", 1)";
+                                    "VALUES(" + fac.idDeCliente + ",'" + fac.idDeMedioPago + "','" + fac.fechaPago.ToString("yyyy/MM/dd") + "'," + fac.idDeSucursal + ", 1)";
 
-               
 
-                TransaccionHelper.getBDHelper().EjecutarSQLConTransaccion(consulta);
-            //}
-            //catch (Exception)
-            //{
-            //    throw;
-            //}
-            
+                BDHelper.getBDHelper().conectarConTransaccion();
+                BDHelper.getBDHelper().EjecutarSQLConTransaccion(consulta);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
 
         private void btnBuscarFactura_Click(object sender, EventArgs e)
@@ -647,7 +472,7 @@ namespace Proyecto_TP_Integrador
             e.Graphics.DrawString("DNI:" + txtNumeroDoc.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
             e.Graphics.DrawString("TOTAL PLATOS: $" + txtTotalPlatos.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
             e.Graphics.DrawString("TOTAL BEBIDAS: $" + txtTotalBebidas.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
-            e.Graphics.DrawString("TOTAL: $" + txtTotal.Text , font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
+            e.Graphics.DrawString("TOTAL: $" + txtTotal.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
 
 
         }
@@ -854,7 +679,7 @@ namespace Proyecto_TP_Integrador
             return ped;
         }
 
-        
+
         private void CargarGrillaDetalleFactura(int id)
         {
             string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
@@ -892,6 +717,11 @@ namespace Proyecto_TP_Integrador
         private void btnLimpiarCampos_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+        }
+
+        private void cmbProvincias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarComboBoxLocalidades();
         }
     }
 }

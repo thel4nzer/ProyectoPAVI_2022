@@ -72,6 +72,35 @@ namespace Proyecto_TP_Integrador.Entidades
 
         }
 
+        public int ConsultaValorEntero(string consult)
+        {
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                conexion.ConnectionString = string_conexion;
+                conexion.Open();
+                cmd.Connection = conexion;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consult;
+                int valor = Convert.ToInt32(cmd.ExecuteScalar());
+                return valor;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if ((conexion.State == ConnectionState.Open))
+                {
+                    conexion.Close();
+                }
+                conexion.Dispose();
+
+            }
+        }
+
         public bool ConsultaParam(string strSql)
         {
             SqlConnection conexion = new SqlConnection();
