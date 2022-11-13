@@ -44,7 +44,7 @@ namespace Proyecto_TP_Integrador.Servicios
         public static List<Puesto> GetPuestos()
         {
             List<Puesto> lst = new List<Puesto>();
-            string consultaSQL = "SELECT * FROM puestos";
+            string consultaSQL = "SELECT * FROM puestos WHERE EstadoBorrado=1";
             DataTable tabla = BDHelper.getBDHelper().ConsultaSQL(consultaSQL);
             foreach (DataRow fila in tabla.Rows)
             {
@@ -60,7 +60,7 @@ namespace Proyecto_TP_Integrador.Servicios
         public static List<Sucursal> GetSucursales()
         {
             List<Sucursal> lst = new List<Sucursal>();
-            string consultaSQL = "SELECT * FROM sucursales";
+            string consultaSQL = "SELECT * FROM sucursales WHERE EstadoBorrado=1";
             DataTable tabla = BDHelper.getBDHelper().ConsultaSQL(consultaSQL);
             foreach (DataRow fila in tabla.Rows)
             {
