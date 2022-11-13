@@ -40,8 +40,6 @@ namespace Proyecto_TP_Integrador
             t1.Interval = 60000;
             t1.Tick += timer1_Tick_1;
             t1.Start();
-
-
         }
 
         private void CargarGrillaPedidosPrincipal()
@@ -53,7 +51,7 @@ namespace Proyecto_TP_Integrador
 
                 SqlCommand cmd = new SqlCommand();
 
-                string consulta = "SELECT IdPedido, NombrePlato, NombreBebida, IdMesa, NomEstado FROM pedidos, platos, bebidas, estados WHERE pedidos.IdBebida=bebidas.IdBebida AND pedidos.IdPlato=platos.IdPlato AND pedidos.IdEstado=estados.IdEstado";
+                string consulta = "SELECT IdPedido, NombrePlato, NombreBebida, IdMesa, NomEstado FROM pedidos, platos, bebidas, estados WHERE pedidos.IdBebida=bebidas.IdBebida AND pedidos.IdPlato=platos.IdPlato AND estados.IdEstado=3 AND pedidos.IdEstado=estados.IdEstado AND pedidos.EstadoBorrado=1";
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = consulta;
@@ -93,7 +91,7 @@ namespace Proyecto_TP_Integrador
                 cn.Open();
                 cmd.Connection = cn;
                 string nombre = Convert.ToString(cmd.ExecuteScalar());
-                if(nombre == "1")
+                if (nombre == "1")
                 {
                     return true;
                 };
