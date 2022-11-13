@@ -48,7 +48,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Estadistica de facturas emitidas por sucursal</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>25pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -56,9 +58,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>0.38629cm</Top>
-            <Left>5.88053cm</Left>
-            <Height>0.6cm</Height>
-            <Width>7.78638cm</Width>
+            <Left>1.91178cm</Left>
+            <Height>1.40582cm</Height>
+            <Width>17.33784cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -70,9 +72,9 @@
             </Style>
           </Textbox>
           <Line Name="Line1">
-            <Top>1.28058cm</Top>
+            <Top>1.86266cm</Top>
             <Height>0cm</Height>
-            <Width>19.19671cm</Width>
+            <Width>20.9165cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -123,7 +125,6 @@
                       <DataElementOutput>Output</DataElementOutput>
                     </ChartDataPoint>
                   </ChartDataPoints>
-                  <Type>Shape</Type>
                   <Style />
                   <ChartEmptyPoints>
                     <Style />
@@ -427,10 +428,10 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DatosEstadisticosFacturas</DataSetName>
-            <Top>2.35162cm</Top>
-            <Left>5.05566cm</Left>
-            <Height>5.92604cm</Height>
-            <Width>8.98167cm</Width>
+            <Top>3.03954cm</Top>
+            <Left>4.3942cm</Left>
+            <Height>7.96333cm</Height>
+            <Width>12.8975cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -442,10 +443,10 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>3.936in</Height>
+        <Height>4.8735in</Height>
         <Style />
       </Body>
-      <Width>7.55776in</Width>
+      <Width>8.23484in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>

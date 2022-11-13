@@ -13,6 +13,7 @@ namespace Proyecto_TP_Integrador.Entidades
         private int IdPlato;
         private int IdBebida;
         private int IdEstado;
+        private DateTime FechaPedido;
 
         public Pedido(int idPedido, int idMesa)
         {
@@ -49,6 +50,12 @@ namespace Proyecto_TP_Integrador.Entidades
         {
             get => IdEstado;
             set => IdEstado = value;
+        }
+
+        public DateTime FechaDelPedido
+        {
+            get => FechaPedido;
+            set => FechaPedido = value;
         }
     }
 }

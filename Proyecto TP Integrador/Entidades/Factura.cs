@@ -14,6 +14,7 @@ namespace Proyecto_TP_Integrador.Entidades
         private string IdMedioPago;
         private DateTime Fecha;
         private int IdSucursal;
+        private int Total;
 
         public Factura(int idFactura, int idCliente, string idMedioPago, DateTime fecha, int idSucursal)
         {
@@ -57,6 +58,12 @@ namespace Proyecto_TP_Integrador.Entidades
         {
             get => IdSucursal; 
             set => IdSucursal = value;
+        }
+
+        public int total
+        {
+            get => Total;
+            set => Total = value;
         }
        
     }

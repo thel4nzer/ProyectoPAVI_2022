@@ -168,12 +168,6 @@
     <Compile Include="Report\ReportePedidos.Designer.cs">
       <DependentUpon>ReportePedidos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\ReportePlatos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Report\ReportePlatos.Designer.cs">
-      <DependentUpon>ReportePlatos.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\Reportes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,7 +193,6 @@
     <EmbeddedResource Include="Listados\ListadoDeClientes.rdlc" />
     <EmbeddedResource Include="Listados\ListadoDeEmpleados.rdlc" />
     <EmbeddedResource Include="Listados\ListadoDePedidos.rdlc" />
-    <EmbeddedResource Include="Listados\ListadoDePlatos.rdlc" />
     <EmbeddedResource Include="Listados\ListadoFacturas.rdlc" />
     <EmbeddedResource Include="Formularios\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -246,9 +239,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\ReportePedidos.resx">
       <DependentUpon>ReportePedidos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\ReportePlatos.resx">
-      <DependentUpon>ReportePlatos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Reportes.resx">
       <DependentUpon>Reportes.cs</DependentUpon>

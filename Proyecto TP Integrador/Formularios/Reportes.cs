@@ -35,28 +35,13 @@ namespace Proyecto_TP_Integrador
             ventana.ShowDialog();
         }
 
-        private void btnEstadisticaEmpleados_Click(object sender, EventArgs e)
-        {
-            ReporteEstadisticaEmpleados ventana = new ReporteEstadisticaEmpleados();
-            ventana.ShowDialog();
-        }
-
+        
         private void btnReportePedidos_Click(object sender, EventArgs e)
         {
             ReportePedidos ventana = new ReportePedidos();
             ventana.ShowDialog();
         }
 
-        private void btnReportePlatos_Click(object sender, EventArgs e)
-        {
-            ReportePlatos ventana = new ReportePlatos();
-            ventana.ShowDialog();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            ReporteEstadisticaFacturas ventana = new ReporteEstadisticaFacturas();
-            ventana.ShowDialog();
-        }
+      
     }
 }
