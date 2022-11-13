@@ -199,6 +199,7 @@
             // 
             // txtIdFactura
             // 
+            this.txtIdFactura.Enabled = false;
             this.txtIdFactura.Location = new System.Drawing.Point(1132, 210);
             this.txtIdFactura.Name = "txtIdFactura";
             this.txtIdFactura.Size = new System.Drawing.Size(71, 38);
