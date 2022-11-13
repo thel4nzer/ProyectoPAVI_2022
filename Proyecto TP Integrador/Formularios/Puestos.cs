@@ -98,12 +98,12 @@ namespace Proyecto_TP_Integrador
         private void btnAgregarPuesto_Click(object sender, EventArgs e)
         {
             Puesto p = new Puesto();
-            p.nombreDePuesto = txtNombrePuesto.Text;
-            p.descripPuesto = txtDescripcionPuesto.Text;
+            p.nombreDePuesto = txtNombrePuesto.Text.Trim();
+            p.descripPuesto = txtDescripcionPuesto.Text.Trim();
             bool puestoExiste = PuestoExiste(txtNombrePuesto.Text);
             if (puestoExiste == true)
             {
-                if (txtNombrePuesto.Text != "")
+                if (txtNombrePuesto.Text.Trim() != "")
                 {
                     bool resultado = InsertarPuestoBD(p);
                     if (resultado)
@@ -170,21 +170,28 @@ namespace Proyecto_TP_Integrador
 
         private void btnActualizarPuesto_Click(object sender, EventArgs e)
         {
-            Puesto p = new Puesto();
-            string id = txtIdPuesto.Text;
-            p.nombreDePuesto= txtNombrePuesto.Text;
-            p.descripPuesto = txtDescripcionPuesto.Text;
-            bool resultado = ActualizarPuesto(id, p);
-            if (resultado)
+            if (txtNombrePuesto.Text.Trim() != "")
             {
-                MessageBox.Show("Puesto actualizado exitosamente", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); ;
-                CargarGrillaPuestos();
-                LimpiarCampos();
-                btnActualizarPuestos.Enabled = false;
+                Puesto p = new Puesto();
+                string id = txtIdPuesto.Text;
+                p.nombreDePuesto = txtNombrePuesto.Text.Trim();
+                p.descripPuesto = txtDescripcionPuesto.Text.Trim();
+                bool resultado = ActualizarPuesto(id, p);
+                if (resultado)
+                {
+                    MessageBox.Show("Puesto actualizado exitosamente", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); ;
+                    CargarGrillaPuestos();
+                    LimpiarCampos();
+                    btnActualizarPuestos.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar el puesto");
+                }
             }
             else
             {
-                MessageBox.Show("No se pudo actualizar el puesto");
+                MessageBox.Show("No puede actualizar con un nombre vacio");
             }
         }
         private bool ActualizarPuesto(string id, Puesto p)
