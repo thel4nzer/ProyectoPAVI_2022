@@ -159,7 +159,7 @@ namespace Proyecto_TP_Integrador
                         bool resul = InsertarIdFactura(fac, mesita);
 
                         //TransaccionHelper.getBDHelper().desconectar();
-                        ActualizarEstadoBorrado(mesita);
+                        ActualizarEstadoPedido(mesita, fac.idDeFactura);
                         printDocument1 = new PrintDocument();
                         PrinterSettings ps = new PrinterSettings();
                         printDocument1.PrinterSettings = ps;
@@ -268,7 +268,7 @@ namespace Proyecto_TP_Integrador
             txtFactura.Text = "";
         }
 
-        private bool ActualizarEstadoBorrado(int mesita)
+        private bool ActualizarEstadoPedido(int mesita, int factura)
         {
             string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
             SqlConnection cn = new SqlConnection(cadenaConexion);
@@ -276,9 +276,10 @@ namespace Proyecto_TP_Integrador
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                string consulta = "UPDATE pedidos SET EstadoBorrado=0 WHERE IdMesa like @mesa AND EstadoBorrado=1";
+                string consulta = "UPDATE pedidos SET EstadoBorrado=0, IdFactura = @id WHERE IdMesa like @mesa AND EstadoBorrado=1 AND IdEstado = 4";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@mesa", mesita);
+                cmd.Parameters.AddWithValue("@id", factura);
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = consulta;
 
