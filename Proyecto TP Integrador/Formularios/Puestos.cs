@@ -114,17 +114,17 @@ namespace Proyecto_TP_Integrador
                     }
                     else
                     {
-                        MessageBox.Show("Error al agregar el puesto");
+                        MessageBox.Show("Error al agregar el puesto", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Debe cargar el nombre del puesto", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Debe cargar el nombre del puesto", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("EL PUESTO QUE INTENTA INGRESAR YA EXISTE", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("EL PUESTO QUE INTENTA INGRESAR YA EXISTE", "ERORR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private bool InsertarPuestoBD(Puesto p)
@@ -179,19 +179,19 @@ namespace Proyecto_TP_Integrador
                 bool resultado = ActualizarPuesto(id, p);
                 if (resultado)
                 {
-                    MessageBox.Show("Puesto actualizado exitosamente", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); ;
+                    MessageBox.Show("Puesto actualizado exitosamente", "PUESTO AGREGADO", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                     CargarGrillaPuestos();
                     LimpiarCampos();
                     btnActualizarPuestos.Enabled = false;
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo actualizar el puesto");
+                    MessageBox.Show("No fue posible actualizar el puesto", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("No puede actualizar con un nombre vacio");
+                MessageBox.Show("No es posible actualizar con un nombre vacio", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private bool ActualizarPuesto(string id, Puesto p)
@@ -297,12 +297,12 @@ namespace Proyecto_TP_Integrador
         {
             if (grillaPuestos.CurrentRow is null)
             {
-                MessageBox.Show("No ha seleccionado ninguna fila...");
+                MessageBox.Show("No ha seleccionado ninguna fila...", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 eliminarPuesto(grillaPuestos.CurrentRow.Cells["IdPuesto"].Value.ToString());
-                MessageBox.Show("Registro eliminado con éxito...");
+                MessageBox.Show("Registro eliminado con éxito...", "REGISTRO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarGrillaPuestos();
             }
         }
@@ -342,7 +342,7 @@ namespace Proyecto_TP_Integrador
             DataGridViewRow fila = (DataGridViewRow)grillaPuestos.Rows[e.Row.Index];
 
             eliminarPuesto(grillaPuestos.Rows[e.Row.Index].Cells["IdPuesto"].Value.ToString());
-            MessageBox.Show("Registro eliminado con éxito...");
+            MessageBox.Show("Registro eliminado con éxito...", "REGISTRO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             grillaPuestos.Refresh();
         }
     }
