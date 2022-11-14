@@ -168,6 +168,7 @@ namespace Proyecto_TP_Integrador
                         CargarGrilla(mesita);
                         LimpiarCampos();
                         txtIdFactura.Text = Servicios.ServicioCobro.Next().ToString();
+                        MessageBox.Show("Pedido facturado con exito!!!", "REGISTRO EXITOSO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
@@ -450,7 +451,7 @@ namespace Proyecto_TP_Integrador
             {
                 SqlCommand cmd = new SqlCommand();
                 string consulta = "INSERT INTO facturas (IdCliente, IdMedioPago, Fecha, IdSucursal, EstadoBorrado, Total) " +
-                                    "VALUES(" + fac.idDeCliente + ",'" + fac.idDeMedioPago + "','" + fac.fechaPago.ToString("yyyy/MM/dd") + "'," + fac.idDeSucursal + ", 1," + fac.total +")";
+                                    "VALUES(" + fac.idDeCliente + ",'" + fac.idDeMedioPago + "','" + fac.fechaPago + "'," + fac.idDeSucursal + ", 1," + fac.total +")";
 
 
                 BDHelper.getBDHelper().conectarConTransaccion();
