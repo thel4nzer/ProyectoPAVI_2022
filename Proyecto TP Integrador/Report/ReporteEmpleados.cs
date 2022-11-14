@@ -1,5 +1,6 @@
 ﻿using Microsoft.Reporting.WinForms;
 using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using Proyecto_TP_Integrador.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,14 +16,17 @@ namespace Proyecto_TP_Integrador
 {
     public partial class ReporteEmpleados : Form
     {
+        List<Sucursal>lstSucursales;
+
+
         public ReporteEmpleados()
         {
             InitializeComponent();
-            CargarComboSucursales();
         }
 
         private void ReporteEmpleados_Load(object sender, EventArgs e)
         {
+            CargarComboSucursales();
             // TODO: esta línea de código carga datos en la tabla 'ProyectoPAVIDataSet.usuarios' Puede moverla o quitarla según sea necesario.
             this.usuariosTableAdapter.Fill(this.ProyectoPAVIDataSet.usuarios);
             // TODO: esta línea de código carga datos en la tabla 'ProyectoPAVIDataSet.usuarios' Puede moverla o quitarla según sea necesario.
@@ -43,32 +47,10 @@ namespace Proyecto_TP_Integrador
 
         private void CargarComboSucursales()
         {
-            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
-            SqlConnection cn = new SqlConnection(cadenaConexion);
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NomSucursal FROM sucursales";
-                cmd.Parameters.Clear();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = consulta;
-
-                cn.Open();
-                cmd.Connection = cn;
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr != null && dr.Read())
-                {
-                    cmbSucursal.Items.Add(dr["NomSucursal"].ToString());
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                cn.Close();
-            }
+            lstSucursales = Servicios.ServiciosEmpleado.GetSucursales();
+            cmbSucursal.DataSource = lstSucursales;
+            cmbSucursal.DisplayMember = "nombreDeSucursal";
+            cmbSucursal.ValueMember = "idDeSucursal";
         }
 
         public static DataTable CargarEmpleados()
@@ -119,7 +101,6 @@ namespace Proyecto_TP_Integrador
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-
             DateTime? desde = TryParse(txtFechaDesde.Text);
             DateTime? hasta = TryParse(txtFechaHasta.Text);
 
