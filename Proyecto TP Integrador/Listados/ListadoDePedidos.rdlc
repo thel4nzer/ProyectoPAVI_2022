@@ -9,13 +9,13 @@
               <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>1.6cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>1.6cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>1.7cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -418,10 +418,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DatosPedidos</DataSetName>
-        <Top>3.1824cm</Top>
-        <Left>3.35249cm</Left>
+        <Top>2.82257cm</Top>
+        <Left>0.30449cm</Left>
         <Height>1.2cm</Height>
-        <Width>15cm</Width>
+        <Width>12.4cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -448,9 +448,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>0.43642cm</Top>
-        <Left>1.37499cm</Left>
+        <Left>1.48749cm</Left>
         <Height>1.33201cm</Height>
-        <Width>20.24824cm</Width>
+        <Width>10cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -465,7 +465,7 @@
       <Line Name="Line1">
         <Top>2.13003cm</Top>
         <Height>0cm</Height>
-        <Width>22.02478cm</Width>
+        <Width>13.07128cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -474,10 +474,10 @@
         </Style>
       </Line>
     </ReportItems>
-    <Height>3.28125in</Height>
+    <Height>2.64792in</Height>
     <Style />
   </Body>
-  <Width>8.67117in</Width>
+  <Width>5.14617in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

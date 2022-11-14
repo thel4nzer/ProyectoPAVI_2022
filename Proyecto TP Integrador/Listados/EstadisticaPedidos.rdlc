@@ -59,10 +59,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.52652cm</Top>
-            <Left>2.36101cm</Left>
-            <Height>1.28411cm</Height>
-            <Width>19.33809cm</Width>
+            <Top>0.14111cm</Top>
+            <Left>1.29858cm</Left>
+            <Height>2.50031cm</Height>
+            <Width>12.12026cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -74,9 +74,9 @@
             </Style>
           </Textbox>
           <Line Name="Line1">
-            <Top>2.22514cm</Top>
+            <Top>2.90725cm</Top>
             <Height>0cm</Height>
-            <Width>24.40517cm</Width>
+            <Width>14.75317cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -429,8 +429,8 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DatosEstadisticosPedidos</DataSetName>
-            <Top>3.01308cm</Top>
-            <Left>5.65891cm</Left>
+            <Top>3.33058cm</Top>
+            <Left>0.76941cm</Left>
             <Height>8.75708cm</Height>
             <Width>12.8975cm</Width>
             <ZIndex>2</ZIndex>
@@ -444,10 +444,10 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>5.14583in</Height>
+        <Height>4.87916in</Height>
         <Style />
       </Body>
-      <Width>9.60833in</Width>
+      <Width>5.80833in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
