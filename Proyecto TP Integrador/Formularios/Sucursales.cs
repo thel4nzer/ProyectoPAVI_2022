@@ -58,7 +58,7 @@ namespace Proyecto_TP_Integrador
                     }
                     else
                     {
-                        MessageBox.Show("Error al agregar la sucursal");
+                        MessageBox.Show("Error al agregar la sucursal", "ERROR!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -140,19 +140,19 @@ namespace Proyecto_TP_Integrador
                 bool resultado = ActualizarSucursal(id, p);
                 if (resultado)
                 {
-                    MessageBox.Show("Sucursal actualizada correctamente");
+                    MessageBox.Show("Sucursal actualizada correctamente!!", "SUCURSAL ACTUALIZADA!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarGrillaSucursales();
                     LimpiarCampos();
                     btnActualizarSucursales.Enabled = false;
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo actualizar la sucursal");
+                    MessageBox.Show("No se pudo actualizar la sucursal", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("No se puede actualizar con el nombre VACIO!!");
+                MessageBox.Show("No se puede actualizar con el nombre VACIO!!", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -240,12 +240,12 @@ namespace Proyecto_TP_Integrador
         {
             if (grillaSucursales.CurrentRow is null)
             {
-                MessageBox.Show("No ha seleccionado ninguna fila...");
+                MessageBox.Show("No ha seleccionado ninguna fila...", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 eliminarSucursal(grillaSucursales.CurrentRow.Cells["IdSucursal"].Value.ToString());
-                MessageBox.Show("Registro eliminado con éxito...");
+                MessageBox.Show("Registro eliminado con éxito...", "REGISTRO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarGrillaSucursales();
             }
         }
@@ -285,7 +285,7 @@ namespace Proyecto_TP_Integrador
             DataGridViewRow fila = (DataGridViewRow)grillaSucursales.Rows[e.Row.Index];
 
             eliminarSucursal(grillaSucursales.Rows[e.Row.Index].Cells["IdSucursal"].Value.ToString());
-            MessageBox.Show("Registro eliminado con éxito...");
+            MessageBox.Show("Registro eliminado con éxito...", "REGISTRO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             grillaSucursales.Refresh();
         }
     }
