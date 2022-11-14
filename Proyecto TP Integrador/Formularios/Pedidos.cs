@@ -264,7 +264,7 @@ namespace Proyecto_TP_Integrador
                 Pedido ped = ObtenerPedido(id);
                 if (ped.IdEstadoPedido.Equals(4))
                 {
-                    MessageBox.Show("No puede modificar un pedido entregado");
+                    MessageBox.Show("No puede modificar un pedido entregado", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -402,9 +402,16 @@ namespace Proyecto_TP_Integrador
             }
             else
             {
-                eliminarPedido(grillaPedidos.CurrentRow.Cells["IdPedido"].Value.ToString());
-                MessageBox.Show("Pedido eliminado con éxito...", "PEDIDO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarGrillaPedidos();
+                if(grillaPedidos.CurrentRow.Cells["IdPedido"].Value.ToString() != "Entregado")
+                {
+                    eliminarPedido(grillaPedidos.CurrentRow.Cells["IdPedido"].Value.ToString());
+                    MessageBox.Show("Pedido eliminado con éxito...", "PEDIDO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarGrillaPedidos();
+                }
+                else
+                {
+                    MessageBox.Show("NO puede eliminar un pedido entregado", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
