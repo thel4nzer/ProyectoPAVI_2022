@@ -63,6 +63,7 @@ namespace Proyecto_TP_Integrador
         {
             CargarGrilla();
             btnActualizarEmpleado.Enabled = false;
+            btnEliminarEmpleado.Enabled = false;
             grillaEmpleados.Visible = false;
             CargarComboBoxProvincias();
             CargarComboBoxPuestos();
@@ -92,6 +93,8 @@ namespace Proyecto_TP_Integrador
             cmbPuestoEmpleado.Text = "";
             cmbSucursalEmpleado.Text = "";
             txtIdUsuario.Text = Servicios.ServiciosEmpleado.Next().ToString();
+            btnEliminarEmpleado.Enabled = false;
+            btnActualizarEmpleado.Enabled = false;
         }
 
         private void btnLimpiarCampos_Click(object sender, EventArgs e)
@@ -210,11 +213,12 @@ namespace Proyecto_TP_Integrador
             }
             else
             {
-                btnActualizarEmpleado.Enabled = true;
                 DataGridViewRow filaSeleccionada = grillaEmpleados.Rows[indice];
                 string nomusu = filaSeleccionada.Cells["NombreDeUsuario"].Value.ToString();
                 Usuario usu = ObtenerUsuario(nomusu);
                 CargarCampos(usu);
+                btnEliminarEmpleado.Enabled = true;
+                btnActualizarEmpleado.Enabled = true;
             }
 
         }
