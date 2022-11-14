@@ -139,7 +139,7 @@ namespace Proyecto_TP_Integrador
         {
             if (txtUsuario.Text.Equals("") || (txtContrasena.Text.Equals("")) || (cmbPuestoEmpleado.SelectedIndex.Equals(-1)) || (cmbSucursalEmpleado.SelectedIndex.Equals(-1)) || (txtRepetirContrasena.Text.Equals("")))
             {
-                MessageBox.Show("Falto completar un campo importante sobre Informacion de ingreso o informacion adicional");
+                MessageBox.Show("Falto completar un campo importante sobre Informacion de ingreso o informacion adicional", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -167,14 +167,15 @@ namespace Proyecto_TP_Integrador
                             bool resultado = InsertarUsuario(usu);
                             if (resultado == true)
                             {
-                                MessageBox.Show("Empleado agregado correctamente");
+
+                                MessageBox.Show("Empleado agregado correctamente!!!", "REGISTRO EXITOSO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 CargarGrilla();
                                 LimpiarCampos();
 
                             }
                             else
                             {
-                                MessageBox.Show("Error al insertar el nuevo usuario");
+                                MessageBox.Show("Error al agregar el usuario", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         catch
@@ -184,12 +185,12 @@ namespace Proyecto_TP_Integrador
                     }
                     else
                     {
-                        MessageBox.Show("Las contraseñas no coinciden");
+                        MessageBox.Show("Las contraseñas no coinciden", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("El nombre de usuario ya esta en uso");
+                    MessageBox.Show("El nombre de usuario ya esta en uso", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -337,7 +338,7 @@ namespace Proyecto_TP_Integrador
                     bool resultado = ActualizarEmpleado(usu);
                     if (resultado)
                     {
-                        MessageBox.Show("Empleado modificado correctamente");
+                        MessageBox.Show("Empleado modificado correctamente!!!", "EMPLEADO MODIFICADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarGrilla();
                         LimpiarCampos();
                         btnActualizarEmpleado.Enabled = false;
@@ -345,18 +346,18 @@ namespace Proyecto_TP_Integrador
                     }
                     else
                     {
-                        MessageBox.Show("Error al modificiar el empleado");
+                        MessageBox.Show("Error al modificar el empleado", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No puede modificar un campo obligatorio por vacio");
+                    MessageBox.Show("No puede modificar un campo obligatorio por vacio", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
             else
             {
-                MessageBox.Show("Las contraseñas no coinciden");
+                MessageBox.Show("Las contraseñas no coinciden", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -386,12 +387,12 @@ namespace Proyecto_TP_Integrador
         {
             if (grillaEmpleados.CurrentRow is null)
             {
-                MessageBox.Show("No ha seleccionado ninguna fila...");
+                MessageBox.Show("No ha seleccionado ninguna fila...", "Error!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 eliminarEmpleado(grillaEmpleados.CurrentRow.Cells["Id"].Value.ToString());
-                MessageBox.Show("Registro eliminado con éxito...");
+                MessageBox.Show("Registro eliminado con éxito...", "Registro eliminado!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarGrilla();
             }
         }
@@ -431,7 +432,7 @@ namespace Proyecto_TP_Integrador
             DataGridViewRow fila = (DataGridViewRow)grillaEmpleados.Rows[e.Row.Index];
 
             eliminarEmpleado(grillaEmpleados.Rows[e.Row.Index].Cells["Id"].Value.ToString());
-            MessageBox.Show("Registro eliminado con éxito...");
+            MessageBox.Show("Registro eliminado con éxito...", "Registro eliminado!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             grillaEmpleados.Refresh();
         }
 
