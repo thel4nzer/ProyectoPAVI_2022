@@ -296,6 +296,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Puestos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Puestos";
             this.Load += new System.EventHandler(this.Puestos_Load);
             this.panel1.ResumeLayout(false);

@@ -17,12 +17,13 @@ namespace Proyecto_TP_Integrador
         public Puestos()
         {
             InitializeComponent();
-            CargarGrillaPuestos();
         }
 
         private void Puestos_Load(object sender, EventArgs e)
         {
-
+            CargarGrillaPuestos();
+            btnActualizarPuestos.Enabled = false;
+            btnEliminarPuesto.Enabled = false;
         }
 
         private void CargarGrillaPuestos()
@@ -166,6 +167,7 @@ namespace Proyecto_TP_Integrador
             txtDescripcionPuesto.Text = "";
             txtIdPuesto.Text = "";
             btnActualizarPuestos.Enabled = false;
+            btnEliminarPuesto.Enabled = false;
         }
 
         private void btnActualizarPuesto_Click(object sender, EventArgs e)
@@ -237,12 +239,12 @@ namespace Proyecto_TP_Integrador
             }
             else
             {
-                btnActualizarPuestos.Enabled = true;
                 DataGridViewRow filaSeleccionada = grillaPuestos.Rows[indice];
                 string id = filaSeleccionada.Cells["IdPuesto"].Value.ToString();
                 Puesto ped = ObtenerPuesto(id);
                 CargarCamposPuesto(ped);
                 btnActualizarPuestos.Enabled = true;
+                btnEliminarPuesto.Enabled = true;
             }
         }
 

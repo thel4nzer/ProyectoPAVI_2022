@@ -143,14 +143,14 @@ namespace Proyecto_TP_Integrador
             bool resultado = ActualizarPlato(id, p);
             if (resultado)
             {
-                MessageBox.Show("Plato actualizado correctamente");
+                MessageBox.Show("El plato fue actualizado con exito!!!", "PLATO AGREGADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarGrillaPlatos();
                 LimpiarCampos();
                 btnActualizarPlato.Enabled = false;
             }
             else
             {
-                MessageBox.Show("No se pudo actualizar el plato");
+                MessageBox.Show("No fue posible actualizar el plato", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -310,6 +310,7 @@ namespace Proyecto_TP_Integrador
                 Plato ped = ObtenerPlato(id);
                 CargarCamposPlato(ped);
                 btnActualizarPlato.Enabled = true;
+                button1.Enabled = true;
             }
         }
 
@@ -321,6 +322,8 @@ namespace Proyecto_TP_Integrador
             txtDescripcionPlato.Text = "";
             txtPrecio.Text = "";
             txtIdPlato.Text = "";
+            btnActualizarPlato.Enabled = false;
+            button1.Enabled = false;
 
         }
 
@@ -330,6 +333,8 @@ namespace Proyecto_TP_Integrador
             txtDescripcionBebida.Text = "";
             txtIdBebida.Text = "";
             txtPrecioBebida.Text = "";
+            btnEliminarBebida.Enabled = false;
+            btnActualizarBebida.Enabled = false;
         }
         private bool InsertarPlatoBD(Plato p)
         {
@@ -575,12 +580,12 @@ namespace Proyecto_TP_Integrador
             }
             else
             {
-                btnActualizarBebida.Enabled = true;
                 DataGridViewRow filaSeleccionada = grillaBebida.Rows[indice];
                 string id = filaSeleccionada.Cells["IdBebida"].Value.ToString();
                 Bebida ped = ObtenerBebida(id);
                 CargarCamposBebida(ped);
                 btnActualizarBebida.Enabled = true;
+                btnEliminarBebida.Enabled = true;
             }
         }
 
@@ -590,6 +595,8 @@ namespace Proyecto_TP_Integrador
             txtNombreBebida.Text = "";
             txtPrecioBebida.Text = "";
             txtIdBebida.Text = "";
+            btnEliminarBebida.Enabled = false;
+            btnActualizarBebida.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -701,6 +708,10 @@ namespace Proyecto_TP_Integrador
         {
             CargarGrillaPlatos();
             CargarGrillaBebidas();
+            btnActualizarBebida.Enabled = false;
+            btnActualizarPlato.Enabled = false;
+            btnEliminarBebida.Enabled = false;
+            button1.Enabled = false;
         }
     }
 }

@@ -269,6 +269,7 @@ namespace Proyecto_TP_Integrador
                 else
                 {
                     CargarCamposPedido(ped);
+                    btnBorrarPedido.Enabled = true;
                 }
             }
 
@@ -315,6 +316,7 @@ namespace Proyecto_TP_Integrador
                         CargarGrillaPedidos();
                         LimpiarCampos();
                         btnActualizarPedido.Enabled = false;
+                        btnBorrarPedido.Enabled = false;
                     }
                     else
                     {
@@ -341,6 +343,7 @@ namespace Proyecto_TP_Integrador
                     CargarGrillaPedidos();
                     LimpiarCampos();
                     btnActualizarPedido.Enabled = false;
+                    btnBorrarPedido.Enabled = false;
                 }
                 else
                 {
@@ -363,6 +366,7 @@ namespace Proyecto_TP_Integrador
             CargarBebidas();
             CargarEstados();
             CargarGrillaPedidos();
+            btnBorrarPedido.Enabled = false;
             txtId.Text = Convert.ToString(Servicios.ServiciosPedido.Next());
             cmbMesa.SelectedIndex = 0;
         }
@@ -407,6 +411,7 @@ namespace Proyecto_TP_Integrador
                     eliminarPedido(grillaPedidos.CurrentRow.Cells["IdPedido"].Value.ToString());
                     MessageBox.Show("Pedido eliminado con éxito...", "PEDIDO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarGrillaPedidos();
+                    btnBorrarPedido.Enabled = false;
                 }
                 else
                 {
