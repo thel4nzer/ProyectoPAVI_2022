@@ -17,8 +17,6 @@ namespace Proyecto_TP_Integrador
         public Platos()
         {
             InitializeComponent();
-            CargarGrillaPlatos();
-            CargarGrillaBebidas();
         }
         private bool PlatoExistente(string nomPlato)
         {
@@ -701,7 +699,8 @@ namespace Proyecto_TP_Integrador
 
         private void Platos_Load(object sender, EventArgs e)
         {
-
+            CargarGrillaPlatos();
+            CargarGrillaBebidas();
         }
     }
 }
