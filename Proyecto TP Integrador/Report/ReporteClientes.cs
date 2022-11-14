@@ -27,7 +27,7 @@ namespace Proyecto_TP_Integrador
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT NomSucursal FROM sucursales";
+                string consulta = "SELECT NomSucursal FROM sucursales WHERE EstadoBorrado = 1";
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = consulta;
