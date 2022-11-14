@@ -19,10 +19,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.35137cm</Top>
-        <Left>8.60517cm</Left>
+        <Top>0.24554cm</Top>
+        <Left>7.11455cm</Left>
         <Height>1.78533cm</Height>
-        <Width>9.01934cm</Width>
+        <Width>7.68584cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -36,7 +36,7 @@
       <Line Name="Line1">
         <Top>2.1367cm</Top>
         <Height>0cm</Height>
-        <Width>24.40517cm</Width>
+        <Width>20.17184cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -48,7 +48,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>4.94828cm</Width>
+              <Width>1.90828cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>4.94828cm</Width>
@@ -57,7 +57,7 @@
               <Width>4.94828cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>1.9cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -461,9 +461,9 @@
         </TablixRowHierarchy>
         <DataSetName>DatosEmpleados</DataSetName>
         <Top>2.59504cm</Top>
-        <Left>1.24861cm</Left>
+        <Left>0.76178cm</Left>
         <Height>2.06784cm</Height>
-        <Width>22.34484cm</Width>
+        <Width>18.70484cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -472,10 +472,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.90833in</Height>
+    <Height>2.825in</Height>
     <Style />
   </Body>
-  <Width>9.60833in</Width>
+  <Width>7.94167in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
