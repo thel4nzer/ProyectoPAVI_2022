@@ -23,7 +23,7 @@ namespace Proyecto_TP_Integrador
         {
             if (txtUsuario.Text.Equals("") || (txtContrasena.Text.Equals("")))
             {
-                MessageBox.Show("Ingrese un usuario o contraseña porfavor");
+                MessageBox.Show("Debe ingresar un usuario y contraseña!!", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -42,12 +42,12 @@ namespace Proyecto_TP_Integrador
                     }
                     else
                     {
-                        MessageBox.Show("Nombre de usuario y/o constraseña incorrectos");
+                        MessageBox.Show("Nombre de usuario y/o constraseña incorrectos!!", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al consultar el usuario");
+                    MessageBox.Show("Error al consultar el usuario!!", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
             }

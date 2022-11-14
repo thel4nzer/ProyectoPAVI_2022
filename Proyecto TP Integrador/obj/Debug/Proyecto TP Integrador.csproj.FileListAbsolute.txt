@@ -363,8 +363,6 @@ C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug
 C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.RegistroEmpleados.resources
 C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReporteClientes.resources
 C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReporteEmpleados.resources
-C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReporteEstadisticaEmpleados.resources
-C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReporteEstadisticaFacturas.resources
 C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReporteFacturas.resources
 C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.ReportePedidos.resources
 C:\Users\Usuario\Source\Repos\ProyectoPAVI_2022\Proyecto TP Integrador\obj\Debug\Proyecto_TP_Integrador.Reportes.resources
