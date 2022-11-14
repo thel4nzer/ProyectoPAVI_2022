@@ -48,17 +48,21 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Estadistica de empleados por sucursal</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>25pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>0.37253cm</Top>
-            <Left>6.51553cm</Left>
-            <Height>0.6cm</Height>
-            <Width>6.437cm</Width>
+            <Left>0.48303cm</Left>
+            <Height>1.61573cm</Height>
+            <Width>17.33783cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -70,7 +74,7 @@
             </Style>
           </Textbox>
           <Line Name="Line1">
-            <Top>1.45203cm</Top>
+            <Top>2.16465cm</Top>
             <Height>0cm</Height>
             <Width>19.19671cm</Width>
             <ZIndex>1</ZIndex>
@@ -426,7 +430,7 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DatosEstadisticasEmpleados</DataSetName>
-            <Top>1.97062cm</Top>
+            <Top>2.34104cm</Top>
             <Left>4.31482cm</Left>
             <Height>6.42875cm</Height>
             <Width>10.27813cm</Width>

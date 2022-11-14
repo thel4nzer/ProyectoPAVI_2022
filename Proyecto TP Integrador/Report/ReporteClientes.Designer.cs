@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ProyectoPAVIDataSet = new Proyecto_TP_Integrador.ProyectoPAVIDataSet();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -239,9 +239,9 @@
             // 
             // reportClientes
             // 
-            reportDataSource2.Name = "DatosClientes";
-            reportDataSource2.Value = this.clientesBindingSource;
-            this.reportClientes.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource3.Name = "DatosClientes";
+            reportDataSource3.Value = this.clientesBindingSource;
+            this.reportClientes.LocalReport.DataSources.Add(reportDataSource3);
             this.reportClientes.LocalReport.ReportEmbeddedResource = "Proyecto_TP_Integrador.Listados.ListadoDeClientes.rdlc";
             this.reportClientes.Location = new System.Drawing.Point(11, 145);
             this.reportClientes.Margin = new System.Windows.Forms.Padding(2);
@@ -259,6 +259,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "ReporteClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporte de Clientes";

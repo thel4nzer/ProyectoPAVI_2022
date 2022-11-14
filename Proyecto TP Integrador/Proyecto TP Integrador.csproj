@@ -144,18 +144,6 @@
     <Compile Include="Report\ReporteEmpleados.Designer.cs">
       <DependentUpon>ReporteEmpleados.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\ReporteEstadisticaEmpleados.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Report\ReporteEstadisticaEmpleados.Designer.cs">
-      <DependentUpon>ReporteEstadisticaEmpleados.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Report\ReporteEstadisticaFacturas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Report\ReporteEstadisticaFacturas.Designer.cs">
-      <DependentUpon>ReporteEstadisticaFacturas.cs</DependentUpon>
-    </Compile>
     <Compile Include="Report\ReporteFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,12 +218,6 @@
     <EmbeddedResource Include="Report\ReporteEmpleados.resx">
       <DependentUpon>ReporteEmpleados.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\ReporteEstadisticaEmpleados.resx">
-      <DependentUpon>ReporteEstadisticaEmpleados.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\ReporteEstadisticaFacturas.resx">
-      <DependentUpon>ReporteEstadisticaFacturas.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Report\ReporteFacturas.resx">
       <DependentUpon>ReporteFacturas.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,8 +284,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Estadísticas\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

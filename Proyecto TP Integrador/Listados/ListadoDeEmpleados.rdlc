@@ -10,7 +10,9 @@
             <TextRuns>
               <TextRun>
                 <Value>Listado Empleados</Value>
-                <Style />
+                <Style>
+                  <FontSize>25pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -18,9 +20,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>0.35137cm</Top>
-        <Left>10.88059cm</Left>
-        <Height>0.51533cm</Height>
-        <Width>3.72767cm</Width>
+        <Left>8.60517cm</Left>
+        <Height>1.78533cm</Height>
+        <Width>9.01934cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -32,7 +34,7 @@
         </Style>
       </Textbox>
       <Line Name="Line1">
-        <Top>1.49437cm</Top>
+        <Top>2.1367cm</Top>
         <Height>0cm</Height>
         <Width>24.40517cm</Width>
         <ZIndex>1</ZIndex>
@@ -246,7 +248,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -459,8 +460,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DatosEmpleados</DataSetName>
-        <Top>2.06587cm</Top>
-        <Left>0.98403cm</Left>
+        <Top>2.59504cm</Top>
+        <Left>1.24861cm</Left>
         <Height>2.06784cm</Height>
         <Width>22.34484cm</Width>
         <ZIndex>2</ZIndex>

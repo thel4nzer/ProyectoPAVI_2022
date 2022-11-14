@@ -47,7 +47,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Estadistica de facturas emitidas por sucursal</Value>
+                    <Value>Estadistica de recaudación total por sucursal</Value>
                     <Style>
                       <FontSize>25pt</FontSize>
                     </Style>
@@ -398,7 +398,7 @@
             </ChartLegends>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>Facturas emitidas por sucursal</Caption>
+                <Caption>Recaudación por sucursal</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>9pt</FontSize>
