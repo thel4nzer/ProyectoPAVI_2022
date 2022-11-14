@@ -45,7 +45,7 @@ namespace Proyecto_TP_Integrador
             {
                 if (cmbEstado.SelectedIndex + 1 == 4)
                 {
-                    MessageBox.Show("No puede crear un pedido con el primer estado como ENTREGADO");
+                    MessageBox.Show("No puede crear un pedido con el primer estado como ENTREGADO", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -60,24 +60,24 @@ namespace Proyecto_TP_Integrador
                         bool resultado = InsertarPedidoBD(p);
                         if (resultado)
                         {
-                            MessageBox.Show("Pedido agregado correctamente");
+                            MessageBox.Show("Pedido agregado con exito!!!", "PEDIDO AGREGADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             CargarGrillaPedidos();
                             LimpiarCampos();
                         }
                         else
                         {
-                            MessageBox.Show("Error al agregar el pedido");
+                            MessageBox.Show("Error al agregar el pedido", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("No puede crear un pedido sin seleccionar una mesa");
+                        MessageBox.Show("Olvido seleccionar una mesa", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un plato o una bebida como minimo");
+                MessageBox.Show("Debe seleccionar al menos un plato o una bebida", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -301,7 +301,7 @@ namespace Proyecto_TP_Integrador
                     bool resultado = ActualizarPedido(p);
                     if (resultado)
                     {
-                        MessageBox.Show("Pedido actualizado correctamente");
+                        MessageBox.Show("Pedido actualizado con exito!!!", "PEDIDO ACTUALIZADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         DetalleFactura pla = new DetalleFactura();
                         pla.descripcion = cmbPlato.Text;
                         pla.precio = CargarPrecioPlato(lstPlatos[cmbPlato.SelectedIndex].idDelPlato);
@@ -318,7 +318,7 @@ namespace Proyecto_TP_Integrador
                     }
                     else
                     {
-                        MessageBox.Show("No se pudo actualizar el pedido");
+                        MessageBox.Show("No fue posible actualizar el pedido", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else if (dialogResult == DialogResult.No)
@@ -337,14 +337,14 @@ namespace Proyecto_TP_Integrador
                 bool resultado = ActualizarPedido(p);
                 if (resultado)
                 {
-                    MessageBox.Show("Pedido actualizado correctamente");
+                    MessageBox.Show("Pedido actualizado con exito!!!", "PEDIDO ACTUALIZADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarGrillaPedidos();
                     LimpiarCampos();
                     btnActualizarPedido.Enabled = false;
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo actualizar el pedido");
+                    MessageBox.Show("No fue posible actualizar el pedido", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -398,12 +398,12 @@ namespace Proyecto_TP_Integrador
         {
             if (grillaPedidos.CurrentRow is null)
             {
-                MessageBox.Show("No ha seleccionado ninguna fila...");
+                MessageBox.Show("No ha seleccionado ninguna fila...", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 eliminarPedido(grillaPedidos.CurrentRow.Cells["IdPedido"].Value.ToString());
-                MessageBox.Show("Registro eliminado con éxito...");
+                MessageBox.Show("Pedido eliminado con éxito...", "PEDIDO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarGrillaPedidos();
             }
         }
@@ -440,7 +440,7 @@ namespace Proyecto_TP_Integrador
             DataGridViewRow fila = (DataGridViewRow)grillaPedidos.Rows[e.Row.Index];
 
             eliminarPedido(grillaPedidos.Rows[e.Row.Index].Cells["IdPedido"].Value.ToString());
-            MessageBox.Show("Registro eliminado con éxito...");
+            MessageBox.Show("Pedido eliminado con éxito...", "PEDIDO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             grillaPedidos.Refresh();
         }
 

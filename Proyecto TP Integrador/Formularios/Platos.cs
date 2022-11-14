@@ -116,13 +116,13 @@ namespace Proyecto_TP_Integrador
                     bool resultado = InsertarPlatoBD(p);
                     if (resultado)
                     {
-                        MessageBox.Show("El plato fue agregado con exito!!", "REGISTRO EXITOSO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("El plato fue agregado con exito!!!", "PLATO AGREGADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarGrillaPlatos();
                         LimpiarCampos();
                     }
                     else
                     {
-                        MessageBox.Show("No se pudo agregar el plato", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("No fue posible agregar el plato", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -182,23 +182,23 @@ namespace Proyecto_TP_Integrador
                     bool resultado = InsertarBebidaBD(p);
                     if (resultado)
                     {
-                        MessageBox.Show("Bebida agregado correctamente");
+                        MessageBox.Show("Bebida agregada con exito!!!", "BEBIDA AGREGADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarGrillaBebidas();
                         LimpiarCampos();
                     }
                     else
                     {
-                        MessageBox.Show("Error al agregar la bebida");
+                        MessageBox.Show("Error al agregar la bebida", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Debe cargar el nombre de la bebida");
+                    MessageBox.Show("Debe cargar el nombre de la bebida obligatoriamente", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("La bebida ya existe");
+                MessageBox.Show("La bebida que intenta agregar ya existe", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -207,19 +207,26 @@ namespace Proyecto_TP_Integrador
             Bebida p = new Bebida();
             string id = txtIdBebida.Text;
             p.nombreDeBebida = txtNombreBebida.Text;
-            p.descripBebida = txtDescripcionBebida.Text;
-            p.precioDeBebida = Convert.ToInt32(txtPrecioBebida.Text);
-            bool resultado = ActualizarBebida(id, p);
-            if (resultado)
+            if(txtNombreBebida.Text != "")
             {
-                MessageBox.Show("Bebida actualizada correctamente");
-                CargarGrillaBebidas();
-                LimpiarCamposBebidas();
-                btnActualizarBebida.Enabled = false;
+                p.descripBebida = txtDescripcionBebida.Text;
+                p.precioDeBebida = Convert.ToInt32(txtPrecioBebida.Text);
+                bool resultado = ActualizarBebida(id, p);
+                if (resultado)
+                {
+                    MessageBox.Show("Bebida actualizada con exito!!!", "BEBIDA AGREGADA!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarGrillaBebidas();
+                    LimpiarCamposBebidas();
+                    btnActualizarBebida.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("No fue posible actualizar la bebida!!!", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("No se pudo actualizar la bebida");
+                MessageBox.Show("No puede dejar el campo nombre vacio", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -591,12 +598,12 @@ namespace Proyecto_TP_Integrador
         {
             if (grillaPlatos.CurrentRow is null)
             {
-                MessageBox.Show("No ha seleccionado ninguna fila...");
+                MessageBox.Show("No ha seleccionado ninguna fila...", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 eliminarPlato(grillaPlatos.CurrentRow.Cells["IdPlato"].Value.ToString());
-                MessageBox.Show("Registro eliminado con éxito...");
+                MessageBox.Show("Registro eliminado con éxito...", "REGISTRO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarGrillaPlatos();
             }
         }
@@ -635,7 +642,7 @@ namespace Proyecto_TP_Integrador
             DataGridViewRow fila = (DataGridViewRow)grillaPlatos.Rows[e.Row.Index];
 
             eliminarPlato(grillaPlatos.Rows[e.Row.Index].Cells["IdPlato"].Value.ToString());
-            MessageBox.Show("Registro eliminado con éxito...");
+            MessageBox.Show("Registro eliminado con éxito...", "REGISTRO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             grillaPlatos.Refresh();
         }
 
@@ -643,12 +650,12 @@ namespace Proyecto_TP_Integrador
         {
             if (grillaBebida.CurrentRow is null)
             {
-                MessageBox.Show("No ha seleccionado ninguna fila...");
+                MessageBox.Show("No ha seleccionado ninguna fila...", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 eliminarBebida(grillaBebida.CurrentRow.Cells["IdBebida"].Value.ToString());
-                MessageBox.Show("Registro eliminado con éxito...");
+                MessageBox.Show("Registro eliminado con éxito...", "REGISTRO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarGrillaPlatos();
             }
         }
@@ -688,7 +695,7 @@ namespace Proyecto_TP_Integrador
             DataGridViewRow fila = (DataGridViewRow)grillaBebida.Rows[e.Row.Index];
 
             eliminarBebida(grillaBebida.Rows[e.Row.Index].Cells["IdBebida"].Value.ToString());
-            MessageBox.Show("Registro eliminado con éxito...");
+            MessageBox.Show("Registro eliminado con éxito...", "REGISTRO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             grillaBebida.Refresh();
         }
 
