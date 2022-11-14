@@ -21,9 +21,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Left>0.57362cm</Left>
+        <Top>0.06239in</Top>
+        <Left>0cm</Left>
         <Height>1.17362cm</Height>
-        <Width>15.07829cm</Width>
+        <Width>13.41967cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -37,7 +38,7 @@
       <Line Name="Line1">
         <Top>1.4732cm</Top>
         <Height>0cm</Height>
-        <Width>16.51cm</Width>
+        <Width>13.41967cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -398,7 +399,7 @@
         </TablixRowHierarchy>
         <DataSetName>DatosFacturas</DataSetName>
         <Top>2.31987cm</Top>
-        <Left>2.02883cm</Left>
+        <Left>0.57362cm</Left>
         <Height>1.2cm</Height>
         <Width>12.5cm</Width>
         <ZIndex>2</ZIndex>
@@ -412,7 +413,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>5.28333in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

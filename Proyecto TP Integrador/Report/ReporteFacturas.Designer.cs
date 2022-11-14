@@ -65,19 +65,18 @@
             this.panel1.Controls.Add(this.lblReporesYListados);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(858, 81);
+            this.panel1.Size = new System.Drawing.Size(1248, 100);
             this.panel1.TabIndex = 0;
             // 
             // lblReporesYListados
             // 
             this.lblReporesYListados.AutoSize = true;
             this.lblReporesYListados.Font = new System.Drawing.Font("Perpetua", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReporesYListados.Location = new System.Drawing.Point(163, 9);
-            this.lblReporesYListados.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblReporesYListados.Location = new System.Drawing.Point(312, 19);
             this.lblReporesYListados.Name = "lblReporesYListados";
-            this.lblReporesYListados.Size = new System.Drawing.Size(512, 55);
+            this.lblReporesYListados.Size = new System.Drawing.Size(642, 69);
             this.lblReporesYListados.TabIndex = 59;
             this.lblReporesYListados.Text = "REPORTE DE FACTURAS";
             // 
@@ -88,9 +87,10 @@
             // cmbSucursal
             // 
             this.cmbSucursal.FormattingEnabled = true;
-            this.cmbSucursal.Location = new System.Drawing.Point(664, 104);
+            this.cmbSucursal.Location = new System.Drawing.Point(948, 122);
+            this.cmbSucursal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbSucursal.Name = "cmbSucursal";
-            this.cmbSucursal.Size = new System.Drawing.Size(180, 21);
+            this.cmbSucursal.Size = new System.Drawing.Size(239, 24);
             this.cmbSucursal.TabIndex = 70;
             // 
             // label2
@@ -98,21 +98,23 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Perpetua", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(516, 97);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(751, 113);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 31);
+            this.label2.Size = new System.Drawing.Size(176, 38);
             this.label2.TabIndex = 69;
             this.label2.Text = "SUCURSAL:";
             // 
             // estadisticaFactura
             // 
             this.estadisticaFactura.LocalReport.ReportEmbeddedResource = "Proyecto_TP_Integrador.Listados.EstadisticaFacturas.rdlc";
-            this.estadisticaFactura.Location = new System.Drawing.Point(10, 468);
+            this.estadisticaFactura.Location = new System.Drawing.Point(648, 239);
+            this.estadisticaFactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.estadisticaFactura.Name = "estadisticaFactura";
             this.estadisticaFactura.ServerReport.BearerToken = null;
-            this.estadisticaFactura.Size = new System.Drawing.Size(837, 394);
+            this.estadisticaFactura.Size = new System.Drawing.Size(579, 411);
             this.estadisticaFactura.TabIndex = 68;
+            this.estadisticaFactura.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            this.estadisticaFactura.ZoomPercent = 75;
             this.estadisticaFactura.Load += new System.EventHandler(this.estadisticaFactura_Load);
             // 
             // label1
@@ -120,10 +122,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Perpetua", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(256, 94);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(404, 110);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 31);
+            this.label1.Size = new System.Drawing.Size(122, 38);
             this.label1.TabIndex = 67;
             this.label1.Text = "HASTA:";
             // 
@@ -132,32 +133,31 @@
             this.lblPuesto.AutoSize = true;
             this.lblPuesto.Font = new System.Drawing.Font("Perpetua", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPuesto.ForeColor = System.Drawing.Color.White;
-            this.lblPuesto.Location = new System.Drawing.Point(2, 95);
-            this.lblPuesto.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPuesto.Location = new System.Drawing.Point(66, 111);
             this.lblPuesto.Name = "lblPuesto";
-            this.lblPuesto.Size = new System.Drawing.Size(97, 31);
+            this.lblPuesto.Size = new System.Drawing.Size(119, 38);
             this.lblPuesto.TabIndex = 66;
             this.lblPuesto.Text = "DESDE:";
             // 
             // txtFechaDesde
             // 
             this.txtFechaDesde.Font = new System.Drawing.Font("Perpetua", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaDesde.Location = new System.Drawing.Point(112, 93);
-            this.txtFechaDesde.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFechaDesde.Location = new System.Drawing.Point(212, 108);
+            this.txtFechaDesde.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFechaDesde.Mask = "00/00/0000";
             this.txtFechaDesde.Name = "txtFechaDesde";
-            this.txtFechaDesde.Size = new System.Drawing.Size(124, 35);
+            this.txtFechaDesde.Size = new System.Drawing.Size(164, 42);
             this.txtFechaDesde.TabIndex = 65;
             this.txtFechaDesde.ValidatingType = typeof(System.DateTime);
             // 
             // txtFechaHasta
             // 
             this.txtFechaHasta.Font = new System.Drawing.Font("Perpetua", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaHasta.Location = new System.Drawing.Point(366, 93);
-            this.txtFechaHasta.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFechaHasta.Location = new System.Drawing.Point(551, 108);
+            this.txtFechaHasta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFechaHasta.Mask = "00/00/0000";
             this.txtFechaHasta.Name = "txtFechaHasta";
-            this.txtFechaHasta.Size = new System.Drawing.Size(124, 35);
+            this.txtFechaHasta.Size = new System.Drawing.Size(164, 42);
             this.txtFechaHasta.TabIndex = 64;
             this.txtFechaHasta.ValidatingType = typeof(System.DateTime);
             // 
@@ -166,10 +166,10 @@
             this.btnFiltrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnFiltrar.Font = new System.Drawing.Font("Perpetua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFiltrar.ForeColor = System.Drawing.Color.White;
-            this.btnFiltrar.Location = new System.Drawing.Point(347, 153);
-            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFiltrar.Location = new System.Drawing.Point(526, 182);
+            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(164, 37);
+            this.btnFiltrar.Size = new System.Drawing.Size(219, 46);
             this.btnFiltrar.TabIndex = 63;
             this.btnFiltrar.Text = "FILTRAR";
             this.btnFiltrar.UseVisualStyleBackColor = false;
@@ -181,20 +181,22 @@
             reportDataSource3.Value = this.facturasBindingSource;
             this.reportFacturas.LocalReport.DataSources.Add(reportDataSource3);
             this.reportFacturas.LocalReport.ReportEmbeddedResource = "Proyecto_TP_Integrador.Listados.ListadoFacturas.rdlc";
-            this.reportFacturas.Location = new System.Drawing.Point(10, 194);
-            this.reportFacturas.Margin = new System.Windows.Forms.Padding(2);
+            this.reportFacturas.Location = new System.Drawing.Point(13, 239);
+            this.reportFacturas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.reportFacturas.Name = "reportFacturas";
             this.reportFacturas.ServerReport.BearerToken = null;
-            this.reportFacturas.Size = new System.Drawing.Size(841, 256);
+            this.reportFacturas.Size = new System.Drawing.Size(619, 411);
             this.reportFacturas.TabIndex = 62;
+            this.reportFacturas.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            this.reportFacturas.ZoomPercent = 75;
             this.reportFacturas.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
             // ReporteFacturas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(858, 869);
+            this.ClientSize = new System.Drawing.Size(1248, 663);
             this.Controls.Add(this.cmbSucursal);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.estadisticaFactura);
@@ -205,7 +207,7 @@
             this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.reportFacturas);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "ReporteFacturas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
