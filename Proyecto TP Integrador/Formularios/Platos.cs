@@ -311,6 +311,7 @@ namespace Proyecto_TP_Integrador
                 CargarCamposPlato(ped);
                 btnActualizarPlato.Enabled = true;
                 button1.Enabled = true;
+                btnAgregarPlato.Enabled = false;
             }
         }
 
@@ -324,6 +325,7 @@ namespace Proyecto_TP_Integrador
             txtIdPlato.Text = "";
             btnActualizarPlato.Enabled = false;
             button1.Enabled = false;
+            btnAgregarPlato.Enabled = true;
 
         }
 
@@ -335,6 +337,7 @@ namespace Proyecto_TP_Integrador
             txtPrecioBebida.Text = "";
             btnEliminarBebida.Enabled = false;
             btnActualizarBebida.Enabled = false;
+            btnAgregarBebida.Enabled = true;
         }
         private bool InsertarPlatoBD(Plato p)
         {
@@ -586,6 +589,7 @@ namespace Proyecto_TP_Integrador
                 CargarCamposBebida(ped);
                 btnActualizarBebida.Enabled = true;
                 btnEliminarBebida.Enabled = true;
+                btnAgregarBebida.Enabled = false;
             }
         }
 
@@ -597,6 +601,7 @@ namespace Proyecto_TP_Integrador
             txtIdBebida.Text = "";
             btnEliminarBebida.Enabled = false;
             btnActualizarBebida.Enabled = false;
+            btnAgregarBebida.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)

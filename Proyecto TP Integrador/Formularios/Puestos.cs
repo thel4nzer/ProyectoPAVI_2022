@@ -168,6 +168,7 @@ namespace Proyecto_TP_Integrador
             txtIdPuesto.Text = "";
             btnActualizarPuestos.Enabled = false;
             btnEliminarPuesto.Enabled = false;
+            btnAgregarPuesto.Enabled = true;
         }
 
         private void btnActualizarPuesto_Click(object sender, EventArgs e)
@@ -245,6 +246,7 @@ namespace Proyecto_TP_Integrador
                 CargarCamposPuesto(ped);
                 btnActualizarPuestos.Enabled = true;
                 btnEliminarPuesto.Enabled = true;
+                btnAgregarPuesto.Enabled = false;
             }
         }
 

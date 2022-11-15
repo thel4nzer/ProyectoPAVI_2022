@@ -95,6 +95,7 @@ namespace Proyecto_TP_Integrador
             txtIdUsuario.Text = Servicios.ServiciosEmpleado.Next().ToString();
             btnEliminarEmpleado.Enabled = false;
             btnActualizarEmpleado.Enabled = false;
+            btnRegistrarEmpleado.Enabled = true;
         }
 
         private void btnLimpiarCampos_Click(object sender, EventArgs e)
@@ -219,6 +220,7 @@ namespace Proyecto_TP_Integrador
                 CargarCampos(usu);
                 btnEliminarEmpleado.Enabled = true;
                 btnActualizarEmpleado.Enabled = true;
+                btnRegistrarEmpleado.Enabled = false;
             }
 
         }

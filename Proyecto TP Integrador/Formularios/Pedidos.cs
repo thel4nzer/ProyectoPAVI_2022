@@ -270,6 +270,8 @@ namespace Proyecto_TP_Integrador
                 {
                     CargarCamposPedido(ped);
                     btnBorrarPedido.Enabled = true;
+                    btnActualizarPedido.Enabled = true;
+                    btnAgregarPedido.Enabled = false;
                 }
             }
 
@@ -284,6 +286,7 @@ namespace Proyecto_TP_Integrador
             txtId.Text = Servicios.ServiciosPedido.Next().ToString();
             txtPrecioBebida.Text = "";
             txtPrecioPlato.Text = "";
+            btnAgregarPedido.Enabled = true;
         }
 
         private void btnActualizarPedido_Click(object sender, EventArgs e)
@@ -317,6 +320,7 @@ namespace Proyecto_TP_Integrador
                         LimpiarCampos();
                         btnActualizarPedido.Enabled = false;
                         btnBorrarPedido.Enabled = false;
+                        
                     }
                     else
                     {
@@ -412,6 +416,7 @@ namespace Proyecto_TP_Integrador
                     MessageBox.Show("Pedido eliminado con éxito...", "PEDIDO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarGrillaPedidos();
                     btnBorrarPedido.Enabled = false;
+                    btnAgregarPedido.Enabled = true;
                 }
                 else
                 {
