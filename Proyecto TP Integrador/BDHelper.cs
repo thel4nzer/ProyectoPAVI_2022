@@ -26,7 +26,7 @@ namespace Proyecto_TP_Integrador.Entidades
         private ResultadoTransaccion miEstado = ResultadoTransaccion.exito;
         private tipoConexion miTipo = tipoConexion.simple;
 
-        private string string_conexion = @"Data Source=BETA\SQLEXPRESS;Initial Catalog=ProyectoPAVI;Integrated Security=True";
+        private string string_conexion = @"Data Source=DESKTOP-K7FE51D\SQLEXPRESS;Initial Catalog=ProyectoPAVI;Integrated Security=True";
 
         private static BDHelper instance;
         public static BDHelper getBDHelper()

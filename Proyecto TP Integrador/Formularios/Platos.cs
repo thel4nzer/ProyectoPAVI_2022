@@ -666,7 +666,7 @@ namespace Proyecto_TP_Integrador
             {
                 eliminarBebida(grillaBebida.CurrentRow.Cells["IdBebida"].Value.ToString());
                 MessageBox.Show("Registro eliminado con éxito...", "REGISTRO ELIMINADO!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarGrillaPlatos();
+                CargarGrillaBebidas();
             }
         }
         private void eliminarBebida(string id)
