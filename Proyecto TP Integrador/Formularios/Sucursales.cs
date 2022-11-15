@@ -22,6 +22,7 @@ namespace Proyecto_TP_Integrador
         private void Sucursales_Load(object sender, EventArgs e)
         {
             CargarGrillaSucursales();
+            btnEliminarPuesto.Enabled = false;
         }
 
         private void CargarGrillaSucursales()
@@ -123,6 +124,7 @@ namespace Proyecto_TP_Integrador
             txtPais.Text = "";
             btnActualizarSucursales.Enabled = false;
             btnAgregarSucursal.Enabled = true;
+            btnEliminarPuesto.Enabled = false;
         }
 
         private void btnActualizarSucursales_Click(object sender, EventArgs e)
@@ -177,6 +179,7 @@ namespace Proyecto_TP_Integrador
                 Sucursal ped = ObtenerSucursal(id);
                 CargarCamposSucursal(ped);
                 btnActualizarSucursales.Enabled = true;
+                btnEliminarPuesto.Enabled = true;
                 btnAgregarSucursal.Enabled = false;
             }
         }
