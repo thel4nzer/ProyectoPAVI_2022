@@ -95,8 +95,8 @@ namespace Proyecto_TP_Integrador
         private void btnAgregarPlato_Click(object sender, EventArgs e)
         {
             Plato p = new Plato();
-            p.nombreDelPlato = txtNombrePlato.Text;
-            p.descripPlato = txtDescripcionPlato.Text;
+            p.nombreDelPlato = txtNombrePlato.Text.Trim();
+            p.descripPlato = txtDescripcionPlato.Text.Trim();
             int precio;
             if (txtPrecio.Text == "" || !(Int32.TryParse(txtPrecio.Text, out precio)))
             {
@@ -137,8 +137,8 @@ namespace Proyecto_TP_Integrador
         {
             Plato p = new Plato();
             string id = txtIdPlato.Text;
-            p.nombreDelPlato = txtNombrePlato.Text;
-            p.descripPlato = txtDescripcionPlato.Text;
+            p.nombreDelPlato = txtNombrePlato.Text.Trim();
+            p.descripPlato = txtDescripcionPlato.Text.Trim();
             p.precioDelPlato = Convert.ToInt32(txtPrecio.Text);
             bool resultado = ActualizarPlato(id, p);
             if (resultado)
@@ -161,8 +161,8 @@ namespace Proyecto_TP_Integrador
         private void btnAgregarBebida_Click(object sender, EventArgs e)
         {
             Bebida p = new Bebida();
-            p.nombreDeBebida = txtNombreBebida.Text;
-            p.descripBebida = txtDescripcionBebida.Text;
+            p.nombreDeBebida = txtNombreBebida.Text.Trim();
+            p.descripBebida = txtDescripcionBebida.Text.Trim();
             int precio;
             if (txtPrecioBebida.Text == "" || !(Int32.TryParse(txtPrecioBebida.Text, out precio)))
             {
@@ -207,7 +207,7 @@ namespace Proyecto_TP_Integrador
             p.nombreDeBebida = txtNombreBebida.Text;
             if(txtNombreBebida.Text != "")
             {
-                p.descripBebida = txtDescripcionBebida.Text;
+                p.descripBebida = txtDescripcionBebida.Text.Trim();
                 p.precioDeBebida = Convert.ToInt32(txtPrecioBebida.Text);
                 bool resultado = ActualizarBebida(id, p);
                 if (resultado)

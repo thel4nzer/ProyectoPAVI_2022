@@ -372,19 +372,9 @@ namespace Proyecto_TP_Integrador
             return result;
         }
 
-        private void grillaEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnVisualizarGrilla_Click(object sender, EventArgs e)
         {
             grillaEmpleados.Visible = true;
-        }
-
-        private void btnAtras_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void btnEliminarEmpleado_Click(object sender, EventArgs e)
@@ -444,5 +434,11 @@ namespace Proyecto_TP_Integrador
         {
             CargarComboBoxLocalidades();
         }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
