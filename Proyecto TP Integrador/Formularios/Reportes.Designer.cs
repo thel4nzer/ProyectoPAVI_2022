@@ -45,19 +45,18 @@
             this.panel1.Controls.Add(this.lblReporesYListados);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(695, 81);
+            this.panel1.Size = new System.Drawing.Size(927, 100);
             this.panel1.TabIndex = 0;
             // 
             // lblReporesYListados
             // 
             this.lblReporesYListados.AutoSize = true;
             this.lblReporesYListados.Font = new System.Drawing.Font("Perpetua", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReporesYListados.Location = new System.Drawing.Point(113, 15);
-            this.lblReporesYListados.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblReporesYListados.Location = new System.Drawing.Point(151, 18);
             this.lblReporesYListados.Name = "lblReporesYListados";
-            this.lblReporesYListados.Size = new System.Drawing.Size(484, 55);
+            this.lblReporesYListados.Size = new System.Drawing.Size(609, 69);
             this.lblReporesYListados.TabIndex = 2;
             this.lblReporesYListados.Text = "LISTADOS Y REPORTES";
             // 
@@ -69,10 +68,10 @@
             this.panel2.Controls.Add(this.btnReporteFacturas);
             this.panel2.Controls.Add(this.btnReporteClientes);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 81);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(0, 100);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(695, 292);
+            this.panel2.Size = new System.Drawing.Size(927, 359);
             this.panel2.TabIndex = 1;
             // 
             // btnReporteEmpleados
@@ -80,10 +79,10 @@
             this.btnReporteEmpleados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnReporteEmpleados.Font = new System.Drawing.Font("Perpetua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReporteEmpleados.ForeColor = System.Drawing.Color.White;
-            this.btnReporteEmpleados.Location = new System.Drawing.Point(65, 82);
-            this.btnReporteEmpleados.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReporteEmpleados.Location = new System.Drawing.Point(87, 101);
+            this.btnReporteEmpleados.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReporteEmpleados.Name = "btnReporteEmpleados";
-            this.btnReporteEmpleados.Size = new System.Drawing.Size(126, 91);
+            this.btnReporteEmpleados.Size = new System.Drawing.Size(168, 112);
             this.btnReporteEmpleados.TabIndex = 12;
             this.btnReporteEmpleados.Text = "REPORTE DE EMPLEADOS";
             this.btnReporteEmpleados.UseVisualStyleBackColor = false;
@@ -94,10 +93,10 @@
             this.btnReportePedidos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnReportePedidos.Font = new System.Drawing.Font("Perpetua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReportePedidos.ForeColor = System.Drawing.Color.White;
-            this.btnReportePedidos.Location = new System.Drawing.Point(213, 82);
-            this.btnReportePedidos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReportePedidos.Location = new System.Drawing.Point(284, 101);
+            this.btnReportePedidos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReportePedidos.Name = "btnReportePedidos";
-            this.btnReportePedidos.Size = new System.Drawing.Size(116, 91);
+            this.btnReportePedidos.Size = new System.Drawing.Size(155, 112);
             this.btnReportePedidos.TabIndex = 11;
             this.btnReportePedidos.Text = "REPORTE DE PEDIDOS";
             this.btnReportePedidos.UseVisualStyleBackColor = false;
@@ -108,10 +107,10 @@
             this.btnReporteFacturas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnReporteFacturas.Font = new System.Drawing.Font("Perpetua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReporteFacturas.ForeColor = System.Drawing.Color.White;
-            this.btnReporteFacturas.Location = new System.Drawing.Point(359, 82);
-            this.btnReporteFacturas.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReporteFacturas.Location = new System.Drawing.Point(479, 101);
+            this.btnReporteFacturas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReporteFacturas.Name = "btnReporteFacturas";
-            this.btnReporteFacturas.Size = new System.Drawing.Size(122, 91);
+            this.btnReporteFacturas.Size = new System.Drawing.Size(163, 112);
             this.btnReporteFacturas.TabIndex = 10;
             this.btnReporteFacturas.Text = "REPORTE DE FACTURAS";
             this.btnReporteFacturas.UseVisualStyleBackColor = false;
@@ -122,10 +121,10 @@
             this.btnReporteClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnReporteClientes.Font = new System.Drawing.Font("Perpetua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReporteClientes.ForeColor = System.Drawing.Color.White;
-            this.btnReporteClientes.Location = new System.Drawing.Point(511, 82);
-            this.btnReporteClientes.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReporteClientes.Location = new System.Drawing.Point(681, 101);
+            this.btnReporteClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReporteClientes.Name = "btnReporteClientes";
-            this.btnReporteClientes.Size = new System.Drawing.Size(109, 91);
+            this.btnReporteClientes.Size = new System.Drawing.Size(145, 112);
             this.btnReporteClientes.TabIndex = 9;
             this.btnReporteClientes.Text = "REPORTE DE CLIENTES";
             this.btnReporteClientes.UseVisualStyleBackColor = false;
@@ -133,12 +132,13 @@
             // 
             // Reportes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 373);
+            this.ClientSize = new System.Drawing.Size(927, 459);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimizeBox = false;
             this.Name = "Reportes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reportes";

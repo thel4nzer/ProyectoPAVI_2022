@@ -47,13 +47,13 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnActualizarGrilla = new System.Windows.Forms.Button();
             this.grillaPedidos = new System.Windows.Forms.DataGridView();
-            this.btnEliminarTodosPedidos = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.IdPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdPlato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdBebida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdMesa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminarTodosPedidos = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -277,24 +277,6 @@
             this.grillaPedidos.TabIndex = 17;
             this.grillaPedidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaPedidos_CellContentClick_1);
             // 
-            // btnEliminarTodosPedidos
-            // 
-            this.btnEliminarTodosPedidos.BackColor = System.Drawing.Color.Red;
-            this.btnEliminarTodosPedidos.Enabled = false;
-            this.btnEliminarTodosPedidos.Font = new System.Drawing.Font("Perpetua", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarTodosPedidos.ForeColor = System.Drawing.Color.White;
-            this.btnEliminarTodosPedidos.Location = new System.Drawing.Point(45, 332);
-            this.btnEliminarTodosPedidos.Name = "btnEliminarTodosPedidos";
-            this.btnEliminarTodosPedidos.Size = new System.Drawing.Size(315, 33);
-            this.btnEliminarTodosPedidos.TabIndex = 16;
-            this.btnEliminarTodosPedidos.Text = "ELIMINAR TODOS LOS PEDIDOS";
-            this.btnEliminarTodosPedidos.UseVisualStyleBackColor = false;
-            this.btnEliminarTodosPedidos.Click += new System.EventHandler(this.btnEliminarTodosPedidos_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
-            // 
             // IdPedido
             // 
             this.IdPedido.DataPropertyName = "IdPedido";
@@ -330,6 +312,24 @@
             this.IdEstado.MinimumWidth = 6;
             this.IdEstado.Name = "IdEstado";
             // 
+            // btnEliminarTodosPedidos
+            // 
+            this.btnEliminarTodosPedidos.BackColor = System.Drawing.Color.Red;
+            this.btnEliminarTodosPedidos.Enabled = false;
+            this.btnEliminarTodosPedidos.Font = new System.Drawing.Font("Perpetua", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarTodosPedidos.ForeColor = System.Drawing.Color.White;
+            this.btnEliminarTodosPedidos.Location = new System.Drawing.Point(45, 332);
+            this.btnEliminarTodosPedidos.Name = "btnEliminarTodosPedidos";
+            this.btnEliminarTodosPedidos.Size = new System.Drawing.Size(315, 33);
+            this.btnEliminarTodosPedidos.TabIndex = 16;
+            this.btnEliminarTodosPedidos.Text = "ELIMINAR TODOS LOS PEDIDOS";
+            this.btnEliminarTodosPedidos.UseVisualStyleBackColor = false;
+            this.btnEliminarTodosPedidos.Click += new System.EventHandler(this.btnEliminarTodosPedidos_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
+            // 
             // PrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -338,6 +338,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.Name = "PrincipalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
