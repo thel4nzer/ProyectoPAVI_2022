@@ -22,11 +22,12 @@ namespace Proyecto_TP_Integrador
         public ReporteEmpleados()
         {
             InitializeComponent();
+            CargarComboSucursales();
         }
 
         private void ReporteEmpleados_Load(object sender, EventArgs e)
         {
-            CargarComboSucursales();
+            
             // TODO: esta línea de código carga datos en la tabla 'ProyectoPAVIDataSet.usuarios' Puede moverla o quitarla según sea necesario.
             this.usuariosTableAdapter.Fill(this.ProyectoPAVIDataSet.usuarios);
             // TODO: esta línea de código carga datos en la tabla 'ProyectoPAVIDataSet.usuarios' Puede moverla o quitarla según sea necesario.
@@ -51,6 +52,7 @@ namespace Proyecto_TP_Integrador
             cmbSucursal.DataSource = lstSucursales;
             cmbSucursal.DisplayMember = "nombreDeSucursal";
             cmbSucursal.ValueMember = "idDeSucursal";
+            cmbSucursal.SelectedIndex = -1;
         }
 
         public static DataTable CargarEmpleados()
@@ -142,7 +144,7 @@ namespace Proyecto_TP_Integrador
             {
 
                 SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT suc.NomSucursal, u.IdUsuario, u.NombreDeUsuario, u.ApeEmpleado, u.IdPuesto, u.IdSucursal, u.FechaIngreso FROM sucursales suc INNER JOIN " +
+                string consulta = "SELECT suc.NomSucursal, u.IdUsuario, u.NomEmpleado, u.ApeEmpleado, u.IdPuesto, u.IdSucursal, u.FechaIngreso FROM sucursales suc INNER JOIN " +
                                     "usuarios u ON suc.IdSucursal=u.IdSucursal WHERE u.IdUsuario > 0";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@name", nombre);  //fac.fechaPago.ToString("yyyy/MM/dd")

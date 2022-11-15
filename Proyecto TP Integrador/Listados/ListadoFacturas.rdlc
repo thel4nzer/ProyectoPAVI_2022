@@ -22,7 +22,6 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>0.06239in</Top>
-        <Left>0cm</Left>
         <Height>1.17362cm</Height>
         <Width>13.41967cm</Width>
         <Style>
@@ -138,7 +137,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Id Medio Pago</Value>
+                              <Value>Medio de Pago</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
