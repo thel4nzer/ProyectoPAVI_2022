@@ -279,14 +279,20 @@ namespace Proyecto_TP_Integrador
 
         private void LimpiarCampos()
         {
-            cmbPlato.Text = "";
-            cmbBebida.Text = "";
-            cmbMesa.Text = "";
-            cmbEstado.Text = "";
+            cmbPlato.SelectedIndex = 0;
+            cmbBebida.SelectedIndex = 0;
+            cmbMesa.SelectedIndex = 0;
+            cmbEstado.SelectedIndex = 0;
             txtId.Text = Servicios.ServiciosPedido.Next().ToString();
-            txtPrecioBebida.Text = "";
-            txtPrecioPlato.Text = "";
+            int plato = lstPlatos[cmbPlato.SelectedIndex].idDelPlato;
+            string precio = CargarPrecioPlato(plato);
+            txtPrecioPlato.Text = precio;
+            int bebida = lstBebidas[cmbBebida.SelectedIndex].idDeBebida;
+            string precioBebida = CargarPrecioBebida(bebida);
+            txtPrecioBebida.Text = precioBebida;
             btnAgregarPedido.Enabled = true;
+            btnActualizarPedido.Enabled = false;
+            btnBorrarPedido.Enabled = false;
         }
 
         private void btnActualizarPedido_Click(object sender, EventArgs e)
@@ -487,6 +493,11 @@ namespace Proyecto_TP_Integrador
             string consulta = "SELECT PrecioBebida FROM bebidas WHERE IdBebida like " + bebi;
             string precio = Servicios.ServiciosPedido.CargarPrecio(consulta);
             return precio;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
         }
     }
 }

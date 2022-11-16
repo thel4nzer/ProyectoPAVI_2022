@@ -56,6 +56,7 @@
             this.cmbPlato = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblPlatos = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -85,6 +86,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnBorrarPedido);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.cmbEstado);
@@ -135,6 +137,7 @@
             // 
             // cmbEstado
             // 
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.Font = new System.Drawing.Font("Perpetua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
@@ -145,7 +148,7 @@
             this.cmbEstado.Location = new System.Drawing.Point(77, 359);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(403, 39);
-            this.cmbEstado.TabIndex = 16;
+            this.cmbEstado.TabIndex = 3;
             // 
             // label5
             // 
@@ -289,6 +292,7 @@
             // 
             // cmbMesa
             // 
+            this.cmbMesa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMesa.Font = new System.Drawing.Font("Perpetua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMesa.FormattingEnabled = true;
             this.cmbMesa.Items.AddRange(new object[] {
@@ -307,7 +311,7 @@
             this.cmbMesa.Location = new System.Drawing.Point(1234, 44);
             this.cmbMesa.Name = "cmbMesa";
             this.cmbMesa.Size = new System.Drawing.Size(96, 39);
-            this.cmbMesa.TabIndex = 8;
+            this.cmbMesa.TabIndex = 4;
             // 
             // label3
             // 
@@ -351,22 +355,24 @@
             // 
             // cmbBebida
             // 
+            this.cmbBebida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBebida.Font = new System.Drawing.Font("Perpetua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBebida.FormattingEnabled = true;
             this.cmbBebida.Location = new System.Drawing.Point(75, 265);
             this.cmbBebida.Name = "cmbBebida";
             this.cmbBebida.Size = new System.Drawing.Size(403, 39);
-            this.cmbBebida.TabIndex = 3;
+            this.cmbBebida.TabIndex = 2;
             this.cmbBebida.SelectedIndexChanged += new System.EventHandler(this.cmbBebida_SelectedIndexChanged);
             // 
             // cmbPlato
             // 
+            this.cmbPlato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPlato.Font = new System.Drawing.Font("Perpetua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPlato.FormattingEnabled = true;
             this.cmbPlato.Location = new System.Drawing.Point(75, 140);
             this.cmbPlato.Name = "cmbPlato";
             this.cmbPlato.Size = new System.Drawing.Size(403, 39);
-            this.cmbPlato.TabIndex = 2;
+            this.cmbPlato.TabIndex = 1;
             this.cmbPlato.SelectedIndexChanged += new System.EventHandler(this.cmbPlato_SelectedIndexChanged);
             // 
             // label1
@@ -390,6 +396,19 @@
             this.lblPlatos.Size = new System.Drawing.Size(124, 38);
             this.lblPlatos.TabIndex = 0;
             this.lblPlatos.Text = "PLATO:";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Yellow;
+            this.button1.Font = new System.Drawing.Font("Perpetua", 12F);
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(511, 359);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(229, 39);
+            this.button1.TabIndex = 38;
+            this.button1.Text = "LIMPIAR CAMPOS";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Pedidos
             // 
@@ -444,5 +463,6 @@
         private System.Windows.Forms.ComboBox cmbPlato;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnBorrarPedido;
+        private System.Windows.Forms.Button button1;
     }
 }

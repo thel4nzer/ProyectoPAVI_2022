@@ -313,7 +313,7 @@
             this.txtPrecioBebida.Location = new System.Drawing.Point(43, 419);
             this.txtPrecioBebida.Name = "txtPrecioBebida";
             this.txtPrecioBebida.Size = new System.Drawing.Size(109, 42);
-            this.txtPrecioBebida.TabIndex = 19;
+            this.txtPrecioBebida.TabIndex = 5;
             // 
             // label7
             // 
@@ -335,7 +335,7 @@
             this.txtDescripcionBebida.Multiline = true;
             this.txtDescripcionBebida.Name = "txtDescripcionBebida";
             this.txtDescripcionBebida.Size = new System.Drawing.Size(349, 139);
-            this.txtDescripcionBebida.TabIndex = 17;
+            this.txtDescripcionBebida.TabIndex = 6;
             // 
             // label8
             // 
@@ -355,7 +355,7 @@
             this.txtNombreBebida.Location = new System.Drawing.Point(43, 322);
             this.txtNombreBebida.Name = "txtNombreBebida";
             this.txtNombreBebida.Size = new System.Drawing.Size(232, 42);
-            this.txtNombreBebida.TabIndex = 15;
+            this.txtNombreBebida.TabIndex = 4;
             // 
             // lblNombreBebida
             // 
@@ -410,7 +410,7 @@
             this.txtPrecio.Location = new System.Drawing.Point(25, 153);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(109, 42);
-            this.txtPrecio.TabIndex = 10;
+            this.txtPrecio.TabIndex = 2;
             // 
             // label4
             // 

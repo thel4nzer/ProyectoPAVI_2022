@@ -87,12 +87,12 @@ namespace Proyecto_TP_Integrador
                 }
                 else
                 {
-                    MessageBox.Show("No se encontraron pedidos en esa mesa");
+                    MessageBox.Show("No se encontraron pedidos en esa mesa", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Debe ingresar una mesa!!");
+                MessageBox.Show("Debe ingresar una mesa!!", "ERROR!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

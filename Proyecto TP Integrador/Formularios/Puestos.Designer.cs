@@ -148,7 +148,7 @@
             this.txtDescripcionPuesto.Multiline = true;
             this.txtDescripcionPuesto.Name = "txtDescripcionPuesto";
             this.txtDescripcionPuesto.Size = new System.Drawing.Size(349, 139);
-            this.txtDescripcionPuesto.TabIndex = 17;
+            this.txtDescripcionPuesto.TabIndex = 2;
             // 
             // label3
             // 
@@ -168,7 +168,7 @@
             this.txtNombrePuesto.Location = new System.Drawing.Point(29, 41);
             this.txtNombrePuesto.Name = "txtNombrePuesto";
             this.txtNombrePuesto.Size = new System.Drawing.Size(232, 42);
-            this.txtNombrePuesto.TabIndex = 15;
+            this.txtNombrePuesto.TabIndex = 1;
             // 
             // label2
             // 

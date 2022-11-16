@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -232,11 +232,11 @@
             this.grillaDetalleFactura.Location = new System.Drawing.Point(604, 657);
             this.grillaDetalleFactura.Name = "grillaDetalleFactura";
             this.grillaDetalleFactura.RowHeadersWidth = 51;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Perpetua", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
-            this.grillaDetalleFactura.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Perpetua", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Black;
+            this.grillaDetalleFactura.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.grillaDetalleFactura.RowTemplate.Height = 24;
             this.grillaDetalleFactura.Size = new System.Drawing.Size(622, 121);
             this.grillaDetalleFactura.TabIndex = 59;
@@ -314,7 +314,7 @@
             this.txtFecha.Mask = "00/00/0000";
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.Size = new System.Drawing.Size(147, 38);
-            this.txtFecha.TabIndex = 54;
+            this.txtFecha.TabIndex = 3;
             this.txtFecha.ValidatingType = typeof(System.DateTime);
             // 
             // txtBusquedaDni
@@ -322,7 +322,7 @@
             this.txtBusquedaDni.Location = new System.Drawing.Point(704, 601);
             this.txtBusquedaDni.Name = "txtBusquedaDni";
             this.txtBusquedaDni.Size = new System.Drawing.Size(156, 38);
-            this.txtBusquedaDni.TabIndex = 53;
+            this.txtBusquedaDni.TabIndex = 13;
             // 
             // label19
             // 
@@ -363,11 +363,11 @@
             this.grillaFacturas.Location = new System.Drawing.Point(54, 658);
             this.grillaFacturas.Name = "grillaFacturas";
             this.grillaFacturas.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Perpetua", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Black;
-            this.grillaFacturas.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Perpetua", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black;
+            this.grillaFacturas.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.grillaFacturas.RowTemplate.Height = 24;
             this.grillaFacturas.Size = new System.Drawing.Size(528, 120);
             this.grillaFacturas.TabIndex = 50;
@@ -410,12 +410,13 @@
             // 
             // cmbSucursalEmpleado
             // 
+            this.cmbSucursalEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSucursalEmpleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSucursalEmpleado.FormattingEnabled = true;
             this.cmbSucursalEmpleado.Location = new System.Drawing.Point(570, 466);
             this.cmbSucursalEmpleado.Name = "cmbSucursalEmpleado";
             this.cmbSucursalEmpleado.Size = new System.Drawing.Size(257, 37);
-            this.cmbSucursalEmpleado.TabIndex = 47;
+            this.cmbSucursalEmpleado.TabIndex = 10;
             // 
             // label17
             // 
@@ -430,6 +431,7 @@
             // 
             // cmbTipoDoc
             // 
+            this.cmbTipoDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoDoc.FormattingEnabled = true;
             this.cmbTipoDoc.Items.AddRange(new object[] {
             "DNI",
@@ -437,25 +439,27 @@
             this.cmbTipoDoc.Location = new System.Drawing.Point(250, 525);
             this.cmbTipoDoc.Name = "cmbTipoDoc";
             this.cmbTipoDoc.Size = new System.Drawing.Size(121, 39);
-            this.cmbTipoDoc.TabIndex = 44;
+            this.cmbTipoDoc.TabIndex = 11;
             // 
             // cmbLocalidad
             // 
+            this.cmbLocalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLocalidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLocalidad.FormattingEnabled = true;
             this.cmbLocalidad.Location = new System.Drawing.Point(570, 413);
             this.cmbLocalidad.Name = "cmbLocalidad";
             this.cmbLocalidad.Size = new System.Drawing.Size(257, 37);
-            this.cmbLocalidad.TabIndex = 43;
+            this.cmbLocalidad.TabIndex = 9;
             // 
             // cmbProvincias
             // 
+            this.cmbProvincias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProvincias.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProvincias.FormattingEnabled = true;
             this.cmbProvincias.Location = new System.Drawing.Point(171, 411);
             this.cmbProvincias.Name = "cmbProvincias";
             this.cmbProvincias.Size = new System.Drawing.Size(257, 37);
-            this.cmbProvincias.TabIndex = 42;
+            this.cmbProvincias.TabIndex = 8;
             this.cmbProvincias.SelectedIndexChanged += new System.EventHandler(this.cmbProvincias_SelectedIndexChanged);
             // 
             // label16
@@ -505,7 +509,7 @@
             this.txtAltura.Location = new System.Drawing.Point(570, 362);
             this.txtAltura.Name = "txtAltura";
             this.txtAltura.Size = new System.Drawing.Size(74, 38);
-            this.txtAltura.TabIndex = 36;
+            this.txtAltura.TabIndex = 7;
             // 
             // label13
             // 
@@ -523,7 +527,7 @@
             this.txtCalle.Location = new System.Drawing.Point(171, 362);
             this.txtCalle.Name = "txtCalle";
             this.txtCalle.Size = new System.Drawing.Size(257, 38);
-            this.txtCalle.TabIndex = 34;
+            this.txtCalle.TabIndex = 6;
             // 
             // label12
             // 
@@ -541,7 +545,7 @@
             this.txtNumeroDoc.Location = new System.Drawing.Point(570, 526);
             this.txtNumeroDoc.Name = "txtNumeroDoc";
             this.txtNumeroDoc.Size = new System.Drawing.Size(156, 38);
-            this.txtNumeroDoc.TabIndex = 32;
+            this.txtNumeroDoc.TabIndex = 12;
             // 
             // label11
             // 
@@ -570,7 +574,7 @@
             this.txtApellido.Location = new System.Drawing.Point(570, 312);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(257, 38);
-            this.txtApellido.TabIndex = 28;
+            this.txtApellido.TabIndex = 5;
             // 
             // label8
             // 
@@ -600,7 +604,7 @@
             this.txtNombre.Location = new System.Drawing.Point(171, 312);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(257, 38);
-            this.txtNombre.TabIndex = 25;
+            this.txtNombre.TabIndex = 4;
             // 
             // label7
             // 
@@ -615,6 +619,7 @@
             // 
             // cmbMedioPago
             // 
+            this.cmbMedioPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMedioPago.FormattingEnabled = true;
             this.cmbMedioPago.Items.AddRange(new object[] {
             "Efectivo",
@@ -623,7 +628,7 @@
             this.cmbMedioPago.Location = new System.Drawing.Point(231, 216);
             this.cmbMedioPago.Name = "cmbMedioPago";
             this.cmbMedioPago.Size = new System.Drawing.Size(121, 39);
-            this.cmbMedioPago.TabIndex = 23;
+            this.cmbMedioPago.TabIndex = 2;
             this.cmbMedioPago.SelectedIndexChanged += new System.EventHandler(this.cmbMedioPago_SelectedIndexChanged);
             // 
             // label6
@@ -742,14 +747,14 @@
             this.grillaPedidos.Location = new System.Drawing.Point(68, 91);
             this.grillaPedidos.Name = "grillaPedidos";
             this.grillaPedidos.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Perpetua", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Black;
-            this.grillaPedidos.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Perpetua", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Black;
+            this.grillaPedidos.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.grillaPedidos.RowTemplate.Height = 24;
             this.grillaPedidos.Size = new System.Drawing.Size(1158, 109);
-            this.grillaPedidos.TabIndex = 11;
+            this.grillaPedidos.TabIndex = 51;
             // 
             // IdPedido
             // 
@@ -813,6 +818,7 @@
             // 
             // cmbMesa
             // 
+            this.cmbMesa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMesa.Font = new System.Drawing.Font("Perpetua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMesa.FormattingEnabled = true;
             this.cmbMesa.Items.AddRange(new object[] {
@@ -831,7 +837,7 @@
             this.cmbMesa.Location = new System.Drawing.Point(534, 17);
             this.cmbMesa.Name = "cmbMesa";
             this.cmbMesa.Size = new System.Drawing.Size(96, 39);
-            this.cmbMesa.TabIndex = 9;
+            this.cmbMesa.TabIndex = 1;
             // 
             // panel3
             // 
