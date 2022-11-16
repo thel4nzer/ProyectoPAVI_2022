@@ -213,9 +213,9 @@ namespace Proyecto_TP_Integrador
             {
 
                 SqlCommand cmd = new SqlCommand();
-                string consulta = "SELECT c.ApeCliente as Nombre, COUNT(f.IdFactura) as Cantidad FROM sucursales suc " +
+                string consulta = "SELECT c.NumeroDoc as Nombre, COUNT(f.IdFactura) as Cantidad FROM sucursales suc " +
                                     "INNER JOIN facturas f ON suc.IdSucursal=f.IdSucursal INNER JOIN clientes c ON c.IdCliente = f.IdCliente WHERE suc.NomSucursal LIKE @name " +
-                                    "GROUP BY c.ApeCliente";
+                                    "GROUP BY c.NumeroDoc";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@name", nombre);
 
