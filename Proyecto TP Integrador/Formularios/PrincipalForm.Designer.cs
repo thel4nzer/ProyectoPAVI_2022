@@ -52,7 +52,6 @@
             this.IdBebida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdMesa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEliminarTodosPedidos = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -215,7 +214,6 @@
             this.panel3.BackColor = System.Drawing.Color.Black;
             this.panel3.Controls.Add(this.btnActualizarGrilla);
             this.panel3.Controls.Add(this.grillaPedidos);
-            this.panel3.Controls.Add(this.btnEliminarTodosPedidos);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(245, 100);
             this.panel3.Name = "panel3";
@@ -227,7 +225,7 @@
             this.btnActualizarGrilla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnActualizarGrilla.Font = new System.Drawing.Font("Perpetua", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizarGrilla.ForeColor = System.Drawing.Color.White;
-            this.btnActualizarGrilla.Location = new System.Drawing.Point(474, 332);
+            this.btnActualizarGrilla.Location = new System.Drawing.Point(304, 369);
             this.btnActualizarGrilla.Name = "btnActualizarGrilla";
             this.btnActualizarGrilla.Size = new System.Drawing.Size(315, 33);
             this.btnActualizarGrilla.TabIndex = 18;
@@ -312,20 +310,6 @@
             this.IdEstado.MinimumWidth = 6;
             this.IdEstado.Name = "IdEstado";
             // 
-            // btnEliminarTodosPedidos
-            // 
-            this.btnEliminarTodosPedidos.BackColor = System.Drawing.Color.Red;
-            this.btnEliminarTodosPedidos.Enabled = false;
-            this.btnEliminarTodosPedidos.Font = new System.Drawing.Font("Perpetua", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarTodosPedidos.ForeColor = System.Drawing.Color.White;
-            this.btnEliminarTodosPedidos.Location = new System.Drawing.Point(45, 332);
-            this.btnEliminarTodosPedidos.Name = "btnEliminarTodosPedidos";
-            this.btnEliminarTodosPedidos.Size = new System.Drawing.Size(315, 33);
-            this.btnEliminarTodosPedidos.TabIndex = 16;
-            this.btnEliminarTodosPedidos.Text = "ELIMINAR TODOS LOS PEDIDOS";
-            this.btnEliminarTodosPedidos.UseVisualStyleBackColor = false;
-            this.btnEliminarTodosPedidos.Click += new System.EventHandler(this.btnEliminarTodosPedidos_Click);
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
@@ -362,7 +346,6 @@
         private System.Windows.Forms.Button btnEmpleado;
         private System.Windows.Forms.Button btnPedidos;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnEliminarTodosPedidos;
         private System.Windows.Forms.DataGridView grillaPedidos;
         private System.Windows.Forms.Button btnActualizarGrilla;
         private System.Windows.Forms.Timer timer1;

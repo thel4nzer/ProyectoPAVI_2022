@@ -20,14 +20,11 @@ namespace Proyecto_TP_Integrador
             lblBienvenido.Text = usu.NombreDeUsuario;
             lblBienvenido.Visible = true;
             btnEmpleado.Enabled = false;
-            btnEliminarTodosPedidos.Visible = false;
             CargarGrillaPedidosPrincipal();
             bool tienePermiso = PermisosEmpleados(usu);
             if (tienePermiso)
             {
                 btnEmpleado.Enabled = true;
-                btnEliminarTodosPedidos.Enabled = true;
-                btnEliminarTodosPedidos.Visible = true;
             }
             else
             {
@@ -188,22 +185,6 @@ namespace Proyecto_TP_Integrador
             return resultado;
         }
 
-        private void btnEliminarTodosPedidos_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Se eliminaran todos los pedidos ¿Esta seguro que desea continuar?", "ADVERTENCIA!!", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                bool resultado = EliminarTodosPedidos();
-                if (resultado)
-                {
-                    MessageBox.Show("Se eliminaron todos los pedidos correctamente");
-                }
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                MessageBox.Show("Se conservaron todos los pedidos");
-            }
-        }
         private Pedido ObtenerPedido()
         {
             string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];

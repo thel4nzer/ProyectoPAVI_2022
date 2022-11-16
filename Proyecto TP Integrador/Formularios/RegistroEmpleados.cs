@@ -96,6 +96,7 @@ namespace Proyecto_TP_Integrador
             btnEliminarEmpleado.Enabled = false;
             btnActualizarEmpleado.Enabled = false;
             btnRegistrarEmpleado.Enabled = true;
+            txtUsuario.Enabled =true;
         }
 
         private void btnLimpiarCampos_Click(object sender, EventArgs e)
@@ -221,6 +222,7 @@ namespace Proyecto_TP_Integrador
                 btnEliminarEmpleado.Enabled = true;
                 btnActualizarEmpleado.Enabled = true;
                 btnRegistrarEmpleado.Enabled = false;
+                txtUsuario.Enabled = false;
             }
 
         }
@@ -437,10 +439,6 @@ namespace Proyecto_TP_Integrador
             CargarComboBoxLocalidades();
         }
 
-        private void btnAtras_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
     }
 }

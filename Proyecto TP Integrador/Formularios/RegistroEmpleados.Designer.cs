@@ -38,7 +38,6 @@
             this.cmbProvincias = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.btnEliminarEmpleado = new System.Windows.Forms.Button();
-            this.btnAtras = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtIdUsuario = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -118,7 +117,6 @@
             this.panel2.Controls.Add(this.cmbProvincias);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.btnEliminarEmpleado);
-            this.panel2.Controls.Add(this.btnAtras);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.txtIdUsuario);
             this.panel2.Controls.Add(this.label7);
@@ -208,19 +206,6 @@
             this.btnEliminarEmpleado.Text = "Eliminar empleado";
             this.btnEliminarEmpleado.UseVisualStyleBackColor = false;
             this.btnEliminarEmpleado.Click += new System.EventHandler(this.btnEliminarEmpleado_Click);
-            // 
-            // btnAtras
-            // 
-            this.btnAtras.BackColor = System.Drawing.Color.Transparent;
-            this.btnAtras.Font = new System.Drawing.Font("Perpetua", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtras.Location = new System.Drawing.Point(1104, 6);
-            this.btnAtras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAtras.Name = "btnAtras";
-            this.btnAtras.Size = new System.Drawing.Size(93, 27);
-            this.btnAtras.TabIndex = 38;
-            this.btnAtras.Text = "ATRAS";
-            this.btnAtras.UseVisualStyleBackColor = false;
-            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // label10
             // 
@@ -814,7 +799,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtIdUsuario;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.Button btnEliminarEmpleado;
         private System.Windows.Forms.ComboBox cmbLocalidad;
         private System.Windows.Forms.ComboBox cmbProvincias;
