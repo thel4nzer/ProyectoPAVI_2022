@@ -527,10 +527,10 @@ namespace Proyecto_TP_Integrador
             txtNumeroDoc.Text = Convert.ToString(ped.numeroDoc);
             txtCalle.Text = Convert.ToString(ped.calleDeCliente);
             txtAltura.Text = Convert.ToString(ped.alturaCalle);
-            string localidad = ValidarLocalidad(ped);
-            cmbLocalidad.Text = localidad;
             string provincia = ValidarProvincia(ped);
             cmbProvincias.Text = provincia;
+            string localidad = ValidarLocalidad(ped);
+            cmbLocalidad.Text= localidad;
             cmbMedioPago.Text = Convert.ToString(fac.idDeMedioPago);
             txtFecha.Text = Convert.ToString(fac.fechaPago);
             string sucursal = ValidarSucursal(fac);
