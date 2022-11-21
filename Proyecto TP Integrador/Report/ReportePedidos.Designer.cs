@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.pedidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ProyectoPAVIDataSet = new Proyecto_TP_Integrador.ProyectoPAVIDataSet();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -44,6 +44,9 @@
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.estadisticaPedidos = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbSucursal = new System.Windows.Forms.ComboBox();
+            this.txtSucursalnombre = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pedidosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProyectoPAVIDataSet)).BeginInit();
             this.panel1.SuspendLayout();
@@ -65,18 +68,19 @@
             this.panel1.Controls.Add(this.lblReporesYListados);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1225, 100);
+            this.panel1.Size = new System.Drawing.Size(919, 81);
             this.panel1.TabIndex = 0;
             // 
             // lblReporesYListados
             // 
             this.lblReporesYListados.AutoSize = true;
             this.lblReporesYListados.Font = new System.Drawing.Font("Perpetua", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReporesYListados.Location = new System.Drawing.Point(343, 9);
+            this.lblReporesYListados.Location = new System.Drawing.Point(257, 7);
+            this.lblReporesYListados.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblReporesYListados.Name = "lblReporesYListados";
-            this.lblReporesYListados.Size = new System.Drawing.Size(597, 69);
+            this.lblReporesYListados.Size = new System.Drawing.Size(473, 55);
             this.lblReporesYListados.TabIndex = 65;
             this.lblReporesYListados.Text = "REPORTE DE PEDIDOS";
             // 
@@ -89,9 +93,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Perpetua", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(602, 142);
+            this.label1.Location = new System.Drawing.Point(261, 83);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 38);
+            this.label1.Size = new System.Drawing.Size(98, 31);
             this.label1.TabIndex = 70;
             this.label1.Text = "HASTA:";
             // 
@@ -100,45 +105,46 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Perpetua", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(264, 143);
+            this.label2.Location = new System.Drawing.Point(8, 83);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 38);
+            this.label2.Size = new System.Drawing.Size(97, 31);
             this.label2.TabIndex = 69;
             this.label2.Text = "DESDE:";
             // 
             // txtFechaDesde
             // 
             this.txtFechaDesde.Font = new System.Drawing.Font("Perpetua", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaDesde.Location = new System.Drawing.Point(410, 141);
-            this.txtFechaDesde.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFechaDesde.Location = new System.Drawing.Point(109, 83);
+            this.txtFechaDesde.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFechaDesde.Mask = "00/00/0000";
             this.txtFechaDesde.Name = "txtFechaDesde";
-            this.txtFechaDesde.Size = new System.Drawing.Size(164, 42);
+            this.txtFechaDesde.Size = new System.Drawing.Size(124, 35);
             this.txtFechaDesde.TabIndex = 68;
             this.txtFechaDesde.ValidatingType = typeof(System.DateTime);
             // 
             // txtFechaHasta
             // 
             this.txtFechaHasta.Font = new System.Drawing.Font("Perpetua", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaHasta.Location = new System.Drawing.Point(749, 141);
-            this.txtFechaHasta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFechaHasta.Location = new System.Drawing.Point(363, 83);
+            this.txtFechaHasta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFechaHasta.Mask = "00/00/0000";
             this.txtFechaHasta.Name = "txtFechaHasta";
-            this.txtFechaHasta.Size = new System.Drawing.Size(164, 42);
+            this.txtFechaHasta.Size = new System.Drawing.Size(124, 35);
             this.txtFechaHasta.TabIndex = 67;
             this.txtFechaHasta.ValidatingType = typeof(System.DateTime);
             // 
             // reportPedidos
             // 
-            reportDataSource2.Name = "DatosPedidos";
-            reportDataSource2.Value = this.pedidosBindingSource;
-            this.reportPedidos.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "DatosPedidos";
+            reportDataSource1.Value = this.pedidosBindingSource;
+            this.reportPedidos.LocalReport.DataSources.Add(reportDataSource1);
             this.reportPedidos.LocalReport.ReportEmbeddedResource = "Proyecto_TP_Integrador.Listados.ListadoDePedidos.rdlc";
-            this.reportPedidos.Location = new System.Drawing.Point(19, 283);
-            this.reportPedidos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.reportPedidos.Location = new System.Drawing.Point(14, 230);
+            this.reportPedidos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.reportPedidos.Name = "reportPedidos";
             this.reportPedidos.ServerReport.BearerToken = null;
-            this.reportPedidos.Size = new System.Drawing.Size(602, 440);
+            this.reportPedidos.Size = new System.Drawing.Size(452, 358);
             this.reportPedidos.TabIndex = 66;
             this.reportPedidos.ZoomPercent = 75;
             this.reportPedidos.Load += new System.EventHandler(this.reportPedidos_Load);
@@ -148,9 +154,10 @@
             this.lblPuesto.AutoSize = true;
             this.lblPuesto.Font = new System.Drawing.Font("Perpetua", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPuesto.ForeColor = System.Drawing.Color.White;
-            this.lblPuesto.Location = new System.Drawing.Point(289, 215);
+            this.lblPuesto.Location = new System.Drawing.Point(8, 144);
+            this.lblPuesto.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPuesto.Name = "lblPuesto";
-            this.lblPuesto.Size = new System.Drawing.Size(143, 38);
+            this.lblPuesto.Size = new System.Drawing.Size(116, 31);
             this.lblPuesto.TabIndex = 65;
             this.lblPuesto.Text = "ESTADO:";
             // 
@@ -158,10 +165,10 @@
             // 
             this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(457, 215);
-            this.cmbEstado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbEstado.Location = new System.Drawing.Point(128, 144);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(179, 37);
+            this.cmbEstado.Size = new System.Drawing.Size(135, 30);
             this.cmbEstado.TabIndex = 64;
             // 
             // btnFiltrar
@@ -169,10 +176,10 @@
             this.btnFiltrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnFiltrar.Font = new System.Drawing.Font("Perpetua", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFiltrar.ForeColor = System.Drawing.Color.White;
-            this.btnFiltrar.Location = new System.Drawing.Point(696, 211);
-            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFiltrar.Location = new System.Drawing.Point(634, 188);
+            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(219, 46);
+            this.btnFiltrar.Size = new System.Drawing.Size(164, 37);
             this.btnFiltrar.TabIndex = 63;
             this.btnFiltrar.Text = "FILTRAR";
             this.btnFiltrar.UseVisualStyleBackColor = false;
@@ -181,21 +188,53 @@
             // estadisticaPedidos
             // 
             this.estadisticaPedidos.LocalReport.ReportEmbeddedResource = "Proyecto_TP_Integrador.Listados.EstadisticaPedidos.rdlc";
-            this.estadisticaPedidos.Location = new System.Drawing.Point(632, 283);
-            this.estadisticaPedidos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.estadisticaPedidos.Location = new System.Drawing.Point(474, 230);
             this.estadisticaPedidos.Name = "estadisticaPedidos";
             this.estadisticaPedidos.ServerReport.BearerToken = null;
-            this.estadisticaPedidos.Size = new System.Drawing.Size(565, 440);
+            this.estadisticaPedidos.Size = new System.Drawing.Size(424, 358);
             this.estadisticaPedidos.TabIndex = 71;
             this.estadisticaPedidos.ZoomPercent = 75;
             this.estadisticaPedidos.Load += new System.EventHandler(this.estadisticaPedidos_Load_1);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Perpetua", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(276, 143);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(143, 31);
+            this.label3.TabIndex = 72;
+            this.label3.Text = "SUCURSAL:";
+            // 
+            // cmbSucursal
+            // 
+            this.cmbSucursal.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSucursal.FormattingEnabled = true;
+            this.cmbSucursal.Location = new System.Drawing.Point(423, 144);
+            this.cmbSucursal.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbSucursal.Name = "cmbSucursal";
+            this.cmbSucursal.Size = new System.Drawing.Size(43, 30);
+            this.cmbSucursal.TabIndex = 73;
+            // 
+            // txtSucursalnombre
+            // 
+            this.txtSucursalnombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.txtSucursalnombre.Location = new System.Drawing.Point(494, 142);
+            this.txtSucursalnombre.Name = "txtSucursalnombre";
+            this.txtSucursalnombre.Size = new System.Drawing.Size(173, 31);
+            this.txtSucursalnombre.TabIndex = 74;
+            // 
             // ReportePedidos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1225, 745);
+            this.ClientSize = new System.Drawing.Size(919, 605);
+            this.Controls.Add(this.txtSucursalnombre);
+            this.Controls.Add(this.cmbSucursal);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.estadisticaPedidos);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -206,7 +245,7 @@
             this.Controls.Add(this.cmbEstado);
             this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "ReportePedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -237,5 +276,8 @@
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.Button btnFiltrar;
         private Microsoft.Reporting.WinForms.ReportViewer estadisticaPedidos;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbSucursal;
+        private System.Windows.Forms.TextBox txtSucursalnombre;
     }
 }
